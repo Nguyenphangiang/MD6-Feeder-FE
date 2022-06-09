@@ -1,5 +1,5 @@
 <h2>Merchant's Detail</h2>
-<form [formGroup]="merchantForm">
+<form [formGroup]="merchantForm" (submit)="updateMerchant()">
   <table border="1">
     <tr>
       <th>Username</th>
@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <th>Safe Food License</th>
-      <th><input type="file" formControlName="safeFoodLicense"></th>
+      <th><input type="file" formControlName="safeFoodLicense" (change)="onSelectedFile($event)"></th>
     </tr>
     <tr>
       <th colspan="2">

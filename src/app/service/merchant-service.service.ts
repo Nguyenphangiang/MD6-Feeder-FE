@@ -24,7 +24,7 @@ export class MerchantServiceService {
   createNew(merchant: any): Observable<AppUser> {
     return this.http.post<AppUser>(`${apiUrl}/merchant/register`, merchant);
   }
-  updateOld(id: number, merchant: FormData): Observable<Merchant> {
+  updateOld(id: string, merchant: FormData): Observable<Merchant> {
     return this.http.post<Merchant>(apiUrl + 'merchant/' + id, merchant );
   }
   // deleteById(id: number): Observable<Merchant> {

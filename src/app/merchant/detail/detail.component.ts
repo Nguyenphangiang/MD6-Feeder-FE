@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
+import Swal from 'sweetalert2';
+import {MerchantForm} from '../../model/merchant-form';
+import {environment} from '../../../environments/environment';
+const uploadPath = environment.uploadPath;
 
 @Component({
   selector: 'app-detail',
@@ -9,6 +13,9 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  selectedFile = null;
+  image = null;
+  merchant: MerchantForm;
   merchantForm: FormGroup = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
@@ -49,12 +56,26 @@ export class DetailComponent implements OnInit {
       alert('Cant Load Merchant\'s Detail!');
     });
   }
-  updateMerchant(id: number) {
-    const merchant = new FormData();
-
-    this.merchantService.updateOld(id, merchant).subscribe(() => {
-      alert('success');
-      this.router.navigate(['/book']);
-    })
+  onSelectedFile(event) {
+    this.selectedFile = event.target.files[0] as File;
+    // this.image = document.getElementById('output');
+    // this.image.src = URL.createObjectURL(event.target.files[0]);
+  }
+  updateMerchant() {
+    const merchantData: FormData = new FormData();
+    merchantData.append('username', this.merchantForm.get('username').value);
+    merchantData.append('password', this.merchantForm.get('password').value);
+    merchantData.append('email', this.merchantForm.get('email').value);
+    merchantData.append('phone', this.merchantForm.get('phone').value);
+    merchantData.append('address', this.merchantForm.get('address').value);
+    merchantData.append('name', this.merchantForm.get('name').value);
+    if (this.selectedFile !== undefined) {
+      merchantData.append('safeFoodLicense', this.selectedFile);
+    } else {
+      merchantData.append('safeFoodLicense', null); }
+    this.merchantService.updateOld(this.id, merchantData).subscribe(() => {
+      Swal.fire('Update success!');
+      // this.router.navigateByUrl('/login');
+    });
   }
 }
