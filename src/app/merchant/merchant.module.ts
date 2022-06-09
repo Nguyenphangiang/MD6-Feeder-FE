@@ -8,7 +8,7 @@ import { MerchantRoutingModule } from './merchant-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    MerchantRoutingModule
+    MerchantRoutingModule,
   ]
 })
 export class MerchantModule { }

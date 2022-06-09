@@ -3,6 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Merchant} from '../model/merchant';
 import {environment} from '../../environments/environment';
+import {MerchantForm} from '../model/merchant-form';
+import {AppUser} from '../model/app-user';
 const apiUrl = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -19,13 +21,13 @@ export class MerchantServiceService {
   // createNew(merchant: Merchant): Observable<Merchant> {
   //   return this.http.post<Merchant>(apiUrl + 'merchant', merchant);
   // }
-  createNew(merchant: Merchant): Observable<Merchant> {
-    return this.http.post<Merchant>(apiUrl + 'merchant/register', merchant);
+  createNew(merchant: any): Observable<AppUser> {
+    return this.http.post<AppUser>(apiUrl + 'merchant/register', merchant);
   }
-  updateOld(id: number, merchant: Merchant): Observable<Merchant> {
-    return this.http.post<Merchant>(apiUrl + 'merchant/' + id, merchant );
-  }
-  deleteById(id: number): Observable<Merchant> {
-    return this.http.delete<Merchant>(apiUrl + 'merchant/' + id);
-  }
+  // updateOld(id: number, merchant: Merchant): Observable<Merchant> {
+  //   return this.http.post<Merchant>(apiUrl + 'merchant/' + id, merchant );
+  // }
+  // deleteById(id: number): Observable<Merchant> {
+  //   return this.http.delete<Merchant>(apiUrl + 'merchant/' + id);
+  // }
 }
