@@ -13,12 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    canActivate: [AuthGuard],
     component: HomeComponent
   },
   {
-    path: 'customer/register',
-    component: RegisterComponent
+    path: 'customer',
+    loadChildren: () => import('./module/customer/customer.module').then(module => module.CustomerModule)
   }
 ];
 
