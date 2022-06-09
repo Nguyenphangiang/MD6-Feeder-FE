@@ -10,6 +10,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import { RegisterComponent } from './auth/register/register.component';
+import { OrderListComponent } from './orders/order-list/order-list.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { RegisterComponent } from './auth/register/register.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

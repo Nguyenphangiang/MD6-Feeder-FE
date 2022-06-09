@@ -1,0 +1,22 @@
+<h1>Orders: </h1>
+<a routerLink="/create">Create a new order</a>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Customer</th>
+    <th>Date</th>
+    <th>Dish</th>
+    <th>Quantity</th>
+    <th>Note</th>
+    <th>Status</th>
+  </tr>
+  <tr *ngFor="let o of orderList; index as i">
+    <th>{{i+1}}</th>
+    <th>{{o.customerId}}</th>
+    <th>{{o.orderTime}}</th>
+    <th>{{o.dishId}}</th>
+    <th>{{o.quantity}}</th>
+    <th>{{o.note}}</th>
+    <th>{{orderStatusToString(o.status)}}</th>
+  </tr>
+</table>
