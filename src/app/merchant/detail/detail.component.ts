@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import {MerchantForm} from '../../model/merchant-form';
 import {environment} from '../../../environments/environment';
 const uploadPath = environment.uploadPath;
@@ -43,7 +43,7 @@ export class DetailComponent implements OnInit {
   showDetail(id: string) {
     this.merchantService.findById(id).subscribe((data) => {
       this.merchantForm = new FormGroup({
-        id: new FormControl(data.id),
+        id: new FormControl(id),
         name: new FormControl(data.name),
         safeFoodLicense: new FormControl(data.safeFoodLicense),
         email: new FormControl(data.email),
@@ -69,13 +69,16 @@ export class DetailComponent implements OnInit {
     merchantData.append('phone', this.merchantForm.get('phone').value);
     merchantData.append('address', this.merchantForm.get('address').value);
     merchantData.append('name', this.merchantForm.get('name').value);
-    if (this.selectedFile !== undefined) {
-      merchantData.append('safeFoodLicense', this.selectedFile);
-    } else {
-      merchantData.append('safeFoodLicense', null); }
+    // if (this.selectedFile !== null) {
+    merchantData.append('safeFoodLicense', this.selectedFile);
+    // }
+    // else {
+    //   merchantData.append('safeFoodLicense', null); }
     this.merchantService.updateOld(this.id, merchantData).subscribe(() => {
-      Swal.fire('Update success!');
+      // Swal.fire('Update success!');
       // this.router.navigateByUrl('/login');
+    }, () => {
+      alert('update failed!');
     });
   }
 }

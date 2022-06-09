@@ -13,21 +13,21 @@ export class MerchantServiceService {
 
   constructor(private http: HttpClient ) { }
   findAll(): Observable<Merchant[]> {
-    return this.http.get<Merchant[]>(apiUrl + 'merchant');
+    return this.http.get<Merchant[]>(apiUrl + '/merchant');
   }
   findById(id: string): Observable<Merchant> {
-    return this.http.get<Merchant>(apiUrl + 'merchant/' + id);
+    return this.http.get<Merchant>(apiUrl + '/merchant/' + id);
   }
   // createNew(merchant: Merchant): Observable<Merchant> {
-  //   return this.http.post<Merchant>(apiUrl + 'merchant', merchant);
+  //   return this.http.post<Merchant>(apiUrl + '/merchant', merchant);
   // }
   createNew(merchant: any): Observable<AppUser> {
     return this.http.post<AppUser>(`${apiUrl}/merchant/register`, merchant);
   }
   updateOld(id: string, merchant: FormData): Observable<Merchant> {
-    return this.http.post<Merchant>(apiUrl + 'merchant/' + id, merchant );
+    return this.http.post<Merchant>(apiUrl + '/merchant/' + id, merchant );
   }
   // deleteById(id: number): Observable<Merchant> {
-  //   return this.http.delete<Merchant>(apiUrl + 'merchant/' + id);
+  //   return this.http.delete<Merchant>(apiUrl + '/merchant/' + id);
   // }
 }
