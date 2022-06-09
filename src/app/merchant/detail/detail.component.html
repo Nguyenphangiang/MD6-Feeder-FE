@@ -1,0 +1,38 @@
+<h2>Merchant's Detail</h2>
+<form [formGroup]="merchantForm">
+  <table border="1">
+    <tr>
+      <th>Username</th>
+      <th><input type="text" formControlName="username" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Password</th>
+      <th><input type="text" formControlName="password" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Name of Merchant</th>
+      <th><input type="text" formControlName="name" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Address</th>
+      <th><input type="text" formControlName="address" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <th><input type="text" formControlName="phone" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <th><input type="text" formControlName="email" style="width: 450px"></th>
+    </tr>
+    <tr>
+      <th>Safe Food License</th>
+      <th><input type="file" formControlName="safeFoodLicense"></th>
+    </tr>
+    <tr>
+      <th colspan="2">
+        <button style="text-align: center">Update</button>
+      </th>
+    </tr>
+  </table>
+</form>

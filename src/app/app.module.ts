@@ -7,18 +7,19 @@ import {MerchantModule} from './merchant/merchant.module';
 import { CreateComponent } from './merchant/create/create.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CreateComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MerchantModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
