@@ -28,6 +28,10 @@ const routes: Routes = [
   {
     path : 'merchant',
     loadChildren : () => import ('./merchant/merchant.module').then(module => module.MerchantModule)
+  },
+  {
+    path: 'dish',
+    loadChildren: () => import('./module/dish/dish.module').then((module => module.DishModule))
   }
 ];
 
