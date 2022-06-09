@@ -10,18 +10,22 @@ import {APP_BASE_HREF} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import { RegisterComponent } from './auth/register/register.component';
+import { SwitchRegisterComponent } from './auth/switch-register/switch-register.component';
 
+import {MerchantModule} from './merchant/merchant.module';
+import { CreateComponent } from './merchant/create/create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
+    SwitchRegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MerchantModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
