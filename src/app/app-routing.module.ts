@@ -4,6 +4,7 @@ import {LoginComponent} from './auth/login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AuthGuard} from './helper/auth.guard';
 import {RegisterComponent} from './auth/register/register.component';
+import {SwitchRegisterComponent} from './auth/switch-register/switch-register.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'switch',
+    component: SwitchRegisterComponent
   },
   {
     path: 'customer',
