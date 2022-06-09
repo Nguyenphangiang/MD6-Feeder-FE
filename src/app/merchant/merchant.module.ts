@@ -13,6 +13,5 @@ import {CreateComponent} from './create/create.component';
         CommonModule,
         MerchantRoutingModule,
         ReactiveFormsModule
-    ]
-})
+    ]})
 export class MerchantModule { }

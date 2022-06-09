@@ -6,7 +6,7 @@ import {DetailComponent} from './detail/detail.component';
 
 const routes: Routes = [
   {
-    path : 'create',
+    path : 'register',
     component : CreateComponent
   },
   {
