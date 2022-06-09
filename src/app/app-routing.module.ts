@@ -7,6 +7,7 @@ import {RegisterComponent} from './auth/register/register.component';
 import {SwitchRegisterComponent} from './auth/switch-register/switch-register.component';
 
 
+
 const routes: Routes = [
   {
     path: 'login',
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'customer',
     loadChildren: () => import('./module/customer/customer.module').then(module => module.CustomerModule)
+  },
+  {
+    path : 'merchant',
+    loadChildren : () => import ('./merchant/merchant.module').then(module => module.MerchantModule)
   }
 ];
 

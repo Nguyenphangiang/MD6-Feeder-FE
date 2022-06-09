@@ -12,6 +12,8 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import { RegisterComponent } from './auth/register/register.component';
 import { SwitchRegisterComponent } from './auth/switch-register/switch-register.component';
 
+import {MerchantModule} from './merchant/merchant.module';
+import { CreateComponent } from './merchant/create/create.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { SwitchRegisterComponent } from './auth/switch-register/switch-register.
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MerchantModule,
     HttpClientModule,
     ReactiveFormsModule
   ],
