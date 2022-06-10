@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Askbootstrap">
+  <meta name="author" content="Askbootstrap">
+  <title>Feeder</title>
+
+  <link rel="icon" type="image/png" href="../../../assets/img/favicon.png">
+
+  <link href="../../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="../../../assets/vendor/fontawesome/css/all.min.css" rel="stylesheet">
+
+  <link href="../../../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+
+  <link href="../../../assets/vendor/select2/css/select2.min.css" rel="stylesheet">
+
+  <link href="../../../assets/css/osahan.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../../assets/vendor/owl-carousel/owl.carousel.css">
+  <link rel="stylesheet" href="../../../assets/vendor/owl-carousel/owl.theme.css">
+
+</head>
+<body>
+<div class="section pt-5 pb-5 products-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Đề xuất cho bạn</h2>
+      <p>Những món ngon nhất, nhiều ưu đãi đang được mọi người quan tâm</p>
+      <span class="line"></span>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel owl-carousel-four owl-theme" *ngFor="let dish of dishes , index as i ">
+          <div class="item">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                  class="icofont-heart"></i></a></div>
+                <div class="member-plan position-absolute"><span class="badge badge-dark">KM</span>
+                </div>
+                <a href="detail.html">
+                  <img src="http://localhost:8080/image/{{dish.image}}" class="img-fluid item-img">
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1"><a href="detail.html" class="text-black">{{dish.name}}</a></h6>
+                  <p class="text-gray mb-3">{{dish.description}}</p>
+                  <p class="text-gray mb-3 time"><span
+                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                    class="icofont-wall-clock"></i> 20–25 min</span> <span
+                    class="float-right text-black-50"> {{dish.price}}</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-success">Giảm</span> <small>65% | Coupon
+                  OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+          </div>
+<!--          <div class="item">-->
+<!--            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">-->
+<!--              <div class="list-card-image">-->
+<!--                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i-->
+<!--                  class="icofont-heart"></i></a></div>-->
+<!--                <div class="member-plan position-absolute"><span class="badge badge-dark">KM</span>-->
+<!--                </div>-->
+<!--                <a href="detail.html">-->
+<!--                  <img src="../../../assets/img/list/3.png" class="img-fluid item-img">-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              <div class="p-3 position-relative">-->
+<!--                <div class="list-card-body">-->
+<!--                  <h6 class="mb-1"><a href="detail.html" class="text-black">Cua gạch Cà Mau</a>-->
+<!--                  </h6>-->
+<!--                  <p class="text-gray mb-3"> P. 2, Quận 3, TP. HCM</p>-->
+<!--                  <p class="text-gray mb-3 time"><span-->
+<!--                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                    class="icofont-wall-clock"></i> 15–25 min</span> <span-->
+<!--                    class="float-right text-black-50"> 300.000</span></p>-->
+<!--                </div>-->
+<!--                <div class="list-card-badge">-->
+<!--                  <span class="badge badge-danger">Giảm</span> <small>65% | Coupon-->
+<!--                  OSAHAN50</small>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="item">-->
+<!--            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">-->
+<!--              <div class="list-card-image">-->
+<!--                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i-->
+<!--                  class="icofont-heart"></i></a></div>-->
+<!--                <div class="member-plan position-absolute"><span-->
+<!--                  class="badge badge-danger">KM</span></div>-->
+<!--                <a href="detail.html">-->
+<!--                  <img src="../../../assets/img/list/6.png" class="img-fluid item-img">-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              <div class="p-3 position-relative">-->
+<!--                <div class="list-card-body">-->
+<!--                  <h6 class="mb-1"><a href="detail.html" class="text-black">Bao tử heo G Kitchen - -->
+<!--                    500gr-->
+<!--                  </a>-->
+<!--                  </h6>-->
+<!--                  <p class="text-gray mb-3">P. 2, Quận 3, TP. HCM</p>-->
+<!--                  <p class="text-gray mb-3 time"><span-->
+<!--                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                    class="icofont-wall-clock"></i> 15–25 min</span> <span-->
+<!--                    class="float-right text-black-50"> 250.000</span></p>-->
+<!--                </div>-->
+<!--                <div class="list-card-badge">-->
+<!--                  <span class="badge badge-danger">Giảm</span> <small>65% | Coupon-->
+<!--                  OSAHAN50</small>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="item">-->
+<!--            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">-->
+<!--              <div class="list-card-image">-->
+<!--                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i-->
+<!--                  class="icofont-heart"></i></a></div>-->
+<!--                <div class="member-plan position-absolute"><span-->
+<!--                  class="badge badge-dark">Promoted</span></div>-->
+<!--                <a href="detail.html">-->
+<!--                  <img src="../../../assets/img/list/8.png" class="img-fluid item-img">-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              <div class="p-3 position-relative">-->
+<!--                <div class="list-card-body">-->
+<!--                  <h6 class="mb-1"><a href="detail.html" class="text-black">Cua thịt Y5-->
+<!--                    (0,5-0,65kg/1con)-->
+<!--                  </a>-->
+<!--                  </h6>-->
+<!--                  <p class="text-gray mb-3">496 Nguyễn Thị Minh Khai, P. 2</p>-->
+<!--                  <p class="text-gray mb-3 time"><span-->
+<!--                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                    class="icofont-wall-clock"></i> 15–25 min</span> <span-->
+<!--                    class="float-right text-black-50"> 187.000</span></p>-->
+<!--                </div>-->
+<!--                <div class="list-card-badge">-->
+<!--                  <span class="badge badge-danger">Giảm</span> <small>65% | Coupon-->
+<!--                  OSAHAN50</small>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="item">-->
+<!--            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">-->
+<!--              <div class="list-card-image">-->
+<!--                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i-->
+<!--                  class="icofont-heart"></i></a></div>-->
+<!--                <div class="member-plan position-absolute"><span-->
+<!--                  class="badge badge-dark">Promoted</span></div>-->
+<!--                <a href="detail.html">-->
+<!--                  <img src="../../../assets/img/list/9.png" class="img-fluid item-img">-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              <div class="p-3 position-relative">-->
+<!--                <div class="list-card-body">-->
+<!--                  <h6 class="mb-1"><a href="detail.html" class="text-black">Sò lông cồ (20-25-->
+<!--                    con/kg)-->
+<!--                  </a>-->
+<!--                  </h6>-->
+<!--                  <p class="text-gray mb-3">P. Bình Trị Đông, Bình Tân, TP. HCM</p>-->
+<!--                  <p class="text-gray mb-3 time"><span-->
+<!--                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                    class="icofont-wall-clock"></i> 15–25 min</span> <span-->
+<!--                    class="float-right text-black-50"> 320.000</span></p>-->
+<!--                </div>-->
+<!--                <div class="list-card-badge">-->
+<!--                  <span class="badge badge-danger">Giảm</span> <small>65% | Coupon-->
+<!--                  OSAHAN50</small>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../../../assets/vendor/jquery/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+
+<script src="../../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+<script src="../../../assets/vendor/select2/js/select2.min.js" type="text/javascript"></script>
+
+<script src="../../../assets/vendor/owl-carousel/owl.carousel.js" type="text/javascript"></script>
+
+<script src="../../../assets/js/custom.js" type="text/javascript"></script>
+</body>
+</html>
+
