@@ -5,12 +5,14 @@ import { MerchantRoutingModule } from './merchant-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
 import { FindMerchantByNameComponent } from './find-merchant-by-name/find-merchant-by-name.component';
+import { MerchantDetailComponent } from './merchant-detail/merchant-detail.component';
 
 
 @NgModule({
   declarations: [
     CreateComponent,
-    FindMerchantByNameComponent
+    FindMerchantByNameComponent,
+    MerchantDetailComponent
   ],
   imports: [
     CommonModule,

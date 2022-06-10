@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {CreateComponent} from './create/create.component';
 import {FindMerchantByNameComponent} from './find-merchant-by-name/find-merchant-by-name.component';
+import {MerchantDetailComponent} from './merchant-detail/merchant-detail.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,11 @@ const routes: Routes = [
   {
     path: 'list/:name',
     component : FindMerchantByNameComponent
-  }
+  },
+  {
+    path: 'detail/:id',
+    component : MerchantDetailComponent
+  },
 ];
 
 @NgModule({
