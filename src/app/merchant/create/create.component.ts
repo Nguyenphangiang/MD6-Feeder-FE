@@ -50,7 +50,10 @@ export class CreateComponent implements OnInit {
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.createNew(merchantData).subscribe(() => {
       // Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
+      alert('Signup Success!');
       this.router.navigateByUrl('/login');
+    }, () => {
+      alert('Signup Failed!');
     });
   }
 }

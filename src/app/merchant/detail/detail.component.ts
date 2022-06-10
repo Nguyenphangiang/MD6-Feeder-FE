@@ -5,7 +5,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 // import Swal from 'sweetalert2';
 import {MerchantForm} from '../../model/merchant-form';
 import {environment} from '../../../environments/environment';
-const uploadPath = environment.uploadPath;
 
 @Component({
   selector: 'app-detail',
@@ -13,14 +12,15 @@ const uploadPath = environment.uploadPath;
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  selectedFile = null;
+  selectedFile = new File(['none'], 'null');
   image = null;
   merchant: MerchantForm;
   merchantForm: FormGroup = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
-    username: new FormControl(),
-    password: new FormControl(),
+    // user_id: new FormControl(),
+    // username: new FormControl(),
+    // password: new FormControl(),
     safeFoodLicense: new FormControl(),
     email: new FormControl(),
     phone: new FormControl(),
@@ -45,12 +45,15 @@ export class DetailComponent implements OnInit {
       this.merchantForm = new FormGroup({
         id: new FormControl(id),
         name: new FormControl(data.name),
-        safeFoodLicense: new FormControl(data.safeFoodLicense),
+        safeFoodLicense: new FormControl(null),
         email: new FormControl(data.email),
         phone: new FormControl(data.phone),
         address: new FormControl(data.address),
-        username: new FormControl(data.user.username),
-        password: new FormControl(data.user.password)
+        user_id: new FormControl(data.user.id),
+        // username: new FormControl(data.user.username),
+        // password: new FormControl(data.user.password),
+        status: new FormControl(data.status.id),
+        oldSafeFoodLicense: new FormControl(data.safeFoodLicense)
       });
     }, () => {
       alert('Cant Load Merchant\'s Detail!');
@@ -63,20 +66,19 @@ export class DetailComponent implements OnInit {
   }
   updateMerchant() {
     const merchantData: FormData = new FormData();
-    merchantData.append('username', this.merchantForm.get('username').value);
-    merchantData.append('password', this.merchantForm.get('password').value);
+    // merchantData.append('username', this.merchantForm.get('username').value);
+    // merchantData.append('password', this.merchantForm.get('password').value);
+    merchantData.append('user', this.merchantForm.get('user_id').value);
     merchantData.append('email', this.merchantForm.get('email').value);
     merchantData.append('phone', this.merchantForm.get('phone').value);
     merchantData.append('address', this.merchantForm.get('address').value);
     merchantData.append('name', this.merchantForm.get('name').value);
-    // if (this.selectedFile !== null) {
+    merchantData.append('status', this.merchantForm.get('status').value);
     merchantData.append('safeFoodLicense', this.selectedFile);
-    // }
-    // else {
-    //   merchantData.append('safeFoodLicense', null); }
     this.merchantService.updateOld(this.id, merchantData).subscribe(() => {
       // Swal.fire('Update success!');
       // this.router.navigateByUrl('/login');
+      alert('update success!');
     }, () => {
       alert('update failed!');
     });
