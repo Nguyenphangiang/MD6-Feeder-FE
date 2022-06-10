@@ -15,12 +15,12 @@ export class DishService {
     return this.http.get<Dish[]>(`${API_URL}/dish/merchant/${merchantId}`);
   }
 
-  create(data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/create`, data);
+  create(id, data): Observable<Dish> {
+    return this.http.post<Dish>(`${API_URL}/dish/create/${id}`, data);
   }
 
   updateDish(id, data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/${id}`, data);
+    return this.http.post<Dish>(`${API_URL}/dish/${id}/${id}`, data);
   }
 
   findDishById(id): Observable<Dish> {
