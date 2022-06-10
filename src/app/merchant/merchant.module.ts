@@ -6,6 +6,7 @@ import { DetailComponent } from './detail/detail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
 import { DishListComponent } from './dish-list/dish-list.component';
+import {DishModule} from '../module/dish/dish.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DishListComponent } from './dish-list/dish-list.component';
     CommonModule,
     MerchantRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DishModule
   ]})
 export class MerchantModule { }

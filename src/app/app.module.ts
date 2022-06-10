@@ -23,10 +23,7 @@ import { ListComponent } from './dish-status/list/list.component';
     HomeComponent,
     SwitchRegisterComponent,
     NavbarComponent,
-
     FooterComponent,
-    EditDishComponent,
-
     FooterComponent,
 
   ],

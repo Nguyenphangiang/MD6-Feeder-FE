@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {DishStatus} from '../../model/dish-status';
 import {DishStatusService} from '../../service/dish-status.service';
 
@@ -26,9 +26,10 @@ export class CreateDishComponent implements OnInit {
   id_merchant: string;
   constructor(private dishService: DishService,
               private statusService: DishStatusService,
-              private activateRoute: ActivatedRoute) {
+              private activateRoute: ActivatedRoute,
+              private router: Router) {
     this.activateRoute.paramMap.subscribe((paramMap) => {
-      this.id_merchant = paramMap.get('id');
+      this.id_merchant = paramMap.get('id_merchant');
     });
   }
 
@@ -49,9 +50,10 @@ export class CreateDishComponent implements OnInit {
       dish.append('price', this.dishForm.get('price').value);
       dish.append('status', this.dishForm.get('status').value);
       this.dishService.create(this.id_merchant, dish).subscribe(() => {
-     alert('Thanh cong');
+        alert('Thanh cong');
+        this.dishForm.reset();
+        this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes' );
       });
-      this.dishForm.reset();
   }
 
   getStatus() {

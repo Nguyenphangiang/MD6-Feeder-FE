@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {DishService} from '../../service/dish.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DishStatus} from '../../model/dish-status';
+import {DishStatusService} from '../../service/dish-status.service';
 
 @Component({
   selector: 'app-edit-dish',
@@ -10,6 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class EditDishComponent implements OnInit {
   selectedFile = new File(['name'], 'filename.jpg');
+  status: DishStatus[] = [];
   dishForm: FormGroup = new FormGroup({
     id: new FormControl(),
     image: new FormControl(),
@@ -17,6 +20,7 @@ export class EditDishComponent implements OnInit {
     description: new FormControl(),
     price: new FormControl(),
     status: new FormControl(),
+    merchant: new FormControl()
   });
   id: number;
   id_merchant: string;
@@ -24,32 +28,50 @@ export class EditDishComponent implements OnInit {
   constructor(
     private dishService: DishService,
     private router: Router,
+    private statusService: DishStatusService,
     private activatedRoute: ActivatedRoute) {
 
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.id = +paramMap.get('id');
-      this.id_merchant = paramMap.get('id');
-      this.getDishById(this.id);
+      this.id_merchant = paramMap.get('id_merchant');
+      this.getDishById();
     });
   }
 
-ngOnInit() {}
+ngOnInit() {
+    this.getStatus();
+}
 
   onSelectedFile(event) {
     this.selectedFile = event.target.files[0] as File;
   }
-  private getDishById(id: number) {
-    return this.dishService.findDishById(id).subscribe((dish) => {
+  getStatus() {
+    this.statusService.getAllStatus().subscribe((data) => {
+      this.status = data;
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  private getDishById() {
+     this.dishService.findDishById(this.id).subscribe((dish) => {
       this.image = dish.image;
       this.dishForm = new FormGroup({
         id: new FormControl(dish.id),
-        image: new FormControl(dish.image),
+        image: new FormControl(),
         name: new FormControl(dish.name),
         description: new FormControl(dish.description),
         price: new FormControl(dish.price),
-        status: new FormControl(dish.status)
+        status: new FormControl(),
+        merchant: new FormControl(dish.merchant)
       });
+      alert('load Dish success!');
+    }, () => {
+      alert('load Dish success!');
     });
+  }
+  onselectFile(event: Event) {
+    // @ts-ignore
+    this.userFile = event.target.files[0];
   }
   edit() {
     const dish: FormData = new FormData();
@@ -61,6 +83,9 @@ ngOnInit() {}
     dish.append('status', this.dishForm.get('status').value);
     this.dishService.updateDish(this.id, this.id_merchant, dish).subscribe(() => {
       alert('Đã sửa thành công');
+    }, () => {
+      alert('failed!');
+
     });
   }
 
