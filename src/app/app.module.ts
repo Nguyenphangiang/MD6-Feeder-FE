@@ -14,6 +14,8 @@ import { SwitchRegisterComponent } from './auth/switch-register/switch-register.
 
 import {MerchantModule} from './merchant/merchant.module';
 import { CreateComponent } from './merchant/create/create.component';
+import { ListDishComponent } from './dish/list-dish/list-dish.component';
+import { CreateDishComponent } from './dish/create-dish/create-dish.component';
 import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
