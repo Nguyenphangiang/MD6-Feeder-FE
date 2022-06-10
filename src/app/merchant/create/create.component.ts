@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {MerchantForm} from '../../model/merchant-form';
-import {FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Merchant} from '../../model/merchant';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
@@ -27,10 +27,23 @@ export class CreateComponent implements OnInit {
   });
 
   constructor(private merchantService: MerchantServiceService,
-              private router: Router) {
+              private router: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.merchantForm = this.formBuilder.group({
+      username: ['', [Validators.required, this.forbiddenUsername , Validators.minLength(5), Validators.maxLength(12)]],
+      pw: this.formBuilder.group({
+        password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
+        confirmPassword: ['', [Validators.required]]
+      }, {
+        validators: this.comparePassword
+      }),
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{9,10}$/)]],
+      address: ['', [Validators.required]]
+    });
   }
 
   onSelectedFile(event) {
@@ -38,7 +51,18 @@ export class CreateComponent implements OnInit {
     // this.image = document.getElementById('output');
     // this.image.src = URL.createObjectURL(event.target.files[0]);
   }
-
+  forbiddenUsername(c: AbstractControl) {
+    const users = ['admin', 'manager'];
+    return (users.includes(c.value)) ? {
+      invalidUsername: true
+    } : null;
+  }
+  comparePassword(c: AbstractControl) {
+    const v = c.value;
+    return (v.password === v.confirmPassword) ? null : {
+      passwordNotMatch: true
+    };
+  }
   createNewMerchant() {
     const merchantData: FormData = new FormData();
     merchantData.append('username', this.merchantForm.get('username').value);
@@ -53,5 +77,26 @@ export class CreateComponent implements OnInit {
       Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
       this.router.navigateByUrl('/login');
     });
+  }
+  get usernameControl() {
+    return this.merchantForm.get('username');
+  }
+  get passwordControl() {
+    return this.merchantForm.get('password');
+  }
+  get confirmPasswordControl() {
+    return this.merchantForm.get('confirmPassword');
+  }
+  get emailControl() {
+    return this.merchantForm.get('email');
+  }
+  get nameControl() {
+    return this.merchantForm.get('name');
+  }
+  get phoneControl() {
+    return this.merchantForm.get('phone');
+  }
+  get addressControl() {
+    return this.merchantForm.get('address');
   }
 }

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {APP_BASE_HREF} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
@@ -14,6 +14,10 @@ import { SwitchRegisterComponent } from './auth/switch-register/switch-register.
 
 import {MerchantModule} from './merchant/merchant.module';
 import { CreateComponent } from './merchant/create/create.component';
+import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +25,16 @@ import { CreateComponent } from './merchant/create/create.component';
     LoginComponent,
     HomeComponent,
     SwitchRegisterComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MerchantModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},
