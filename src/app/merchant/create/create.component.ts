@@ -21,9 +21,11 @@ export class CreateComponent implements OnInit {
     email: new FormControl(),
     phone: new FormControl(),
     address: new FormControl(),
+    pw: new FormGroup({
+      password: new FormControl(),
+      confirmPassword: new FormControl(),
+    }),
     username: new FormControl(),
-    password: new FormControl(),
-    confirmPassword: new FormControl(),
   });
 
   constructor(private merchantService: MerchantServiceService,
@@ -66,8 +68,8 @@ export class CreateComponent implements OnInit {
   createNewMerchant() {
     const merchantData: FormData = new FormData();
     merchantData.append('username', this.merchantForm.get('username').value);
-    merchantData.append('password', this.merchantForm.get('password').value);
-    merchantData.append('confirmPassword', this.merchantForm.get('confirmPassword').value);
+    merchantData.append('password', this.merchantForm.get('pw.password').value);
+    merchantData.append('confirmPassword', this.merchantForm.get('pw.confirmPassword').value);
     merchantData.append('email', this.merchantForm.get('email').value);
     merchantData.append('phone', this.merchantForm.get('phone').value);
     merchantData.append('address', this.merchantForm.get('address').value);
@@ -82,10 +84,10 @@ export class CreateComponent implements OnInit {
     return this.merchantForm.get('username');
   }
   get passwordControl() {
-    return this.merchantForm.get('password');
+    return this.merchantForm.get('pw.password');
   }
   get confirmPasswordControl() {
-    return this.merchantForm.get('confirmPassword');
+    return this.merchantForm.get('pw.confirmPassword');
   }
   get emailControl() {
     return this.merchantForm.get('email');
