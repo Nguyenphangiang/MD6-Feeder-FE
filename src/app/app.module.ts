@@ -20,6 +20,7 @@ import { CustomerUpdateComponent } from './customer/customer-update/customer-upd
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { EditDishComponent } from './dish/edit-dish/edit-dish.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FooterComponent } from './footer/footer.component';
     SwitchRegisterComponent,
     NavbarComponent,
     FooterComponent,
+    EditDishComponent,
   ],
   imports: [
     BrowserModule,

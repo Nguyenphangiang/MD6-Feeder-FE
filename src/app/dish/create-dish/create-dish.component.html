@@ -1,3 +1,32 @@
-<p>create-dish works!</p>
+<p>Thêm mới món ăn</p>
+<form [formGroup]="dishForm" (ngSubmit)="createDish()" enctype="multipart/form-data">
+  <table>
+    <div>
+      <label for="image">Thêm hình ảnh</label>
+      <input type="file" id="image" formControlName="image" class="form-control"   (change)="onselectFile($event)">
+    </div>
+    <div>
+      <label for="name">Tên món</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <input type="text" id="description" formControlName="description">
+    </div>
+    <div>
+      <label for="price">Giá</label>
+      <input type="text" id="price" formControlName="price" class="form-control">
+    </div>
+    <div>
+      <label for="status">Trạng thái</label>
+      <input type="text" id="status" formControlName="status">
+    </div>
+
+    <div>
+      <button class="btn btn-primary mr-1">Tạo mới</button>
+    </div>
+  </table>
+</form>
 
 

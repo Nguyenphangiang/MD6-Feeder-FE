@@ -19,8 +19,8 @@ export class DishService {
     return this.http.post<Dish>(`${API_URL}/dish/create/${id}`, data);
   }
 
-  updateDish(id, data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/${id}/${id}`, data);
+  updateDish(id, id_merchant, data): Observable<Dish> {
+    return this.http.post<Dish>(`${API_URL}/dish/${id}/${id_merchant}`, data);
   }
 
   findDishById(id): Observable<Dish> {

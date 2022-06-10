@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-create-dish',
@@ -20,10 +20,10 @@ export class CreateDishComponent implements OnInit {
     status: new FormControl(),
   });
 
-  id: string;
+  id_merchant: string;
   constructor(private dishService: DishService, private activateRoute: ActivatedRoute) {
     this.activateRoute.paramMap.subscribe((paramMap) => {
-      this.id = paramMap.get('id');
+      this.id_merchant = paramMap.get('id');
     });
   }
 
@@ -35,14 +35,14 @@ export class CreateDishComponent implements OnInit {
     this.userFile = event.target.files[0];
   }
 
-  createDish(id: number) {
+  createDish() {
       const dish = new FormData();
       dish.append('image', this.userFile);
       dish.append('name', this.dishForm.get('name').value);
       dish.append('description', this.dishForm.get('description').value);
       dish.append('price', this.dishForm.get('price').value);
       dish.append('status', this.dishForm.get('status').value);
-      this.dishService.create(id, dish).subscribe(() => {
+      this.dishService.create(this.id_merchant, dish).subscribe(() => {
      alert('Thanh cong');
       });
       this.dishForm.reset();
