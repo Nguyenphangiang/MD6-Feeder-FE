@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
-  uploadURLofDAT: 'C:/Users/trand/OneDrive/Desktop/CG/etc/etc/',
+  apiUrl: 'http://localhost:8080'
 };
 
 /*

@@ -4,7 +4,6 @@ import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {Merchant} from '../../model/merchant';
-import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-dish-list',
@@ -12,7 +11,6 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./dish-list.component.css']
 })
 export class DishListComponent implements OnInit {
-  uploadUrlOfDAT = environment.uploadURLofDAT;
   id: string;
   dishes: Dish[];
   merchant: Merchant;
