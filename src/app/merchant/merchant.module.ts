@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MerchantRoutingModule } from './merchant-routing.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import { DetailComponent } from './detail/detail.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
+import { DishListComponent } from './dish-list/dish-list.component';
 
 
 @NgModule({
-  declarations: [
-    CreateComponent
-  ],
+  declarations: [DetailComponent, CreateComponent, DishListComponent],
   imports: [
     CommonModule,
     MerchantRoutingModule,
-    ReactiveFormsModule
-  ]
-})
+    ReactiveFormsModule,
+    FormsModule
+  ]})
 export class MerchantModule { }

@@ -1,4 +1,5 @@
 <p>Thêm mới món ăn</p>
+
 <form [formGroup]="dishForm" (ngSubmit)="createDish()" enctype="multipart/form-data">
   <table>
     <div>
@@ -11,8 +12,8 @@
 
     </div>
     <div>
-      <label for="description">Description</label>
-      <input type="text" id="description" formControlName="description">
+      <label for="description">Mô tả</label>
+      <input type="text" id="description" formControlName="description" class="form-control">
     </div>
     <div>
       <label for="price">Giá</label>
@@ -20,7 +21,12 @@
     </div>
     <div>
       <label for="status">Trạng thái</label>
-      <input type="text" id="status" formControlName="status">
+      <select id="status" formControlName="status" class="form-control">
+        <option [ngValue]="null">Chọn trạng thái </option>
+        <ng-container *ngFor="let status1 of status">
+          <option  [value]="status1.id">{{status1.name}}</option>
+        </ng-container>
+      </select>
     </div>
 
     <div>

@@ -3,6 +3,8 @@ import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {DishStatus} from '../../model/dish-status';
+import {DishStatusService} from '../../service/dish-status.service';
 
 @Component({
   selector: 'app-create-dish',
@@ -10,24 +12,28 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./create-dish.component.css']
 })
 export class CreateDishComponent implements OnInit {
-  dish: Dish = {};
+  dish: Dish[] = [];
+  status: DishStatus[] = [];
   userFile: any = File;
   dishForm: FormGroup = new FormGroup({
     image: new FormControl(),
-    name: new FormControl('', [Validators.required]),
+    name: new FormControl(),
     description: new FormControl(),
-    price: new FormControl('', [Validators.required]),
+    price: new FormControl(),
     status: new FormControl(),
   });
 
   id_merchant: string;
-  constructor(private dishService: DishService, private activateRoute: ActivatedRoute) {
+  constructor(private dishService: DishService,
+              private statusService: DishStatusService,
+              private activateRoute: ActivatedRoute) {
     this.activateRoute.paramMap.subscribe((paramMap) => {
       this.id_merchant = paramMap.get('id');
     });
   }
 
   ngOnInit() {
+    this.getStatus();
   }
 
   onselectFile(event: Event) {
@@ -46,5 +52,13 @@ export class CreateDishComponent implements OnInit {
      alert('Thanh cong');
       });
       this.dishForm.reset();
+  }
+
+  getStatus() {
+    this.statusService.getAllStatus().subscribe((data) => {
+      this.status = data;
+    }, (error) => {
+      console.log(error);
+    });
   }
 }
