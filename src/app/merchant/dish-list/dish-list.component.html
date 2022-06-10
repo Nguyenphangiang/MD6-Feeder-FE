@@ -1,0 +1,22 @@
+<h2>Merchant: <span [(ngModel)]="merchant.name"></span></h2>
+<h3>List dishes</h3>
+<table border="1">
+  <tr>
+    <th>#</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Status</th>
+  </tr>
+  <ng-container *ngFor="let dish of dishes, index as i">
+    <tr>
+      <td>{{i+1}}</td>
+      <td><img src="{{uploadUrlOfDAT}}{{dish.image}}" alt="niceFood.img"></td>
+      <td>{{dish.name}}</td>
+      <td>{{dish.description}}</td>
+      <td>{{dish.price}}</td>
+      <td>{{dish.status.name}}</td>
+    </tr>
+  </ng-container>
+</table>

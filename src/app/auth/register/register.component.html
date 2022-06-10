@@ -11,84 +11,91 @@
               <form [formGroup]="customerForm" (ngSubmit)="createNewCustomer()">
                 <div class="form-label-group">
                   <input type="text" id="username" class="form-control"
-                         placeholder="enter account name" formControlName="username">
+                         placeholder="enter account name" formControlName="username" >
                   <label for="username">Account</label>
-                  <div *ngIf="(usernameControl?.touched || usernameControl?.dirty) && usernameControl.invalid">
-                    <p style="color: red" *ngIf="usernameControl.errors?.required">Tài khoản không được để trống</p>
-                    <p style="color: red" *ngIf=" usernameControl.errors?.minLength">
-                      Tài khoản phải có từ 6 đến 15 ký tự.
-                    </p>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="customerForm.hasError('invalidUsername', ['username'])
+                       && customerForm.get('username').touched">
+                    <i class="icofont-close-circled"></i>  Tài khoản không hợp lệ.
+                  </div>
+                  <div class="col alert alert-danger" role="alert"
+                    *ngIf="!usernameControl?.valid && (usernameControl?.dirty ||usernameControl?.touched)">
+                    <div [hidden]="!usernameControl.errors.required">
+                      <i class="icofont-close-circled"></i>  Tài khoản không được để trống.
+                    </div>
+                    <div [hidden]="!usernameControl.errors.minlength || usernameControl.errors.maxlength">
+                      <i class="icofont-close-circled"></i>  Tài khoản phải từ 5 đến 12 ký tự.
+                    </div>
+                  </div>
+
+                </div>
+                <div formGroupName="pw">
+                  <div class="form-label-group">
+                    <input type="password" id="password" class="form-control"
+                           placeholder="Password" formControlName="password">
+                    <label for="password">Password</label>
+
+                  </div>
+                  <div class="form-label-group">
+                    <input type="password" id="confirmPassword" class="form-control"
+                           placeholder="re-password" formControlName="confirmPassword">
+                    <label for="confirmPassword">Re-Password</label>
+                  </div>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="customerForm.hasError('passwordNotMatch', ['pw']) &&
+                    customerForm.get('pw').touched">
+                    <i class="icofont-close-circled"></i> Mật khẩu không khớp.
                   </div>
                 </div>
+
                 <div class="form-label-group">
-                  <input type="password" id="password" class="form-control"
-                         placeholder="Password" formControlName="password">
-                  <label for="password">Password</label>
-                  <div *ngIf="passwordControl.touched && passwordControl.invalid">
-                    <p style="color: red" *ngIf="passwordControl.errors?.required">
-                      Mật khẩu không được để trống.
-                    </p>
-                  </div>
-                  <div *ngIf="passwordControl.dirty">
-                    <p style="color: red;" *ngIf="passwordControlValid.error?.minLength || passwordControlValid.error?.maxLength">
-                      Mật khẩu phải có từ 6 đến 15 ký tự.
-                    </p>
-                  </div>
-                </div>
-                <div class="form-label-group">
-                  <input type="password" id="confirmPassword" class="form-control"
-                         placeholder="re-password" formControlName="confirmPassword">
-                  <label for="confirmPassword">Re-Password</label>
-                  <div *ngIf="confirmPasswordControl.dirty && confirmPasswordControl.errors?.noMatch ">
-                    <p>
-                      Mật khẩu và Nhập lại mật khẩu không giống nhau.
-                    </p>
-                  </div>
-                </div>
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control"
+                  <input type="text" id="inputEmail" class="form-control"
                          placeholder="Email address" formControlName="email">
                   <label for="inputEmail">Email address </label>
-                  <div *ngIf="emailControl.touched && emailControl.invalid">
-                    <p style="color: red;" *ngIf="emailControl.errors?.required">
-                      Email không được để trống.
-                    </p>
-                    <p style="color: red" *ngIf="emailControl.errors?.email">
-                      Yêu cầu định dạng email.
-                    </p>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="!emailControl.valid && (emailControl?.dirty ||emailControl?.touched)">
+                    <div [hidden]="!emailControl.errors.required">
+                      <i class="icofont-close-circled"></i>  Email không được để trống.
+                    </div>
+                    <div [hidden]="!emailControl.errors.email">
+                      <i class="icofont-close-circled"></i> Dạng Email không phù hợp.
+                    </div>
                   </div>
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="name" class="form-control"
                          placeholder="enter full name" formControlName="name">
                   <label for="name">Full Name</label>
-                  <div *ngIf="nameControl.touched && nameControl.invalid">
-                    <p style="color: red;" *ngIf="nameControl.errors?.required">
-                      Tên không được để trống.
-                    </p>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="!nameControl.valid && (nameControl?.dirty ||nameControl?.touched)">
+                    <div [hidden]="!nameControl.errors.required">
+                      <i class="icofont-close-circled"></i> Tên không được để trống.
+                    </div>
                   </div>
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="phone" class="form-control"
                          placeholder="enter phone number" formControlName="phone">
                   <label for="phone">Phone</label>
-                  <div *ngIf="phoneControl.touched && phoneControl.invalid">
-                    <p style="color: red;" *ngIf="phoneControl.errors?.required">
-                      Số điện thoại không được để trống.
-                    </p>
-                    <p style="color: red;" *ngIf="phoneControl.errors?.pattern">
-                      Số điện thoại chỉ được nhập số và có 9 đến 10 chữ số.
-                    </p>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="!phoneControl.valid && (phoneControl?.dirty ||phoneControl?.touched)">
+                    <div [hidden]="!phoneControl.errors.required">
+                      <i class="icofont-close-circled"></i> Số điện thoại không được để trống.
+                    </div>
+                    <div [hidden]="!phoneControl.errors.pattern">
+                      <i class="icofont-close-circled"></i> Số điện thoại chỉ được là số và có 9 đến 10 chữ số.
+                    </div>
                   </div>
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="address" class="form-control"
                          placeholder="enter address" formControlName="address">
                   <label for="address">Address</label>
-                  <div *ngIf="addressControl.touched && addressControl.invalid">
-                    <p style="color: red;" *ngIf="addressControl.errors?.required">
-                      Địa chỉ không được để trống.
-                    </p>
+                  <div class="col alert alert-danger" role="alert"
+                       *ngIf="!addressControl.valid && (addressControl?.dirty ||addressControl?.touched)">
+                    <div [hidden]="!addressControl.errors.required">
+                      <i class="icofont-close-circled"></i> Địa chỉ không được để trống.
+                    </div>
                   </div>
                 </div>
                 <button
