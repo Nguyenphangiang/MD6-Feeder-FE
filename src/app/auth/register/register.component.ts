@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {RegisterService} from '../../service/register.service';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 @Component({
   selector: 'app-register',
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
   createNewCustomer() {
     this.registerService.register(this.customerForm.value).subscribe(() => {
-      Swal.fire('Vui lòng kiểm tra email xác nhận ');
+      // Swal.fire('Vui lòng kiểm tra email xác nhận ');
       this.router.navigateByUrl('/login');
     });
   }
