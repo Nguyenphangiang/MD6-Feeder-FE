@@ -11,8 +11,10 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   customerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required]),
+    pw: new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    }),
     email: new FormControl('' , [Validators.required, Validators.email]),
     name: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,10}$/)]),
@@ -59,10 +61,10 @@ export class RegisterComponent implements OnInit {
     return this.customerForm.get('username');
   }
   get passwordControl() {
-    return this.customerForm.get('password');
+    return this.customerForm.get('pw.password');
   }
   get confirmPasswordControl() {
-    return this.customerForm.get('confirmPassword');
+    return this.customerForm.get('pw.confirmPassword');
   }
   get emailControl() {
     return this.customerForm.get('email');

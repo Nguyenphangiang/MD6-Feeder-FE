@@ -27,12 +27,12 @@ export class DetailComponent implements OnInit {
     address: new FormControl(),
     user: new FormControl()
   });
-  id: string;
+  id: number;
   constructor( private router: Router,
                private merchantService: MerchantServiceService,
                private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paraMap) => {
-      this.id = paraMap.get('id');
+      this.id = +paraMap.get('id');
       this.showDetail(this.id);
     });
   }
@@ -40,7 +40,7 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  showDetail(id: string) {
+  showDetail(id: number) {
     this.merchantService.findById(id).subscribe((data) => {
       this.merchantForm = new FormGroup({
         id: new FormControl(id),

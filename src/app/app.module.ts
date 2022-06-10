@@ -13,8 +13,8 @@ import {MerchantModule} from './merchant/merchant.module';
 import {RouterModule} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { EditDishComponent } from './dish/edit-dish/edit-dish.component';
-import { ListComponent } from './dish-status/list/list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,8 +24,6 @@ import { ListComponent } from './dish-status/list/list.component';
     SwitchRegisterComponent,
     NavbarComponent,
     FooterComponent,
-    FooterComponent,
-
   ],
   imports: [
     BrowserModule,

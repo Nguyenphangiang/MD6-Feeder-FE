@@ -5,6 +5,8 @@ import {DetailComponent} from './detail/detail.component';
 import {DishListComponent} from './dish-list/dish-list.component';
 import {CreateDishComponent} from '../dish/create-dish/create-dish.component';
 import {EditDishComponent} from '../dish/edit-dish/edit-dish.component';
+import {FindMerchantByNameComponent} from './find-merchant-by-name/find-merchant-by-name.component';
+import {MerchantDetailComponent} from './merchant-detail/merchant-detail.component';
 
 
 const routes: Routes = [
@@ -27,7 +29,15 @@ const routes: Routes = [
   {
     path: ':id_merchant/dishes/edit/:id',
     component : EditDishComponent
-  }
+  },
+  {
+    path: 'list/:name',
+    component : FindMerchantByNameComponent
+  },
+  {
+    path: 'detail/:id',
+    component : MerchantDetailComponent
+  },
 ];
 
 @NgModule({

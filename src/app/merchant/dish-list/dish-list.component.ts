@@ -11,14 +11,14 @@ import {Merchant} from '../../model/merchant';
   styleUrls: ['./dish-list.component.css']
 })
 export class DishListComponent implements OnInit {
-  id: string;
+  id: number;
   dishes: Dish[];
   merchant: Merchant;
   constructor(private dishService: DishService,
               private merchantService: MerchantServiceService,
               private activatedRoute: ActivatedRoute) {
       this.activatedRoute.paramMap.subscribe((paraMap) => {
-      this.id = paraMap.get('id');
+      this.id = +paraMap.get('id');
       this.getMerchantInfo();
       this.findAllDish();
     });
