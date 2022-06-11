@@ -3,22 +3,28 @@ import { CommonModule } from '@angular/common';
 
 import { MerchantRoutingModule } from './merchant-routing.module';
 import { DetailComponent } from './detail/detail.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
 import { FindMerchantByNameComponent } from './find-merchant-by-name/find-merchant-by-name.component';
 import { MerchantDetailComponent } from './merchant-detail/merchant-detail.component';
+import { DishListComponent } from './dish-list/dish-list.component';
+import {DishModule} from '../module/dish/dish.module';
 
 
 @NgModule({
   declarations: [
     CreateComponent,
     FindMerchantByNameComponent,
-    MerchantDetailComponent
+    MerchantDetailComponent,
+    DetailComponent,
+    CreateComponent,
+    DishListComponent
   ],
   imports: [
     CommonModule,
     MerchantRoutingModule,
-    ReactiveFormsModule
-  ]
-})
+    ReactiveFormsModule,
+    FormsModule,
+    DishModule
+  ]})
 export class MerchantModule { }

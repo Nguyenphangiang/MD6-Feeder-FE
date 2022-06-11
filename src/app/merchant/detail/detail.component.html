@@ -8,27 +8,27 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
               <h3 class="login-heading mb-4">Merchant's Detail</h3>
-<form [formGroup]="merchantForm" (submit)="updateMerchant()">
-  <div class="form-label-group">
-    <input type="text" id="username" class="form-control"
-           placeholder="enter account name" formControlName="username">
-    <label for="username">Account</label>
-  </div>
-  <div class="form-label-group">
-    <input type="password" id="password" class="form-control"
-           placeholder="Password" formControlName="password">
-    <label for="password">Password</label>
-    <!--                  <div *ngIf="passwordControl.touched && passwordControl.invalid">-->
-    <!--                    <p style="color: red" *ngIf="passwordControl.errors?.required">-->
-    <!--                      Mật khẩu không được để trống.-->
-    <!--                    </p>-->
-    <!--                  </div>-->
-    <!--                  <div *ngIf="passwordControl.dirty">-->
-    <!--                    <p style="color: red;" *ngIf="passwordControlValid.error?.minLength || passwordControlValid.error?.maxLength">-->
-    <!--                      Mật khẩu phải có từ 6 đến 15 ký tự.-->
-    <!--                    </p>-->
-    <!--                  </div>-->
-  </div>
+                <form [formGroup]="merchantForm" (submit)="updateMerchant()">
+<!--  <div class="form-label-group">-->
+<!--    <input type="text" id="username" class="form-control"-->
+<!--           placeholder="enter account name" formControlName="username">-->
+<!--    <label for="username">Account</label>-->
+<!--  </div>-->
+<!--  <div class="form-label-group">-->
+<!--    <input type="password" id="password" class="form-control"-->
+<!--           placeholder="Password" formControlName="password">-->
+<!--    <label for="password">Password</label>-->
+<!--    &lt;!&ndash;                  <div *ngIf="passwordControl.touched && passwordControl.invalid">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    <p style="color: red" *ngIf="passwordControl.errors?.required">&ndash;&gt;-->
+<!--    &lt;!&ndash;                      Mật khẩu không được để trống.&ndash;&gt;-->
+<!--    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--    &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;                  <div *ngIf="passwordControl.dirty">&ndash;&gt;-->
+<!--    &lt;!&ndash;                    <p style="color: red;" *ngIf="passwordControlValid.error?.minLength || passwordControlValid.error?.maxLength">&ndash;&gt;-->
+<!--    &lt;!&ndash;                      Mật khẩu phải có từ 6 đến 15 ký tự.&ndash;&gt;-->
+<!--    &lt;!&ndash;                    </p>&ndash;&gt;-->
+<!--    &lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--  </div>-->
 <!--  <div class="form-label-group">-->
 <!--    <input type="password" id="confirmPassword" class="form-control"-->
 <!--           placeholder="re-password" formControlName="confirmPassword">-->
@@ -99,5 +99,4 @@
     </div>
   </div>
 </div>
-app-button
 </body>

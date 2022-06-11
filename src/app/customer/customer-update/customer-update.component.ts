@@ -4,7 +4,8 @@ import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import Swal from 'sweetalert2';
+
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer-update',
@@ -45,7 +46,7 @@ export class CustomerUpdateComponent implements OnInit {
   }
   updateCustomer() {
     this.customerService.updateCustomer(this.id, this.customerForm.value).subscribe(() => {
-      Swal.fire('Cập nhập thành công !!! ');
+      // Swal.fire('Cập nhập thành công !!! ');
       this.router.navigateByUrl(`/customer/detail/${this.id}`);
     });
   }

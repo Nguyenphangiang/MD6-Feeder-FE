@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'dish',
     loadChildren: () => import('./module/dish/dish.module').then((module => module.DishModule))
+  },
+  {
+    path: 'dish-status',
+    loadChildren: () => import('./module/dish-status/dish-status.module').then((module => module.DishStatusModule))
   }
 ];
 
