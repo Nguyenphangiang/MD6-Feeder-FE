@@ -20,6 +20,7 @@ export class DishService {
     return this.http.post<Dish>(`${API_URL}/dish/create/${id}`, data);
   }
 
+  // tslint:disable-next-line:variable-name
   updateDish(id, id_merchant, data): Observable<Dish> {
     return this.http.post<Dish>(`${API_URL}/dish/${id}/${id_merchant}`, data);
   }

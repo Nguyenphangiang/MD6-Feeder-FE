@@ -61,7 +61,7 @@
 </section>
 <section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
   <div class="container">
-    <div class="row">
+    <div class="row" [ngModel]="">
       <div class="col-md-8">
         <div class="offer-dedicated-body-left">
           <div class="tab-content" id="pills-tabContent">
@@ -170,7 +170,7 @@
                   ITEMS</small></h5>
                 <div class="col-md-12">
                   <div class="bg-white rounded border shadow-sm mb-4">
-                    <div class="menu-list p-3 border-bottom">
+                    <div class="menu-list p-3 border-bottom" *ngFor="let dish of dish">
                                                 <span class="count-number float-right">
                                                     <button class="btn btn-outline-secondary  btn-sm left dec"> <i
                                                       class="icofont-minus"></i> </button>
@@ -179,51 +179,51 @@
                                                       class="icofont-plus"></i> </button>
                                                 </span>
                       <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/5.jpg"
+                        <img class="mr-3 rounded-pill" src="assets/img/{{dish.image}}"
                              alt="Generic placeholder image">
                         <div class="media-body">
-                          <h6 class="mb-1">Chả Nấm Tươi</h6>
-                          <p class="text-gray mb-0">150.000 (1kg)</p>
+                          <h6 class="mb-1">{{dish.name}}</h6>
+                          <p class="text-gray mb-0">{{dish.price}} (1kg)</p>
                         </div>
                       </div>
                     </div>
-                    <div class="menu-list p-3 border-bottom">
-                                                <span class="count-number float-right">
-                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                                      class="icofont-minus"></i> </button>
-                                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                                      class="icofont-plus"></i> </button>
-                                                </span>
-                      <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"
-                             alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span
-                            class="badge badge-danger">BESTSELLER</span></h6>
-                          <p class="text-gray mb-0">60.000/1kg</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="menu-list p-3">
-                                                <span class="count-number float-right">
-                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                                      class="icofont-minus"></i> </button>
-                                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                                      class="icofont-plus"></i> </button>
-                                                </span>
-                      <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"
-                             alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h6 class="mb-1">Chả Mỡ Phố Cổ
-                            <span class="badge badge-success">Siêu giảm giá</span>
-                          </h6>
-                          <p class="text-gray mb-0">45.000/1kg</p>
-                        </div>
-                      </div>
-                    </div>
+<!--                    <div class="menu-list p-3 border-bottom">-->
+<!--                                                <span class="count-number float-right">-->
+<!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+<!--                                                      class="icofont-minus"></i> </button>-->
+<!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+<!--                                                      class="icofont-plus"></i> </button>-->
+<!--                                                </span>-->
+<!--                      <div class="media">-->
+<!--                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"-->
+<!--                             alt="Generic placeholder image">-->
+<!--                        <div class="media-body">-->
+<!--                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span-->
+<!--                            class="badge badge-danger">BESTSELLER</span></h6>-->
+<!--                          <p class="text-gray mb-0">60.000/1kg</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="menu-list p-3">-->
+<!--                                                <span class="count-number float-right">-->
+<!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+<!--                                                      class="icofont-minus"></i> </button>-->
+<!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+<!--                                                      class="icofont-plus"></i> </button>-->
+<!--                                                </span>-->
+<!--                      <div class="media">-->
+<!--                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"-->
+<!--                             alt="Generic placeholder image">-->
+<!--                        <div class="media-body">-->
+<!--                          <h6 class="mb-1">Chả Mỡ Phố Cổ-->
+<!--                            <span class="badge badge-success">Siêu giảm giá</span>-->
+<!--                          </h6>-->
+<!--                          <p class="text-gray mb-0">45.000/1kg</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
                   </div>
                 </div>
               </div>

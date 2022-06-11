@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {Merchant} from '../../model/merchant';
+import {DishService} from '../../service/dish.service';
+import {Dish} from '../../model/dish';
 
 @Component({
   selector: 'app-merchant-detail',
@@ -10,20 +12,30 @@ import {Merchant} from '../../model/merchant';
 })
 export class MerchantDetailComponent implements OnInit {
   merchant: Merchant;
+  dish: Dish[] = [];
   constructor(private activatedRouter: ActivatedRoute,
               private merchantService: MerchantServiceService,
-              private router: Router) {
+              private router: Router,
+              private dishService: DishService) {
     this.activatedRouter.paramMap.subscribe((paraMap) => {
       const id = paraMap.get('id');
       this.showDetailMerchant(id);
+      this.showAllDishMerchant(id);
     });
   }
 
   ngOnInit() {
   }
+
   showDetailMerchant(id) {
     this.merchantService.findById(id).subscribe((merchant) => {
       this.merchant = merchant;
+    });
+  }
+
+  showAllDishMerchant(id) {
+    this.dishService.getAll(id).subscribe((dish) => {
+      this.dish = dish;
     });
   }
 }
