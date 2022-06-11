@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Status</th>
+      <th scope="col" colspan="3" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers, index as i">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{customer.appUser.username}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.appUser.roles[0].name}}</td>
+      <td></td>
+      <td><button (click)="deleteCustomer(customer.id)" class="btn btn-primary"><i class="icofont-delete"></i></button></td>
+    </tr>
+    <tr *ngFor="let merchant of merchants, index as i">
+      <th scope="row">{{i +1}}</th>
+      <td>{{merchant.user.username}}</td>
+      <td>{{merchant.name}}</td>
+      <td>{{merchant.user.roles[0].name}}</td>
+      <td>{{merchant.status.name}}</td>
+      <td><button (click)="activeMerchant()" class="btn btn-outline-primary"><i class="icofont-check-circled"> Active</i></button></td>
+      <td><button (click)="blockMerchant()" class="btn btn-primary"><i class="icofont-close-circled"> Block</i></button></td>
+      <td><button (click)="deleteMerchant()" class="btn btn-primary"><i class="icofont-delete"></i></button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

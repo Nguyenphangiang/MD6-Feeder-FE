@@ -33,7 +33,15 @@
                     <input type="password" id="password" class="form-control"
                            placeholder="Password" formControlName="password">
                     <label for="password">Password</label>
-
+                    <div class="col alert alert-danger" role="alert"
+                         *ngIf="!passwordControl?.valid && (passwordControl?.dirty ||passwordControl?.touched)">
+                      <div [hidden]="!passwordControl.errors.required">
+                        <i class="icofont-close-circled"></i>  Mật khẩu không được để trống.
+                      </div>
+                      <div [hidden]="!passwordControl.errors.minlength || passwordControl.errors.maxlength">
+                        <i class="icofont-close-circled"></i>  Mật khẩu phải từ 5 đến 12 ký tự.
+                      </div>
+                    </div>
                   </div>
                   <div class="form-label-group">
                     <input type="password" id="confirmPassword" class="form-control"
