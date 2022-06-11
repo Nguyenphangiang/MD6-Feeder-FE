@@ -37,7 +37,11 @@ const routes: Routes = [
   {
     path: 'dish-status',
     loadChildren: () => import('./module/dish-status/dish-status.module').then((module => module.DishStatusModule))
-  }
+  },
+  {
+    path: 'order',
+    loadChildren: () => import('./module/order/order.module').then((module => module.OrderModule))
+}
 ];
 
 @NgModule({

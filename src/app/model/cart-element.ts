@@ -1,12 +1,10 @@
-import {Dish} from './dish';
 import {CustomerForm} from './customer-form';
+import {Dish} from './dish';
 
-export interface Order {
+export interface CartElement {
   id ?: number;
   customer ?: CustomerForm;
-  orderTime ?: Date;
   dish ?: Dish;
   quantity ?: number;
   note ?: string;
-  status ?: number;
 }
