@@ -21,4 +21,13 @@ export class AdminService {
   deleteCustomer(id): Observable<Customer> {
     return this.http.delete<Customer>(`${API_URL}/customer/delete/${id}`);
   }
+  activeMerchant(id): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchant/active/${id}`);
+  }
+  blockMerchant(id): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchant/block/${id}`);
+  }
+  deleteMerchant(id): Observable<Merchant> {
+    return this.http.delete<Merchant>(`${API_URL}/merchant/${id}`);
+  }
 }
