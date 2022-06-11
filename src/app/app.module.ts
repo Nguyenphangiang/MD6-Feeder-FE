@@ -13,6 +13,7 @@ import {MerchantModule} from './merchant/merchant.module';
 import {RouterModule} from '@angular/router';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 
 
 

@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" >
         <li class="nav-item active">
           <a class="nav-link" routerLink="/home">Trang chủ <span class="sr-only">(current)</span></a>
         </li>
@@ -14,7 +14,14 @@
           <a  class="nav-link" routerLink="/login" >Đăng ký<span class="sr-only"></span></a>
         </li>
         <ng-template #elseBlock>
-          <a class="nav-link" routerLink="/customer/detail/{{userId}}" >{{display}}<span class="sr-only"></span></a>
+          <ng-container [ngSwitch]="authority">
+              <a  *ngSwitchCase="1" class="nav-link" routerLink="/customer/detail/{{userId}}" >{{display}}<span class="sr-only"></span></a>
+              <a  *ngSwitchCase="2" class="nav-link" routerLink="/merchant/detail/user/{{userId}}" >{{display}}<span class="sr-only"></span></a>
+              <a  *ngSwitchCase="3" class="nav-link" routerLink="/admin/user" >{{display}}<span class="sr-only"></span></a>
+              <a  class="nav-link" href="/home" (click)="logout()">Đăng xuất</a>
+          </ng-container>
+<!--          <a class="nav-link" routerLink="/customer/detail/{{userId}}" >{{display}}<span class="sr-only"></span></a>-->
+<!--          <a  class="nav-link" href="/home" (click)="logout()">Đăng xuất</a>-->
         </ng-template>
         <li class="nav-item dropdown dropdown-cart">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"

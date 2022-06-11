@@ -9,6 +9,7 @@ import { FindMerchantByNameComponent } from './find-merchant-by-name/find-mercha
 import { MerchantDetailComponent } from './merchant-detail/merchant-detail.component';
 import { DishListComponent } from './dish-list/dish-list.component';
 import {DishModule} from '../module/dish/dish.module';
+import { MerchantDetailByUserComponent } from './merchant-detail-by-user/merchant-detail-by-user.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {DishModule} from '../module/dish/dish.module';
     MerchantDetailComponent,
     DetailComponent,
     CreateComponent,
-    DishListComponent
+    DishListComponent,
+    MerchantDetailByUserComponent
   ],
   imports: [
     CommonModule,
