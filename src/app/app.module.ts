@@ -4,13 +4,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {APP_BASE_HREF} from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import { SwitchRegisterComponent } from './auth/switch-register/switch-register.component';
 import {MerchantModule} from './merchant/merchant.module';
 import {RouterModule} from '@angular/router';
+import { CreateComponent } from './merchant/create/create.component';
+import { ListDishComponent } from './dish/list-dish/list-dish.component';
+import { CreateDishComponent } from './dish/create-dish/create-dish.component';
+import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +25,8 @@ import {RouterModule} from '@angular/router';
     LoginComponent,
     HomeComponent,
     SwitchRegisterComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +34,7 @@ import {RouterModule} from '@angular/router';
     MerchantModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule
+    FormsModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},

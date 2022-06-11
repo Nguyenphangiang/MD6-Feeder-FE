@@ -6,7 +6,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {MerchantForm} from '../../model/merchant-form';
 import {environment} from '../../../environments/environment';
 
-const uploadPath = environment.uploadPath;
+
 
 @Component({
   selector: 'app-detail',

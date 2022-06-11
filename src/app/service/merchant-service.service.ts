@@ -16,7 +16,7 @@ export class MerchantServiceService {
     return this.http.get<Merchant[]>(apiUrl + '/merchant');
   }
   findById(id: number): Observable<Merchant> {
-    return this.http.get<Merchant>(apiUrl + '/merchant/' + id);
+    return this.http.get<Merchant>(`${apiUrl}/merchant/${id}`);
   }
   // createNew(merchant: Merchant): Observable<Merchant> {
   //   return this.http.post<Merchant>(apiUrl + '/merchant', merchant);

@@ -5,13 +5,20 @@ import { MerchantRoutingModule } from './merchant-routing.module';
 import { DetailComponent } from './detail/detail.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CreateComponent} from './create/create.component';
+import { FindMerchantByNameComponent } from './find-merchant-by-name/find-merchant-by-name.component';
+import { MerchantDetailComponent } from './merchant-detail/merchant-detail.component';
 
 
 @NgModule({
-  declarations: [DetailComponent, CreateComponent],
-    imports: [
-        CommonModule,
-        MerchantRoutingModule,
-        ReactiveFormsModule
-    ]})
+  declarations: [
+    CreateComponent,
+    FindMerchantByNameComponent,
+    MerchantDetailComponent
+  ],
+  imports: [
+    CommonModule,
+    MerchantRoutingModule,
+    ReactiveFormsModule
+  ]
+})
 export class MerchantModule { }

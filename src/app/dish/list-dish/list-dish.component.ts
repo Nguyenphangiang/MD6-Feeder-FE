@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+
 import {Dish} from '../../model/dish';
 import {DishService} from '../../service/dish.service';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-list-dish',
@@ -8,21 +10,11 @@ import {DishService} from '../../service/dish.service';
   styleUrls: ['./list-dish.component.css']
 })
 export class ListDishComponent implements OnInit {
-  @Input() idMerchant: number;
-  dishes: Dish[] = [];
 
-  constructor(private dishService: DishService) {
-  }
+
+  constructor() { }
 
   ngOnInit() {
-    this.showAllDishByMerchant(this.idMerchant);
   }
 
-  showAllDishByMerchant(id: number) {
-    this.dishService.getAll(id).subscribe((dishes) => {
-      this.dishes = dishes;
-    }, (error) => {
-      console.log(error);
-    });
-  }
 }
