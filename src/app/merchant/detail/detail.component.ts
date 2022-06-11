@@ -77,8 +77,8 @@ export class DetailComponent implements OnInit {
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.updateOld(this.id, merchantData).subscribe(() => {
       // Swal.fire('Update success!');
-      // this.router.navigateByUrl('/login');
       alert('update success!');
+      this.router.navigateByUrl('/merchant/' + this.id + '/dishes');
     }, () => {
       alert('update failed!');
     });
