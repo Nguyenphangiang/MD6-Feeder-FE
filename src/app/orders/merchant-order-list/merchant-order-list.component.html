@@ -37,7 +37,7 @@
                     <div class="media">
                       <img class="mr-4" src="{{o.dish.image}}" alt="Generic placeholder image">
                       <div class="media-body">
-                                                    <span class="float-right text-info">{{orderStatusToString(o.status)}} <i class="icofont-check-circled text-success"></i></span>
+                        <span class="float-right text-info">{{orderStatusToString(o.status)}} <i class="icofont-check-circled text-success"></i></span>
                         <h6 class="mb-2">
                           <a href="detail.html" class="text-black">{{o.dish.merchant.name}}
                           </a>
@@ -69,7 +69,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/1.png"> OSAHANEAT50</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/1.png"> OSAHANEAT50</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code OSAHANEAT50 &amp; get 50% off on your
@@ -83,7 +83,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/2.png"> EAT730</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/2.png"> EAT730</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code EAT730 &amp; get 50% off on your first
@@ -98,7 +98,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/3.png"> SAHAN50</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/3.png"> SAHAN50</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code SAHAN50 &amp; get 50% off on your first
@@ -111,7 +111,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/4.png"> GURDEEP50</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/4.png"> GURDEEP50</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code GURDEEP50 &amp; get 50% off on your first
@@ -126,7 +126,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/1.png"> OSAHANEAT50</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/1.png"> OSAHANEAT50</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code OSAHANEAT50 &amp; get 50% off on your
@@ -140,7 +140,7 @@
                 <div class="col-md-6">
                   <div class="card offer-card shadow-sm">
                     <div class="card-body">
-                      <h5 class="card-title"><img src="assets/img/bank/2.png"> EAT730</h5>
+                      <h5 class="card-title"><img src="../../../../assets/img/bank/2.png"> EAT730</h5>
                       <h6 class="card-subtitle mb-2 text-block">Get 50% OFF on your first
                         osahan eat order</h6>
                       <p class="card-text">Use code EAT730 &amp; get 50% off on your first
@@ -157,35 +157,35 @@
               <h4 class="font-weight-bold mt-0 mb-4">Completed orders</h4>
               <div class="bg-white card mb-4 order-list shadow-sm" *ngFor="let o of orderList; index as i">
                 <div *ngIf="o.status == 6">
-                <div class="gold-members p-4">
-                  <a href="#">
-                    <div class="media">
-                      <img class="mr-4" src="{{o.dish.image}}" alt="Generic placeholder image">
-                      <div class="media-body">
-                        <span class="float-right text-info">{{orderStatusToString(o.status)}} <i class="icofont-check-circled text-success"></i></span>
-                        <h6 class="mb-2">
-                          <a href="detail.html" class="text-black">{{o.dish.merchant.name}}
-                          </a>
-                        </h6>
-                        <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>{{o.dish.merchant.address}}
-                        </p>
-                        <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER
-                          #{{o.id}} <i class="icofont-clock-time ml-2"></i> {{o.orderTime}}</p>
-                        <p class="text-dark">{{o.dish.name}} x {{o.quantity}}
-                        </p>
-                        <hr>
-                        <div class="float-right">
-                          <a class="btn btn-sm btn-outline-primary"> <a [routerLink]="['/remove',o.id]">Remove this order</a></a>
-                          <a class="btn btn-sm btn-primary" href="detail.html"><i
-                            class="icofont-refresh"></i> REORDER</a>
+                  <div class="gold-members p-4">
+                    <a href="#">
+                      <div class="media">
+                        <img class="mr-4" src="{{o.dish.image}}" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <span class="float-right text-info">{{orderStatusToString(o.status)}} <i class="icofont-check-circled text-success"></i></span>
+                          <h6 class="mb-2">
+                            <a href="detail.html" class="text-black">{{o.dish.merchant.name}}
+                            </a>
+                          </h6>
+                          <p class="text-gray mb-1"><i class="icofont-location-arrow"></i>{{o.dish.merchant.address}}
+                          </p>
+                          <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER
+                            #{{o.id}} <i class="icofont-clock-time ml-2"></i> {{o.orderTime}}</p>
+                          <p class="text-dark">{{o.dish.name}} x {{o.quantity}}
+                          </p>
+                          <hr>
+                          <div class="float-right">
+                            <a class="btn btn-sm btn-outline-primary"> <a [routerLink]="['/remove',o.id]">Remove this order</a></a>
+                            <a class="btn btn-sm btn-primary" href="detail.html"><i
+                              class="icofont-refresh"></i> REORDER</a>
+                          </div>
+                          <p class="mb-0 text-black text-primary pt-2"><span
+                            class="text-black font-weight-bold"> Total Paid:</span> {{o.dish.price * o.quantity}}
+                          </p>
                         </div>
-                        <p class="mb-0 text-black text-primary pt-2"><span
-                          class="text-black font-weight-bold"> Total Paid:</span> {{o.dish.price * o.quantity}}
-                        </p>
                       </div>
-                    </div>
-                  </a>
-                </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,7 +197,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/1.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/1.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -218,7 +218,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/2.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/2.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -241,7 +241,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/3.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/3.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -262,7 +262,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/4.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/4.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -285,7 +285,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/5.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/5.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -306,7 +306,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/6.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/6.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -329,7 +329,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/1.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/1.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -350,7 +350,7 @@
                     <div class="gold-members p-4">
                       <a href="#">
                         <div class="media">
-                          <img class="mr-3" src="assets/img/bank/2.png"
+                          <img class="mr-3" src="../../../../assets/img/bank/2.png"
                                alt="Generic placeholder image">
                           <div class="media-body">
                             <h6 class="mb-1">6070-XXXXXXXX-0666</h6>
@@ -408,30 +408,30 @@
 <section class="footer pt-5 pb-5">
   <div class="container">
     <div class="row">
-<!--      <div class="col-md-4 col-12 col-sm-12">-->
-<!--        <h6 class="mb-3">Đăng ký nhận thông tin khi có giảm giá</h6>-->
-<!--        <form class="newsletter-form mb-1">-->
-<!--          <div class="input-group">-->
-<!--            <input type="text" placeholder="Email của bạn" class="form-control">-->
-<!--            <div class="input-group-append">-->
-<!--              <button type="button" class="btn btn-primary">-->
-<!--                Đăng ký-->
-<!--              </button>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--        <p><a class="text-info" href="register.html">Đăng ký</a> để nhận<a-->
-<!--          href="offers.html"> hàng ngàn ưu đãi khác</a></p>-->
-<!--        <div class="app">-->
-<!--          <p class="mb-2">DOWNLOAD APP</p>-->
-<!--          <a href="#">-->
-<!--            <img class="img-fluid" src="assets/img/google.png">-->
-<!--          </a>-->
-<!--          <a href="#">-->
-<!--            <img class="img-fluid" src="assets/img/apple.png">-->
-<!--          </a>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="col-md-4 col-12 col-sm-12">-->
+      <!--        <h6 class="mb-3">Đăng ký nhận thông tin khi có giảm giá</h6>-->
+      <!--        <form class="newsletter-form mb-1">-->
+      <!--          <div class="input-group">-->
+      <!--            <input type="text" placeholder="Email của bạn" class="form-control">-->
+      <!--            <div class="input-group-append">-->
+      <!--              <button type="button" class="btn btn-primary">-->
+      <!--                Đăng ký-->
+      <!--              </button>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </form>-->
+      <!--        <p><a class="text-info" href="register.html">Đăng ký</a> để nhận<a-->
+      <!--          href="offers.html"> hàng ngàn ưu đãi khác</a></p>-->
+      <!--        <div class="app">-->
+      <!--          <p class="mb-2">DOWNLOAD APP</p>-->
+      <!--          <a href="#">-->
+      <!--            <img class="img-fluid" src="assets/img/google.png">-->
+      <!--          </a>-->
+      <!--          <a href="#">-->
+      <!--            <img class="img-fluid" src="assets/img/apple.png">-->
+      <!--          </a>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="col-md-1 col-sm-6 mobile-none">
       </div>
       <div class="col-md-2 col-6 col-sm-4">

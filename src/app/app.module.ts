@@ -16,7 +16,6 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {FooterComponent} from './footer/footer.component';
 import {OrderModule} from './module/order/order.module';
 import {RouterModule} from '@angular/router';
-import {OrderListComponent} from './orders/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import {OrderListComponent} from './orders/order-list/order-list.component';
     HomeComponent,
     SwitchRegisterComponent,
     NavbarComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

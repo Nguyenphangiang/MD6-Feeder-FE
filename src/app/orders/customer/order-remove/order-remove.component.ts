@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import {ActivatedRoute, Router} from '@angular/router';
-import {OrderService} from '../../service/order/order.service';
+import {OrderService} from '../../../service/order/order.service';
 
 @Component({
   selector: 'app-order-remove',

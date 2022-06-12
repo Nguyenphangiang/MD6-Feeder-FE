@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import {Order} from '../../model/order';
 import {OrderService} from '../../service/order/order.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {CustomerForm} from '../../model/customer-form';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.css']
+  selector: 'app-merchant-order-list',
+  templateUrl: './merchant-order-list.component.html',
+  styleUrls: ['./merchant-order-list.component.css']
 })
-export class OrderListComponent implements OnInit {
+export class MerchantOrderListComponent implements OnInit {
   orderList: Order[] = [];
   customerAddressList: string[] = [];
+  id: number;
 
-  constructor(private orderService: OrderService) {
+  constructor(private orderService: OrderService,
+              private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((data) => {
+      this.id = +data.get('id');
+    });
   }
 
   ngOnInit() {
-    this.getAllOrder();
+    this.getAllOrder(this.id);
   }
 
-  getAllOrder() {
-    this.orderService.getAllOrder().subscribe((data) => {
+  getAllOrder(id) {
+    this.orderService.getOrderByMerchantId(id).subscribe((data) => {
       this.orderList = data;
       this.orderList.forEach(order => {
         if (!this.customerAddressList.includes(order.customer.address)) {
@@ -36,13 +40,13 @@ export class OrderListComponent implements OnInit {
   orderStatusToString(status) {
     switch (status) {
       case 1:
-        return 'Finding you a shipper';
+        return 'Finding a shipper';
         break;
       case 2:
-        return 'Order accepted';
+        return 'Order received';
         break;
       case 3:
-        return 'Shipper is getting your package';
+        return 'Shipper is getting the package';
         break;
       case 4:
         return 'Your package has been picked up';
@@ -51,14 +55,13 @@ export class OrderListComponent implements OnInit {
         return 'Your package is being delivered';
         break;
       case 6:
-        return 'Your package delivering is completed';
+        return 'Your package has arrived';
         break;
       case 7:
         return 'No shipper found nearby';
         break;
       case 8:
-        return 'Canceled';
+        return 'Order canceled';
     }
   }
-
 }
