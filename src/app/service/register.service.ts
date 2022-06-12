@@ -12,4 +12,7 @@ export class RegisterService {
   register(customer): Observable<Customer> {
     return this.http.post<Customer>(`${API_URL}/customer/register`, customer);
   }
+  verify(queryParam): Observable<Customer> {
+    return this.http.get<Customer>(`${API_URL}/login/verify`, {params: queryParam});
+  }
 }
