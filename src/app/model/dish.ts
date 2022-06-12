@@ -1,4 +1,5 @@
 import {Merchant} from './merchant';
+import {DishStatus} from './dish-status';
 
 export interface Dish {
   id?: number;
@@ -6,6 +7,6 @@ export interface Dish {
   name?: string;
   description?: string;
   price?: number;
-  status?: string;
+  status?: DishStatus;
   merchant?: Merchant;
 }

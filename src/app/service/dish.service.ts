@@ -10,17 +10,20 @@ const API_URL = `${environment.apiUrl}`;
 export class DishService {
 
   constructor(private http: HttpClient) { }
+  showAll(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(`${API_URL}/dish`);
+  }
 
   getAll(merchantId): Observable<Dish[]> {
     return this.http.get<Dish[]>(`${API_URL}/dish/merchant/${merchantId}`);
   }
 
-  create(data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/create`, data);
+  create(id, data): Observable<Dish> {
+    return this.http.post<Dish>(`${API_URL}/dish/create/${id}`, data);
   }
 
-  updateDish(id, data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/${id}`, data);
+  updateDish(id, id_merchant, data): Observable<Dish> {
+    return this.http.post<Dish>(`${API_URL}/dish/${id}/${id_merchant}`, data);
   }
 
   findDishById(id): Observable<Dish> {

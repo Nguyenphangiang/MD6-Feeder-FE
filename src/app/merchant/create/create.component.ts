@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {MerchantForm} from '../../model/merchant-form';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Merchant} from '../../model/merchant';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -21,9 +20,11 @@ export class CreateComponent implements OnInit {
     email: new FormControl(),
     phone: new FormControl(),
     address: new FormControl(),
+    pw: new FormGroup({
+      password: new FormControl(),
+      confirmPassword: new FormControl(),
+    }),
     username: new FormControl(),
-    password: new FormControl(),
-    confirmPassword: new FormControl(),
   });
 
   constructor(private merchantService: MerchantServiceService,
@@ -66,8 +67,8 @@ export class CreateComponent implements OnInit {
   createNewMerchant() {
     const merchantData: FormData = new FormData();
     merchantData.append('username', this.merchantForm.get('username').value);
-    merchantData.append('password', this.merchantForm.get('password').value);
-    merchantData.append('confirmPassword', this.merchantForm.get('confirmPassword').value);
+    merchantData.append('password', this.merchantForm.get('pw.password').value);
+    merchantData.append('confirmPassword', this.merchantForm.get('pw.confirmPassword').value);
     merchantData.append('email', this.merchantForm.get('email').value);
     merchantData.append('phone', this.merchantForm.get('phone').value);
     merchantData.append('address', this.merchantForm.get('address').value);
@@ -75,17 +76,20 @@ export class CreateComponent implements OnInit {
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.createNew(merchantData).subscribe(() => {
       Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
+      // alert('Signup Success!');
       this.router.navigateByUrl('/login');
+    }, () => {
+      alert('Signup Failed!');
     });
   }
   get usernameControl() {
     return this.merchantForm.get('username');
   }
   get passwordControl() {
-    return this.merchantForm.get('password');
+    return this.merchantForm.get('pw.password');
   }
   get confirmPasswordControl() {
-    return this.merchantForm.get('confirmPassword');
+    return this.merchantForm.get('pw.confirmPassword');
   }
   get emailControl() {
     return this.merchantForm.get('email');

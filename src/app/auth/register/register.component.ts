@@ -11,8 +11,10 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   customerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
-    confirmPassword: new FormControl('', [Validators.required]),
+    pw: new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+      confirmPassword: new FormControl('', [Validators.required]),
+    }),
     email: new FormControl('' , [Validators.required, Validators.email]),
     name: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,10}$/)]),
@@ -50,7 +52,15 @@ export class RegisterComponent implements OnInit {
     };
   }
   createNewCustomer() {
-    this.registerService.register(this.customerForm.value).subscribe(() => {
+    const customer: FormData = new FormData();
+    customer.append('username', this.customerForm.get('username').value);
+    customer.append('password', this.customerForm.get('pw.password').value);
+    customer.append('confirmPassword', this.customerForm.get('pw.confirmPassword').value);
+    customer.append('email', this.customerForm.get('email').value);
+    customer.append('phone', this.customerForm.get('phone').value);
+    customer.append('address', this.customerForm.get('address').value);
+    customer.append('name', this.customerForm.get('name').value);
+    this.registerService.register(customer).subscribe(() => {
       Swal.fire('Vui lòng kiểm tra email xác nhận ');
       this.router.navigateByUrl('/login');
     });
@@ -59,10 +69,10 @@ export class RegisterComponent implements OnInit {
     return this.customerForm.get('username');
   }
   get passwordControl() {
-    return this.customerForm.get('password');
+    return this.customerForm.get('pw.password');
   }
   get confirmPasswordControl() {
-    return this.customerForm.get('confirmPassword');
+    return this.customerForm.get('pw.confirmPassword');
   }
   get emailControl() {
     return this.customerForm.get('email');
