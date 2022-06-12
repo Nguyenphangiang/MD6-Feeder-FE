@@ -7,7 +7,11 @@ import {OrderListComponent} from '../../orders/customer/order-list/order-list.co
 import {AppRoutingModule} from '../../app-routing.module';
 import {OrderRemoveComponent} from '../../orders/customer/order-remove/order-remove.component';
 import {OrderRemoveAllComponent} from '../../orders/customer/order-remove-all/order-remove-all.component';
-import {MerchantOrderListComponent} from '../../orders/merchant-order-list/merchant-order-list.component';
+import {MerchantOrderListComponent} from '../../orders/merchant/merchant-order-list/merchant-order-list.component';
+import {OrderDetailsComponent} from '../../orders/customer/order-details/order-details.component';
+import {MerchantOrderDetailsComponent} from '../../orders/merchant/merchant-order-details/merchant-order-details.component';
+import {MerchantRemoveOrderComponent} from '../../orders/merchant/merchant-remove-order/merchant-remove-order.component';
+import {MerchantRemoveAllOrderComponent} from '../../orders/merchant/merchant-remove-all-order/merchant-remove-all-order.component';
 
 
 
@@ -16,7 +20,11 @@ import {MerchantOrderListComponent} from '../../orders/merchant-order-list/merch
     OrderListComponent,
     OrderRemoveComponent,
     OrderRemoveAllComponent,
-    MerchantOrderListComponent
+    OrderDetailsComponent,
+    MerchantOrderListComponent,
+    MerchantOrderDetailsComponent,
+    MerchantRemoveOrderComponent,
+    MerchantRemoveAllOrderComponent
   ],
   imports: [
     CommonModule,

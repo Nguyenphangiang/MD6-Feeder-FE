@@ -15,6 +15,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
+import { OrderDetailsComponent } from './orders/customer/order-details/order-details.component';
+import { MerchantOrderDetailsComponent } from './orders/merchant/merchant-order-details/merchant-order-details.component';
+import {OrderModule} from './module/order/order.module';
+import { MerchantRemoveOrderComponent } from './orders/merchant/merchant-remove-order/merchant-remove-order.component';
+import { MerchantRemoveAllOrderComponent } from './orders/merchant/merchant-remove-all-order/merchant-remove-all-order.component';
 
 
 
@@ -24,7 +29,7 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
     HomeComponent,
     SwitchRegisterComponent,
     NavbarComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { RegisterSuccessComponent } from './auth/register-success/register-succe
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    OrderModule
   ],
   providers: [
     {provide: APP_BASE_HREF, useValue: '/'},

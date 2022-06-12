@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from '../../model/order';
-import {OrderService} from '../../service/order/order.service';
+import {Order} from '../../../model/order';
+import {OrderService} from '../../../service/order/order.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-merchant-order-list',
-  templateUrl: './merchant-order-list.component.html',
-  styleUrls: ['./merchant-order-list.component.css']
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.css']
 })
-export class MerchantOrderListComponent implements OnInit {
-  orderList: Order[] = [];
-  customerAddressList: string[] = [];
+export class OrderDetailsComponent implements OnInit {
+  order: Order;
   id: number;
 
   constructor(private orderService: OrderService,
@@ -19,24 +18,16 @@ export class MerchantOrderListComponent implements OnInit {
       this.id = +data.get('id');
     });
   }
-
-  ngOnInit() {
-    this.getAllOrder(this.id);
-  }
-
-  getAllOrder(id) {
-    this.orderService.getOrderByMerchantId(id).subscribe((data) => {
-      this.orderList = data;
-      this.orderList.forEach(order => {
-        if (!this.customerAddressList.includes(order.customer.address)) {
-          this.customerAddressList.push(order.customer.address);
-        }
-      });
+  getOrder(id) {
+    this.orderService.getOrderById(id).subscribe((data) => {
+      this.order = data;
     }, error => {
       console.log(error);
     });
   }
-
+  ngOnInit() {
+    this.getOrder(this.id);
+  }
   orderStatusToString(status) {
     switch (status) {
       case 1:
