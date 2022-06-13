@@ -1,15 +1,14 @@
-<p>Thêm mới món ăn</p>
-
+<p>Sửa món ăn</p>
+<a routerLink="#" (click)="backToDishList()">Quay lại list các món ăn</a>
 <form [formGroup]="dishForm" (ngSubmit)="edit()" enctype="multipart/form-data">
   <table>
     <div>
-      <label for="image">Thêm hình ảnh</label>
-      <input type="file" id="image" formControlName="image" class="form-control"   (change)="onselectFile($event)">
+      <label for="image">Hình ảnh</label>
+      <input type="file" id="image" formControlName="image" class="form-control"   (change)="onSelectedFile($event)">
     </div>
     <div>
       <label for="name">Tên món</label>
       <input type="text" id="name" class="form-control" formControlName="name">
-
     </div>
     <div>
       <label for="description">Mô tả</label>
@@ -30,7 +29,7 @@
     </div>
 
     <div>
-      <button class="btn btn-primary mr-1">Tạo mới</button>
+      <button class="btn btn-primary mr-1">Cập nhật</button>
     </div>
   </table>
 </form>

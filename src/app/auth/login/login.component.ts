@@ -9,6 +9,7 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  id: string;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
@@ -20,9 +21,9 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password)
-      .subscribe(data => {
+      .subscribe((data) => {
         location.reload();
-        location.href = '/home';
+        location.href = '/merchant/15';
       });
   }
 }

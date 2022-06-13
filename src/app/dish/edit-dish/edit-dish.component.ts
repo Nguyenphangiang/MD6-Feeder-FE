@@ -11,7 +11,7 @@ import {DishStatusService} from '../../service/dish-status.service';
   styleUrls: ['./edit-dish.component.css']
 })
 export class EditDishComponent implements OnInit {
-  selectedFile = new File(['name'], 'filename.jpg');
+  selectedFile = new File(['none'], 'null');
   status: DishStatus[] = [];
   dishForm: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -83,10 +83,13 @@ ngOnInit() {
     dish.append('status', this.dishForm.get('status').value);
     this.dishService.updateDish(this.id, this.id_merchant, dish).subscribe(() => {
       alert('Đã sửa thành công');
+      this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes/edit/' + this.id );
     }, () => {
       alert('failed!');
-
     });
   }
-
+  backToDishList() {
+    event.preventDefault();
+    this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes');
+  }
 }
