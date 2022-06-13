@@ -8,6 +8,7 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
               <h3 class="login-heading mb-4">Cập nhập thông tin món ăn </h3>
+              <a routerLink="#" (click)="backToDishList()">Quay lại danh sách món ăn</a>
               <form [formGroup]="dishForm" (ngSubmit)="edit()">
                 <input type="hidden" formControlName="id">
                 <div class="form-label-group">
@@ -20,7 +21,7 @@
                   <br>
                   <input type="file" id="image"
                     (change)="onSelectedFile($event)">
-                  <img src="assets/img/{{image}}" width="100">
+                  <img id="dishImg" [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="description" class="form-control"

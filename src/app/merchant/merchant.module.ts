@@ -12,8 +12,6 @@ import {DishModule} from '../module/dish/dish.module';
 import { MerchantDetailByUserComponent } from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
 
-
-
 @NgModule({
   declarations: [
     CreateComponent,
@@ -30,6 +28,6 @@ import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-na
     MerchantRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    DishModule
+    DishModule,
   ]})
 export class MerchantModule { }
