@@ -61,7 +61,7 @@
 </section>
 <section class="offer-dedicated-body pt-2 pb-2 mt-4 mb-4">
   <div class="container">
-    <div class="row" [ngModel]="">
+    <div class="row">
       <div class="col-md-8">
         <div class="offer-dedicated-body-left">
           <div class="tab-content" id="pills-tabContent">
@@ -170,67 +170,60 @@
                   ITEMS</small></h5>
                 <div class="col-md-12">
                   <div class="bg-white rounded border shadow-sm mb-4">
-
-                    <div class="menu-list p-3 border-bottom" *ngFor="let dish of dish">
-                      <form (ngSubmit)="createNewCartElement(dish.id)" [formGroup]="cartForm">
-                      <span class="count-number float-right">
-                                                    <button> <i class="icofont-cart"></i> </button>
-                        <!--                                                    <input class="count-number-input" type="text" value="1" formControlName="quantity" readonly="">-->
-                        <!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-                        <!--                                                      class="icofont-plus"></i> </button>-->
+                    <div class="menu-list p-3 border-bottom">
+                                                <span class="count-number float-right">
+                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                                      class="icofont-minus"></i> </button>
+                                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                                      class="icofont-plus"></i> </button>
                                                 </span>
-                        <div class="media">
-                          <img class="mr-3 rounded-pill" src="assets/img/{{dish.image}}"
-                               alt="Generic placeholder image">
-                          <div class="media-body">
-                            <h6 class="mb-1">{{dish.name}}</h6>
-                            <input hidden formControlName="dish" [value]="dish.id">
-                            <p class="text-gray mb-0">{{dish.price}} (1kg)</p>
-                          </div>
+                      <div class="media">
+                        <img class="mr-3 rounded-pill" src="assets/img/5.jpg"
+                             alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h6 class="mb-1">Chả Nấm Tươi</h6>
+                          <p class="text-gray mb-0">150.000 (1kg)</p>
                         </div>
-                        <input hidden formControlName="quantity" [value]="1">
-                        <input hidden formControlName="note" [value]=" null">
-                      </form>
+                      </div>
                     </div>
-
-
-                    <!--                    <div class="menu-list p-3 border-bottom">-->
-                    <!--                                                <span class="count-number float-right">-->
-                    <!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-                    <!--                                                      class="icofont-minus"></i> </button>-->
-                    <!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-                    <!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-                    <!--                                                      class="icofont-plus"></i> </button>-->
-                    <!--                                                </span>-->
-                    <!--                      <div class="media">-->
-                    <!--                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"-->
-                    <!--                             alt="Generic placeholder image">-->
-                    <!--                        <div class="media-body">-->
-                    <!--                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span-->
-                    <!--                            class="badge badge-danger">BESTSELLER</span></h6>-->
-                    <!--                          <p class="text-gray mb-0">60.000/1kg</p>-->
-                    <!--                        </div>-->
-                    <!--                      </div>-->
-                    <!--                    </div>-->
-                    <!--                    <div class="menu-list p-3">-->
-                    <!--                                                <span class="count-number float-right">-->
-                    <!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-                    <!--                                                      class="icofont-minus"></i> </button>-->
-                    <!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-                    <!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-                    <!--                                                      class="icofont-plus"></i> </button>-->
-                    <!--                                                </span>-->
-                    <!--                      <div class="media">-->
-                    <!--                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"-->
-                    <!--                             alt="Generic placeholder image">-->
-                    <!--                        <div class="media-body">-->
-                    <!--                          <h6 class="mb-1">Chả Mỡ Phố Cổ-->
-                    <!--                            <span class="badge badge-success">Siêu giảm giá</span>-->
-                    <!--                          </h6>-->
-                    <!--                          <p class="text-gray mb-0">45.000/1kg</p>-->
-                    <!--                        </div>-->
-                    <!--                      </div>-->
-                    <!--                    </div>-->
+                    <div class="menu-list p-3 border-bottom">
+                                                <span class="count-number float-right">
+                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                                      class="icofont-minus"></i> </button>
+                                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                                      class="icofont-plus"></i> </button>
+                                                </span>
+                      <div class="media">
+                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"
+                             alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span
+                            class="badge badge-danger">BESTSELLER</span></h6>
+                          <p class="text-gray mb-0">60.000/1kg</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="menu-list p-3">
+                                                <span class="count-number float-right">
+                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                                      class="icofont-minus"></i> </button>
+                                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                                      class="icofont-plus"></i> </button>
+                                                </span>
+                      <div class="media">
+                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"
+                             alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h6 class="mb-1">Chả Mỡ Phố Cổ
+                            <span class="badge badge-success">Siêu giảm giá</span>
+                          </h6>
+                          <p class="text-gray mb-0">45.000/1kg</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -261,13 +254,9 @@
                     </div>
                   </div>
                   <div class="position-absolute restaurant-slider-pics bg-dark text-white">2 of 14
-                    Photos
-                  </div>
-                  <div class="position-absolute restaurant-slider-view-all">
-                    <button type="button"
-                            class="btn btn-light bg-white">See all Photos
-                    </button>
-                  </div>
+                    Photos</div>
+                  <div class="position-absolute restaurant-slider-view-all"><button type="button"
+                                                                                    class="btn btn-light bg-white">See all Photos</button></div>
                 </div>
               </div>
             </div>
@@ -276,12 +265,10 @@
               <div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
                 <div class="address-map float-right ml-5">
                   <div class="mapouter">
-                    <div class="gmap_canvas">
-                      <iframe width="300" height="170" id="gmap_canvas"
-                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9242911494234!2d105.76602881415756!3d21.035715092918494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1svi!2s!4v1654854389053!5m2!1svi!2s"
-                              frameborder="0" scrolling="no" marginheight="0"
-                              marginwidth="0"></iframe>
-                    </div>
+                    <div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas"
+                                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9242911494234!2d105.76602881415756!3d21.035715092918494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b9444c676b%3A0xe713200541b7456d!2sCodeGym!5e0!3m2!1svi!2s!4v1654854389053!5m2!1svi!2s"
+                                                     frameborder="0" scrolling="no" marginheight="0"
+                                                     marginwidth="0"></iframe></div>
                   </div>
                 </div>
                 <h5 class="mb-4">Thông tin nhà hàng</h5>
@@ -296,9 +283,8 @@
                   <span class="badge badge-success"> OPEN NOW </span>
                 </p>
                 <hr class="clearfix">
-                <p class="text-black mb-0">You can also check the 3D view by using our menue map
-                  clicking here &nbsp;&nbsp;&nbsp; <a class="text-info font-weight-bold"
-                                                      href="#">Venue Map</a></p>
+                <p class="text-black mb-0">Cập nhập thông tin cửa hàng &nbsp;&nbsp;&nbsp; <a class="text-info font-weight-bold"
+                                                      routerLink="/merchant/{{merchant.id}}">Cập nhập</a></p>
                 <hr class="clearfix">
                 <h5 class="mt-4 mb-4">More Info</h5>
                 <p class="mb-3">Dal Makhani, Panneer Butter Masala, Kadhai Paneer, Raita, Veg Thali,
@@ -411,8 +397,7 @@
                 </div>
                 <div class="graph-star-rating-footer text-center mt-3 mb-3">
                   <button type="button" class="btn btn-outline-primary btn-sm">Rate and
-                    Review
-                  </button>
+                    Review</button>
                 </div>
               </div>
               <div
@@ -568,108 +553,102 @@
         </div>
         <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
           <h5 class="mb-1 text-white">Đặt hàng ngay</h5>
-          <p class="mb-4 text-white">{{carts.length}} sản phẩm</p>
+          <p class="mb-4 text-white">5 sản phẩm</p>
           <div class="bg-white rounded shadow-sm mb-2">
-            <div class="gold-members p-2 border-bottom" *ngFor="let cart of carts">
-              <p class="text-gray mb-0 float-right ml-2">{{cart.dish.price * cart.quantity}}</p>
-              <span class="count-number float-right" >
-                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"
-                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
+            <div class="gold-members p-2 border-bottom">
+              <p class="text-gray mb-0 float-right ml-2">60.000</p>
+              <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
                                       class="icofont-minus"></i> </button>
-                                    <button *ngIf="cart.quantity > 1" class="btn btn-outline-secondary  btn-sm left dec"
-                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="{{cart.quantity}}" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"
-                                            (click)="increaseQuantityOfCartElement(cart.id)"> <i
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
                                       class="icofont-plus"></i> </button>
                                 </span>
               <div class="media">
-                <button  class="btn btn-outline-secondary  btn-sm left dec"
-                        (click)="removeCartElement(cart.id)"> <i class="icofont-ui-delete"></i> </button>
+                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
                 <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">{{cart.dish.name}}</p>
+                  <p class="mt-1 mb-0 text-black">Thịt nướng</p>
                 </div>
               </div>
             </div>
-            <!--            <div class="gold-members p-2 border-bottom">-->
-            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
-            <!--              <span class="count-number float-right">-->
-            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-            <!--                                      class="icofont-minus"></i> </button>-->
-            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-            <!--                                      class="icofont-plus"></i> </button>-->
-            <!--                                </span>-->
-            <!--              <div class="media">-->
-            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
-            <!--                <div class="media-body">-->
-            <!--                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </div>-->
-            <!--            <div class="gold-members p-2 border-bottom">-->
-            <!--              <p class="text-gray mb-0 float-right ml-2">60.000</p>-->
-            <!--              <span class="count-number float-right">-->
-            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-            <!--                                      class="icofont-minus"></i> </button>-->
-            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-            <!--                                      class="icofont-plus"></i> </button>-->
-            <!--                                </span>-->
-            <!--              <div class="media">-->
-            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
-            <!--                <div class="media-body">-->
-            <!--                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </div>-->
-            <!--            <div class="gold-members p-2 border-bottom">-->
-            <!--              <p class="text-gray mb-0 float-right ml-2">20.000</p>-->
-            <!--              <span class="count-number float-right">-->
-            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-            <!--                                      class="icofont-minus"></i> </button>-->
-            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-            <!--                                      class="icofont-plus"></i> </button>-->
-            <!--                                </span>-->
-            <!--              <div class="media">-->
-            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
-            <!--                <div class="media-body">-->
-            <!--                  <p class="mt-1 mb-0 text-black">Bánh đa</p>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </div>-->
-            <!--            <div class="gold-members p-2 border-bottom">-->
-            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
-            <!--              <span class="count-number float-right">-->
-            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
-            <!--                                      class="icofont-minus"></i> </button>-->
-            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
-            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
-            <!--                                      class="icofont-plus"></i> </button>-->
-            <!--                                </span>-->
-            <!--              <div class="media">-->
-            <!--                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>-->
-            <!--                <div class="media-body">-->
-            <!--                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>-->
-            <!--                </div>-->
-            <!--              </div>-->
-            <!--            </div>-->
+            <div class="gold-members p-2 border-bottom">
+              <p class="text-gray mb-0 float-right ml-2">15.000</p>
+              <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>
+                </div>
+              </div>
+            </div>
+            <div class="gold-members p-2 border-bottom">
+              <p class="text-gray mb-0 float-right ml-2">60.000</p>
+              <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>
+                </div>
+              </div>
+            </div>
+            <div class="gold-members p-2 border-bottom">
+              <p class="text-gray mb-0 float-right ml-2">20.000</p>
+              <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">Bánh đa</p>
+                </div>
+              </div>
+            </div>
+            <div class="gold-members p-2 border-bottom">
+              <p class="text-gray mb-0 float-right ml-2">15.000</p>
+              <span class="count-number float-right">
+                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="mb-2 bg-white rounded p-2 clearfix">
             <img class="img-fluid float-left" src="assets/img/wallet-icon.png">
             <h6 class="font-weight-bold text-right mb-2">Tổng đơn: <span
-              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+              class="text-danger">235.000</span> vnđ</h6>
             <h6 class="font-weight-bold text-right mb-2">Giảm giá: <span
               class="text-danger">30.000</span> vnđ</h6>
             <h6 class="font-weight-bold text-right mb-2">Thanh toán: <span
-              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+              class="text-danger">205.000</span> vnđ</h6>
             <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
             <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
           </div>
-          <button (click)="removeAllCartElementToOrder()" class="btn btn-success btn-block btn-lg">Checkout <i
-            class="icofont-long-arrow-right"></i></button>
+          <a href="checkout.html" class="btn btn-success btn-block btn-lg">Checkout <i
+            class="icofont-long-arrow-right"></i></a>
         </div>
       </div>
     </div>

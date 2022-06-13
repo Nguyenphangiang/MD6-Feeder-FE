@@ -10,6 +10,9 @@ const API_URL = `${environment.apiUrl}`;
 export class DishService {
 
   constructor(private http: HttpClient) { }
+  showAll(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(`${API_URL}/dish`);
+  }
 
   getAll(merchantId): Observable<Dish[]> {
     return this.http.get<Dish[]>(`${API_URL}/dish/merchant/${merchantId}`);

@@ -6,9 +6,10 @@ import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {CartService} from '../../service/cart.service';
 import {CartElement} from '../../model/cart-element';
-import {AppUserServiceService} from "../../service/app-user-service.service";
-import {CustomerForm} from "../../model/customer-form";
-import {FormControl, FormGroup} from "@angular/forms";
+import {AppUserServiceService} from '../../service/app-user-service.service';
+import {CustomerForm} from '../../model/customer-form';
+import {FormControl, FormGroup} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-merchant-detail',
@@ -25,6 +26,9 @@ export class MerchantDetailComponent implements OnInit {
   quantity: number;
   check: number;
   customer: CustomerForm;
+  sumOfMoney: number;
+  cartElement: CartElement;
+  dish1: Dish;
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -42,6 +46,8 @@ export class MerchantDetailComponent implements OnInit {
       const id = paraMap.get('id');
       this.showDetailMerchant(id);
       this.showAllDishMerchant(id);
+      this.findCustomerByUserId(this.temp.id);
+      this.getAllCartElement();
     });
   }
 
@@ -69,9 +75,20 @@ export class MerchantDetailComponent implements OnInit {
     });
   }
 
+  findDishById(dishId) {
+    this.dishService.findDishById(dishId).subscribe((dish) => {
+      this.dish1 = dish;
+    });
+  }
+
   getAllCartElement() {
     this.cartElementService.getAllCartElement(this.customer.id).subscribe((carts) => {
       this.carts = carts;
+      this.sumOfMoney = 0;
+      for (const cart of carts) {
+        this.sumOfMoney += cart.quantity * cart.dish.price;
+        this.quantity = cart.quantity;
+      }
     });
   }
 
@@ -96,10 +113,148 @@ export class MerchantDetailComponent implements OnInit {
     if (this.check !== 1) {
       this.cartElementService.addCartElement(this.customer.id, cartElement.dish.id, cartElement).subscribe(() => {
         this.getAllCartElement();
-        alert('Tạo thành công');
+        if (this.carts.length === 1) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Người có tâm hồn đẹp như bạn nên chọn thêm món '
+          });
+        }
+        if (this.carts.length === 2) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Mua 2 món chưa đủ chất dinh dưỡng đâu :3 '
+          });
+        }
+        if (this.carts.length === 3) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Thôi thì thêm món nữa để thay đổi khẩu vị cho đỡ ngán đi <3 '
+          });
+        } else {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Bạn mà số 2 thì không ai số 1 hí hí :v '
+          });
+        }
       });
     } else {
-      alert('đã có trong giỏ hàng');
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'Ôi bạn ơi! Món này chọn rồi'
+      });
     }
+
   }
+
+  increaseQuantityOfCartElement(idCart: number) {
+    this.cartElementService.increaseQuantityOfCartElement(idCart, this.quantity).subscribe(() => {
+      this.getAllCartElement();
+    });
+  }
+
+  reduceQuantityOfCartElement(idCart) {
+    this.cartElementService.reduceQuantityOfCartElement(idCart, this.quantity).subscribe(() => {
+      this.getAllCartElement();
+    });
+  }
+
+  removeCartElement(idCart) {
+    Swal.fire({
+      title: 'Chắc chưa?',
+      text: 'Đồ ăn ngon lắm đấyyyyy!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cartElementService.removeCartElement(idCart).subscribe(() => {
+          this.getAllCartElement();
+        });
+        Swal.fire(
+          'Xóa rồi đấy!',
+          'Cuộc đời của bạn đã trở nên vô nghĩa',
+          'success'
+        );
+      }
+    });
+  }
+
+  removeAllCartElementToOrder() {
+    this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
+      this.getAllCartElement();
+    });
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      }
+    });
+    Toast.fire({
+      icon: 'success',
+      title: 'Thanh toán nhanh không đói nàooooo !'
+    });
+  }
+
 }

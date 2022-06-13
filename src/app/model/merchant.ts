@@ -9,5 +9,5 @@ export interface Merchant {
   phone: string;
   address: string;
   user: AppUser;
-  status: MerchantStatus;
+  status: any;
 }

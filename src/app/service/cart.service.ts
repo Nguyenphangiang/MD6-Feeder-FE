@@ -12,7 +12,7 @@ export class CartService {
   constructor(private httpClient: HttpClient) { }
 
   getAllCartElement(customerId): Observable<CartElement[]> {
-    return this.httpClient.get<CartElement[]>(`${API_URL}/cart/${customerId}`);
+    return this.httpClient.get<CartElement[]>(`${API_URL}/cart/customer/${customerId}`);
   }
   addCartElement(customerId, dishId, data): Observable<CartElement> {
     return this.httpClient.post<CartElement>(`${API_URL}/cart/${customerId}/${dishId}`, data);
@@ -23,7 +23,13 @@ export class CartService {
   removeAllCartElement(customerId): Observable<CartElement> {
     return this.httpClient.delete<CartElement>(`${API_URL}/cart/all/${customerId}`);
   }
-  updateCartElement(cartElementId, data): Observable<CartElement> {
-    return this.httpClient.put<CartElement>(`${API_URL}/cart/${cartElementId}`, data);
+  reduceQuantityOfCartElement(cartElementId, data): Observable<CartElement> {
+    return this.httpClient.put<CartElement>(`${API_URL}/cart/reduce/${cartElementId}` , data);
+  }
+  increaseQuantityOfCartElement(cartElementId, data): Observable<CartElement> {
+    return this.httpClient.put<CartElement>(`${API_URL}/cart/increase/${cartElementId}` , data);
+  }
+  findCartElementById(cartElementId): Observable<CartElement> {
+    return this.httpClient.get<CartElement>(`${API_URL}/cart/${cartElementId}`);
   }
 }
