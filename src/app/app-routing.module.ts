@@ -39,6 +39,10 @@ const routes: Routes = [
     loadChildren: () => import('./module/dish-status/dish-status.module').then((module => module.DishStatusModule))
   },
   {
+    path: 'cart',
+    loadChildren: () => import('./module/cart-element/cart-element.module').then((module => module.CartElementModule))
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./module/admin/admin.module').then(module => module.AdminModule)
   }

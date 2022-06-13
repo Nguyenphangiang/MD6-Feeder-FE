@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DishService} from '../../service/dish.service';
 import {Dish} from '../../model/dish';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -24,6 +24,7 @@ export class CreateDishComponent implements OnInit {
   });
 
   id_merchant: string;
+
   constructor(private dishService: DishService,
               private statusService: DishStatusService,
               private activateRoute: ActivatedRoute,
@@ -43,17 +44,17 @@ export class CreateDishComponent implements OnInit {
   }
 
   createDish() {
-      const dish = new FormData();
-      dish.append('image', this.userFile);
-      dish.append('name', this.dishForm.get('name').value);
-      dish.append('description', this.dishForm.get('description').value);
-      dish.append('price', this.dishForm.get('price').value);
-      dish.append('status', this.dishForm.get('status').value);
-      this.dishService.create(this.id_merchant, dish).subscribe(() => {
-        alert('Thanh cong');
-        this.dishForm.reset();
-        this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes' );
-      });
+    const dish = new FormData();
+    dish.append('image', this.userFile);
+    dish.append('name', this.dishForm.get('name').value);
+    dish.append('description', this.dishForm.get('description').value);
+    dish.append('price', this.dishForm.get('price').value);
+    dish.append('status', this.dishForm.get('status').value);
+    this.dishService.create(this.id_merchant, dish).subscribe(() => {
+      alert('Thanh cong');
+      this.dishForm.reset();
+      this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes');
+    });
   }
 
   getStatus() {

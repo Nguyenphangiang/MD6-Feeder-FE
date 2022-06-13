@@ -11,6 +11,7 @@ import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
 
 
+
 const routes: Routes = [
   {
     path : 'register',
