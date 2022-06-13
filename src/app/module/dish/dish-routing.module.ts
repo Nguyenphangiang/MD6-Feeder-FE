@@ -4,6 +4,7 @@ import {ListDishComponent} from '../../dish/list-dish/list-dish.component';
 import {CreateComponent} from '../../merchant/create/create.component';
 import {CreateDishComponent} from '../../dish/create-dish/create-dish.component';
 import {DishListComponent} from '../../merchant/dish-list/dish-list.component';
+import {FindDishByNameComponent} from '../../dish/find-dish-by-name/find-dish-by-name.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListDishComponent
-  }
+  },
 ];
 
 @NgModule({

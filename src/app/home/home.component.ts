@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl(`merchant/list/${this.name}`);
     } else {
       this.name = this.merchantForm.get('name').value;
-      this.router.navigateByUrl(`dish/list/${this.name}`);
+      this.router.navigateByUrl(`dish/dishName/${this.name}`);
     }
   }
   // tslint:disable-next-line:use-lifecycle-interface

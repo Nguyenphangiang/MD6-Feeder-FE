@@ -69,7 +69,7 @@
                  aria-labelledby="pills-order-online-tab">
               <div id="#menu" class="row">
                 <!-- <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5> -->
-                <div class="col-md-4 col-sm-6 mb-4">
+                <div class="col-md-4 col-sm-6 mb-4" *ngFor="let dish of dishes">
                   <div
                     class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div class="list-card-image">
@@ -80,20 +80,19 @@
                       <div class="member-plan position-absolute"><span
                         class="badge badge-dark">Promoted</span></div>
                       <a href="#">
-                        <img src="assets/img/list/7.png" class="img-fluid item-img">
+                        <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
                       </a>
                     </div>
                     <div class="p-3 position-relative">
                       <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Gafood - Gà Ủ
-                          Muối</a></h6>
-                        <p class="text-gray mb-2">Bạch Mai</p>
+                        <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}
+                          </a></h6>
+                        <p class="text-gray mb-2">{{merchant.address}}</p>
                         <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">30.000 <span
+                          class="btn btn-link btn-sm text-black" href="#">{{dish.price}} <span
                           class="badge badge-success">5% Giảm</span></a> <span
                           class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay</a>
+                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Cập nhập</a>
                                                         </span>
                         </p>
                       </div>

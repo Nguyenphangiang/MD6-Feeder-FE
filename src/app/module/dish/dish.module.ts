@@ -6,6 +6,7 @@ import {ListDishComponent} from '../../dish/list-dish/list-dish.component';
 import {CreateDishComponent} from '../../dish/create-dish/create-dish.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {EditDishComponent} from '../../dish/edit-dish/edit-dish.component';
+import {FindDishByNameComponent} from '../../dish/find-dish-by-name/find-dish-by-name.component';
 
 
 
@@ -13,7 +14,7 @@ import {EditDishComponent} from '../../dish/edit-dish/edit-dish.component';
   declarations: [
     ListDishComponent,
     CreateDishComponent,
-    EditDishComponent
+    EditDishComponent,
   ],
   imports: [
     CommonModule,

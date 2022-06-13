@@ -3,12 +3,15 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Valid
 import {RegisterService} from '../../service/register.service';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {AppUser} from '../../model/app-user';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  users: AppUser[] = [];
+  userName: string[] = [];
   customerForm: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
     pw: new FormGroup({
@@ -22,7 +25,8 @@ export class RegisterComponent implements OnInit {
   });
   constructor(private registerService: RegisterService,
               private router: Router,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
     this.customerForm = this.formBuilder.group({
@@ -40,7 +44,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   forbiddenUsername(c: AbstractControl) {
-    const users = ['admin', 'manager'];
+    const users: string[] = this.userName;
     return (users.includes(c.value)) ? {
       invalidUsername: true
     } : null;
@@ -63,6 +67,18 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(customer).subscribe(() => {
       Swal.fire('Vui lòng kiểm tra email xác nhận ');
       this.router.navigateByUrl('/login');
+    });
+  }
+  showAllUser(): any {
+     this.registerService.getAllUser().subscribe((user) => {
+      this.users = user;
+      console.log(user[0].username);
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < user.length; i++) {
+        this.userName.push(user[i].username);
+      }
+      console.log(this.userName);
+      return this.userName;
     });
   }
   get usernameControl() {

@@ -67,102 +67,40 @@
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel"
                  aria-labelledby="pills-order-online-tab">
-              <div id="#menu" class="row">
-                <!-- <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5> -->
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/7.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Gafood - Gà Ủ
-                          Muối</a></h6>
-                        <p class="text-gray mb-2">Bạch Mai</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">30.000 <span
-                          class="badge badge-success">5% Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay</a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/8.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Trà Sữa - Đường 18
+              <div id="#menu" class="row" >
+                <ng-container *ngFor="let dish of dishes">
+                  <div class="col-md-4 col-sm-6 mb-4" >
+                    <div
+                      class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                      <div class="list-card-image">
+                        <!-- <div class="star position-absolute"><span class="badge badge-success"><i
+                                    class="icofont-star"></i> 3.1 (300+)</span></div> -->
+                        <div class="favourite-heart text-danger position-absolute"><a
+                          href="#"><i class="icofont-heart"></i></a></div>
+                        <div class="member-plan position-absolute"><span
+                          class="badge badge-dark">{{dish.dishStatus.name
+                          }}</span></div>
+                        <a href="#">
+                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
                         </a>
-                        </h6>
-                        <p class="text-gray mb-2">P. Mộ Lao, Hà Đông, Hà Nội</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">5.000 <span
-                          class="badge badge-primary">Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay</a>
+                      </div>
+                      <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                          <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}</a></h6>
+                          <p class="text-gray mb-2">{{merchant.address}}</p>
+                          <p class="text-gray time mb-0"><a
+                            class="btn btn-link btn-sm text-black" href="#">{{dish.price}}<span
+                            class="badge badge-success"></span>VND</a> <span
+                            class="float-right">
+                                                            <a class="btn btn-outline-secondary btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
                                                         </span>
-                        </p>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/9.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Nem
-                          Chua Rán</a></h6>
-                        <p class="text-gray mb-2">P. Bồ Đề, Long Biên, Hà Nội</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">50.000 <span
-                          class="badge badge-info">Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay </a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </ng-container>
+                <!-- <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5> -->
               </div>
 
               <div class="row">
@@ -284,7 +222,7 @@
                 </p>
                 <hr class="clearfix">
                 <p class="text-black mb-0">Cập nhập thông tin cửa hàng &nbsp;&nbsp;&nbsp; <a class="text-info font-weight-bold"
-                                                      routerLink="/merchant/{{merchant.id}}">Cập nhập</a></p>
+                                                      routerLink="/merchant/{{id}}">Cập nhập</a></p>
                 <hr class="clearfix">
                 <h5 class="mt-4 mb-4">More Info</h5>
                 <p class="mb-3">Dal Makhani, Panneer Butter Masala, Kadhai Paneer, Raita, Veg Thali,

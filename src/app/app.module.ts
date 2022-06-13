@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
+import { FindDishByNameComponent } from './dish/find-dish-by-name/find-dish-by-name.component';
 
 
 

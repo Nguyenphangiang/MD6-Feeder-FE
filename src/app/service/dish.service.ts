@@ -22,8 +22,8 @@ export class DishService {
     return this.http.post<Dish>(`${API_URL}/dish/create/${id}`, data);
   }
 
-  updateDish(id, id_merchant, data): Observable<Dish> {
-    return this.http.post<Dish>(`${API_URL}/dish/${id}/${id_merchant}`, data);
+  updateDish(id, idMerchant, data): Observable<Dish> {
+    return this.http.post<Dish>(`${API_URL}/dish/${id}/${idMerchant}`, data);
   }
 
   findDishById(id): Observable<Dish> {
@@ -32,5 +32,8 @@ export class DishService {
 
   deleteDish(id): Observable<Dish> {
     return this.http.delete<Dish>(`${API_URL}/dish/${id}`);
+  }
+  findDishByName(name): Observable<Dish[]> {
+    return this.http.get<Dish[]>(`${API_URL}/dish/dishName/${name}`);
   }
 }
