@@ -12,7 +12,7 @@ import {CreateComponent} from './merchant/create/create.component';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    loadChildren: () => import('./module/login/login.module').then(module => module.LoginModule)
   },
   {
     path: '',
@@ -32,11 +32,15 @@ const routes: Routes = [
   },
   {
     path: 'dish',
-    loadChildren: () => import('./module/dish/dish.module').then((module => module.DishModule))
+    loadChildren: () => import('./module/dish/dish.module').then(module => module.DishModule)
   },
   {
     path: 'dish-status',
     loadChildren: () => import('./module/dish-status/dish-status.module').then((module => module.DishStatusModule))
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./module/cart-element/cart-element.module').then((module => module.CartElementModule))
   },
   {
     path: 'admin',

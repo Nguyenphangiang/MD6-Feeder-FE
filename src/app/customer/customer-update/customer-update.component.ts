@@ -4,6 +4,7 @@ import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+
 // import Swal from 'sweetalert2';
 
 @Component({

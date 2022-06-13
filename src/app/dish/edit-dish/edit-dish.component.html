@@ -1,38 +1,61 @@
-<p>Thêm mới món ăn</p>
+<body class="bg-white">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+              <h3 class="login-heading mb-4">Cập nhập thông tin món ăn </h3>
+              <form [formGroup]="dishForm" (ngSubmit)="edit()">
+                <input type="hidden" formControlName="id">
+                <div class="form-label-group">
+                  <input type="text" id="name" class="form-control"
+                         placeholder="tên món" formControlName="name">
+                  <label for="name">Tên món </label>
+                </div>
+                <div >
+                  <label for="name">Ảnh</label>
+                  <br>
+                  <input type="file" id="image"
+                    (change)="onSelectedFile($event)">
+                  <img src="assets/img/{{image}}" width="100">
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="description" class="form-control"
+                         placeholder="enter phone number" formControlName="description">
+                  <label for="description">Mô tả</label>
+                </div>
+                <div>
+                  <label for="status">Trạng thái</label>
+                  <select id="status" formControlName="status" class="form-control">
+                    <option [ngValue]="null">Chọn trạng thái </option>
+                    <ng-container *ngFor="let status1 of status">
+                      <option  [value]="status1.id">{{status1.name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="price" class="form-control"
+                         placeholder="enter address" formControlName="price">
+                  <label for="price">Đơn giá</label>
+                </div>
+                <button
+                  class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cập Nhập</button>
+                <div class="text-center pt-3">
+                  Địa chỉ của bạn sẽ ứng với nơi giao hàng
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form [formGroup]="dishForm" (ngSubmit)="edit()" enctype="multipart/form-data">
-  <table>
-    <div>
-      <label for="image">Thêm hình ảnh</label>
-      <input type="file" id="image" formControlName="image" class="form-control"   (change)="onselectFile($event)">
-    </div>
-    <div>
-      <label for="name">Tên món</label>
-      <input type="text" id="name" class="form-control" formControlName="name">
 
-    </div>
-    <div>
-      <label for="description">Mô tả</label>
-      <input type="text" id="description" formControlName="description" class="form-control">
-    </div>
-    <div>
-      <label for="price">Giá</label>
-      <input type="text" id="price" formControlName="price" class="form-control">
-    </div>
-    <div>
-      <label for="status">Trạng thái</label>
-      <select id="status" formControlName="status" class="form-control">
-        <option [ngValue]="null">Chọn trạng thái </option>
-        <ng-container *ngFor="let status1 of status">
-          <option  [value]="status1.id">{{status1.name}}</option>
-        </ng-container>
-      </select>
-    </div>
 
-    <div>
-      <button class="btn btn-primary mr-1">Tạo mới</button>
-    </div>
-  </table>
-</form>
 
 

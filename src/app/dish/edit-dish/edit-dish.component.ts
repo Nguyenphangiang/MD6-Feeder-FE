@@ -4,6 +4,7 @@ import {DishService} from '../../service/dish.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DishStatus} from '../../model/dish-status';
 import {DishStatusService} from '../../service/dish-status.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-dish',
@@ -11,6 +12,9 @@ import {DishStatusService} from '../../service/dish-status.service';
   styleUrls: ['./edit-dish.component.css']
 })
 export class EditDishComponent implements OnInit {
+  user = localStorage.getItem('user');
+  temp = JSON.parse(this.user);
+  userId: number;
   selectedFile = new File(['name'], 'filename.jpg');
   status: DishStatus[] = [];
   dishForm: FormGroup = new FormGroup({
@@ -23,7 +27,7 @@ export class EditDishComponent implements OnInit {
     merchant: new FormControl()
   });
   id: number;
-  id_merchant: string;
+  idMerchant: string;
   image = null;
   constructor(
     private dishService: DishService,
@@ -33,12 +37,13 @@ export class EditDishComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.id = +paramMap.get('id');
-      this.id_merchant = paramMap.get('id_merchant');
+      this.idMerchant = paramMap.get('idMerchant');
       this.getDishById();
     });
   }
 
 ngOnInit() {
+    this.userId = this.temp.id;
     this.getStatus();
 }
 
@@ -64,7 +69,7 @@ ngOnInit() {
         status: new FormControl(),
         merchant: new FormControl(dish.merchant)
       });
-      alert('load Dish success!');
+      // alert('load Dish success!');
     }, () => {
       alert('load Dish success!');
     });
@@ -81,10 +86,11 @@ ngOnInit() {
     dish.append('description', this.dishForm.get('description').value);
     dish.append('price', this.dishForm.get('price').value);
     dish.append('status', this.dishForm.get('status').value);
-    this.dishService.updateDish(this.id, this.id_merchant, dish).subscribe(() => {
-      alert('Đã sửa thành công');
+    this.dishService.updateDish(this.id, this.idMerchant, dish).subscribe(() => {
+      Swal.fire('Cập nhập thành công !!! ');
+      this.router.navigateByUrl(`/merchant/detail/user/${this.userId}`);
     }, () => {
-      alert('failed!');
+      Swal.fire('Chọn trạng thái cho món ăn ');
 
     });
   }

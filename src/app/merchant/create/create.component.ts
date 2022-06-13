@@ -3,7 +3,7 @@ import {MerchantServiceService} from '../../service/merchant-service.service';
 import {MerchantForm} from '../../model/merchant-form';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -75,8 +75,8 @@ export class CreateComponent implements OnInit {
     merchantData.append('name', this.merchantForm.get('name').value);
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.createNew(merchantData).subscribe(() => {
-      // Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
-      alert('Signup Success!');
+      Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
+      // alert('Signup Success!');
       this.router.navigateByUrl('/login');
     }, () => {
       alert('Signup Failed!');

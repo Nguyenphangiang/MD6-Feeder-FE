@@ -24,6 +24,7 @@ export class MerchantServiceService {
   createNew(merchant: any): Observable<AppUser> {
     return this.http.post<AppUser>(`${API_URL}/merchant/register`, merchant);
   }
+
   updateOld(id: number, merchant: any): Observable<Merchant> {
     return this.http.post<Merchant>(API_URL + '/merchant/' + id, merchant );
   }
