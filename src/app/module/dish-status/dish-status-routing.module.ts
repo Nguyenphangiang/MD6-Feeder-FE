@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ListDishComponent} from "../../dish/list-dish/list-dish.component";
-import {ListComponent} from "../../dish-status/list/list.component";
+// import {ListDishComponent} from '../../dish/list-dish/list-dish.component';
+import {ListComponent} from '../../dish-status/list/list.component';
 
 
 const routes: Routes = [
