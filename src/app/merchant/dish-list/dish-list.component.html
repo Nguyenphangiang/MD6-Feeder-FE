@@ -1,5 +1,6 @@
 <h2>Merchant: <span [innerText]="merchant.name"></span></h2>
 <h3>List dishes</h3>
+<a routerLink="create/{{id}}">create dish</a>
 <table border="1">
   <tr>
     <th>#</th>
@@ -8,6 +9,7 @@
     <th>Description</th>
     <th>Price</th>
     <th>Status</th>
+    <th>Edit</th>
   </tr>
   <ng-container *ngFor="let dish of dishes, index as i">
     <tr>
@@ -17,6 +19,7 @@
       <td>{{dish.description}}</td>
       <td>{{dish.price}}</td>
       <td>{{dish.dishStatus.name}}</td>
+      <td><a routerLink="edit/{{dish.id}}">Edit</a></td>
     </tr>
   </ng-container>
 </table>

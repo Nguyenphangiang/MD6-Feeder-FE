@@ -5,7 +5,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 // import Swal from 'sweetalert2';
 import {MerchantForm} from '../../model/merchant-form';
 import {environment} from '../../../environments/environment';
-
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -27,12 +26,13 @@ export class DetailComponent implements OnInit {
     address: new FormControl(),
     user: new FormControl()
   });
-  id: string;
+  id: number;
+
   constructor( private router: Router,
                private merchantService: MerchantServiceService,
                private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paraMap) => {
-      this.id = paraMap.get('id');
+      this.id = +paraMap.get('id');
       this.showDetail(this.id);
     });
   }
@@ -40,7 +40,7 @@ export class DetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  showDetail(id: string) {
+  showDetail(id: number) {
     this.merchantService.findById(id).subscribe((data) => {
       this.merchantForm = new FormGroup({
         id: new FormControl(id),
@@ -59,11 +59,13 @@ export class DetailComponent implements OnInit {
       alert('Cant Load Merchant\'s Detail!');
     });
   }
+
   onSelectedFile(event) {
     this.selectedFile = event.target.files[0] as File;
     // this.image = document.getElementById('output');
     // this.image.src = URL.createObjectURL(event.target.files[0]);
   }
+
   updateMerchant() {
     const merchantData: FormData = new FormData();
     // merchantData.append('username', this.merchantForm.get('username').value);

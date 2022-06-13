@@ -619,12 +619,12 @@ span.count-number.float-right {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 .count-number-input {
-    width: 24px;
+    width: 30px;
     text-align: center;
     margin: 0 -4px;
-    background: #6c757d;
+    background: #f1b0b7;
     border: none;
-    color: #fff;
+    color: #721c24;
     height: 23px;
     border-radius: 0px;
     vertical-align: bottom;

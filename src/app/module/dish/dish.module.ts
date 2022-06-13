@@ -6,16 +6,27 @@ import { DishRoutingModule } from './dish-routing.module';
 import {CreateDishComponent} from '../../dish/create-dish/create-dish.component';
 import {ReactiveFormsModule} from '@angular/forms';
 
+import {EditDishComponent} from '../../dish/edit-dish/edit-dish.component';
+import {FindDishByNameComponent} from '../../dish/find-dish-by-name/find-dish-by-name.component';
+import {ListDishComponent} from "../../dish/list-dish/list-dish.component";
+
+
 
 @NgModule({
   declarations: [
-    // ListDishComponent,
+    ListDishComponent,
     CreateDishComponent,
+    EditDishComponent,
   ],
   imports: [
     CommonModule,
     DishRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    ListDishComponent,
+    CreateDishComponent,
+    EditDishComponent
   ]
 })
 export class DishModule { }

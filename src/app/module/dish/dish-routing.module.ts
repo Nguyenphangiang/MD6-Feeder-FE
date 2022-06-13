@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {DishListComponent} from '../../merchant/dish-list/dish-list.component';
+
 import {CreateComponent} from '../../merchant/create/create.component';
 import {CreateDishComponent} from '../../dish/create-dish/create-dish.component';
+
+import {FindDishByNameComponent} from '../../dish/find-dish-by-name/find-dish-by-name.component';
+import {ListDishComponent} from '../../dish/list-dish/list-dish.component';
 
 
 const routes: Routes = [
@@ -13,7 +16,11 @@ const routes: Routes = [
   {
     path: 'create/:id',
     component: CreateDishComponent
-  }
+  },
+  {
+    path: 'list',
+    component: ListDishComponent
+  },
 ];
 
 @NgModule({
