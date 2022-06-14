@@ -19,9 +19,9 @@
                 <div >
                   <label for="name">Ảnh</label>
                   <br>
-                  <input type="file" id="image"
+                  <input type="file" id="image" class="form-control"
                     (change)="onSelectedFile($event)">
-                  <img id="dishImg" [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">
+                  <img [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">
                 </div>
                 <div class="form-label-group">
                   <input type="text" id="description" class="form-control"
@@ -30,11 +30,10 @@
                 </div>
                 <div>
                   <label for="status">Trạng thái</label>
-                  <select id="status" formControlName="status" class="form-control">
-                    <option [ngValue]="null">Chọn trạng thái </option>
+                  <select id="status" class="form-control" formControlName="status">
+                    <option [ngValue]="null" >Chọn lại trạng thái </option>
                     <ng-container *ngFor="let status1 of status">
-                      <option  [value]="status1.id">{{status1.name}}</option>
-                    </ng-container>
+                      <option [value]="status1.id">{{status1.name}}</option></ng-container>
                   </select>
                 </div>
                 <div class="form-label-group">
@@ -45,7 +44,7 @@
                 <button
                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cập Nhập</button>
                 <div class="text-center pt-3">
-                  Địa chỉ của bạn sẽ ứng với nơi giao hàng
+                  <a href="#" (click)="deleteDish()" >Xóa món ăn</a>
                 </div>
               </form>
             </div>

@@ -53,7 +53,6 @@ export class EditDishComponent implements OnInit {
     this.selectedFile = event.target.files[0] as File;
     this.imageLink = URL.createObjectURL(this.selectedFile);
   }
-
   getStatus() {
     this.statusService.getAllStatus().subscribe((data) => {
       this.status = data;
@@ -71,10 +70,10 @@ export class EditDishComponent implements OnInit {
         name: new FormControl(dish.name),
         description: new FormControl(dish.description),
         price: new FormControl(dish.price),
-        status: new FormControl(),
+        status: new FormControl(dish.status),
         merchant: new FormControl(dish.merchant)
       });
-      // alert('load Dish success!');
+      alert('load Dish success!');
     }, () => {
       alert('load Dish success!');
     });
@@ -96,9 +95,19 @@ export class EditDishComponent implements OnInit {
 
     });
   }
-
   backToDishList() {
     this.router.navigateByUrl('/merchant/detail/user/' + this.userId);
   }
-
+  deleteDish() {
+    Swal.fire({
+      title: 'Xóa món ăn này?',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Quay lại'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dishService.deleteDish(this.id);
+      }
+    });
+  }
 }

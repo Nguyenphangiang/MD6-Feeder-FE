@@ -26,7 +26,7 @@ const routes: Routes = [
     component : DishListComponent
   },
   {
-    path : ':id/dishes/create/:id_merchant',
+    path : ':id/dishes/create',
     component : CreateDishComponent
   },
   {

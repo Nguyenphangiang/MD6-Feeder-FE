@@ -32,8 +32,9 @@
     <div class="row">
       <div class="col-md-12">
                     <span class="restaurant-detailed-action-btn float-right">
-                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i
-                          class="icofont-heart text-danger"></i> Yêu thích</button>
+                      <a routerLink="/merchant/{{id}}/dishes/create" class="btn btn-success">Tạo món ăn mới</a>
+<!--                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i-->
+<!--                          class="icofont-heart text-danger"></i> Yêu thích</button>-->
                     </span>
         <ul class="nav" id="pills-tab" role="tablist">
           <li class="nav-item">
@@ -81,7 +82,7 @@
                           class="badge badge-dark">{{dish.dishStatus.name
                           }}</span></div>
                         <a href="#">
-                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img" style="width: 150px;height: 150px">
+                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img" style="width: 180px;height: 180px">
                         </a>
                       </div>
                       <div class="p-3 position-relative">
@@ -92,7 +93,7 @@
                             class="btn btn-link btn-sm text-black" href="#">{{dish.price}}<span
                             class="badge badge-success"></span>VND</a> <span
                             class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
+                                                            <a class="btn btn-outline-success btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
                                                         </span>
                           </p>
                         </div>
