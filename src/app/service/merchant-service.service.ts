@@ -5,7 +5,7 @@ import {Merchant} from '../model/merchant';
 import {environment} from '../../environments/environment';
 import {MerchantForm} from '../model/merchant-form';
 import {AppUser} from '../model/app-user';
-const apiUrl = environment.apiUrl;
+const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
@@ -13,21 +13,25 @@ export class MerchantServiceService {
 
   constructor(private http: HttpClient ) { }
   findAll(): Observable<Merchant[]> {
-    return this.http.get<Merchant[]>(apiUrl + '/merchant');
+    return this.http.get<Merchant[]>(API_URL + '/merchant');
   }
-  findById(id: string): Observable<Merchant> {
-    return this.http.get<Merchant>(apiUrl + '/merchant/' + id);
+  findById(id: number): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchant/${id}`);
   }
   // createNew(merchant: Merchant): Observable<Merchant> {
-  //   return this.http.post<Merchant>(apiUrl + '/merchant', merchant);
+  //   return this.http.post<Merchant>(API_URL + '/merchant', merchant);
   // }
   createNew(merchant: any): Observable<AppUser> {
-    return this.http.post<AppUser>(`${apiUrl}/merchant/register`, merchant);
+    return this.http.post<AppUser>(`${API_URL}/merchant/register`, merchant);
   }
-  updateOld(id: string, merchant: any): Observable<Merchant> {
-    return this.http.post<Merchant>(apiUrl + '/merchant/' + id, merchant );
+
+  updateOld(id: number, merchant: any): Observable<Merchant> {
+    return this.http.post<Merchant>(API_URL + '/merchant/' + id, merchant );
   }
   // deleteById(id: number): Observable<Merchant> {
-  //   return this.http.delete<Merchant>(apiUrl + '/merchant/' + id);
+  //   return this.http.delete<Merchant>(API_URL + '/merchant/' + id);
   // }
+  findMerchantByUserId(id: number): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchant/userId/${id}`);
+  }
 }

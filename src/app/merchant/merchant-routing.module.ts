@@ -5,6 +5,11 @@ import {DetailComponent} from './detail/detail.component';
 import {DishListComponent} from './dish-list/dish-list.component';
 import {CreateDishComponent} from '../dish/create-dish/create-dish.component';
 import {EditDishComponent} from '../dish/edit-dish/edit-dish.component';
+import {FindMerchantByNameComponent} from './find-merchant-by-name/find-merchant-by-name.component';
+import {MerchantDetailComponent} from './merchant-detail/merchant-detail.component';
+import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-detail-by-user.component';
+import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
+
 
 
 const routes: Routes = [
@@ -21,12 +26,28 @@ const routes: Routes = [
     component : DishListComponent
   },
   {
-    path : ':id/dishes/create/:id_merchant',
+    path : ':id/dishes/create',
     component : CreateDishComponent
   },
   {
-    path: ':id_merchant/dishes/edit/:id',
+    path: ':idMerchant/dishes/edit/:id',
     component : EditDishComponent
+  },
+  {
+    path: 'list/:name',
+    component : FindMerchantByNameComponent
+  },
+  {
+    path: 'detail/:id',
+    component : MerchantDetailComponent
+  },
+  {
+    path: 'detail/user/:id',
+    component: MerchantDetailByUserComponent
+  },
+  {
+    path: 'dishName/:dishName',
+    component: FindDishByNameComponent
   }
 ];
 

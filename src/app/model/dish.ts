@@ -1,4 +1,5 @@
 import {Merchant} from './merchant';
+
 import {DishStatus} from './dish-status';
 
 export interface Dish {

@@ -11,21 +11,20 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import { SwitchRegisterComponent } from './auth/switch-register/switch-register.component';
 import {MerchantModule} from './merchant/merchant.module';
 import {RouterModule} from '@angular/router';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { EditDishComponent } from './dish/edit-dish/edit-dish.component';
-import { ListComponent } from './dish-status/list/list.component';
+import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
+import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
+import { FindDishByNameComponent } from './dish/find-dish-by-name/find-dish-by-name.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HomeComponent,
     SwitchRegisterComponent,
     NavbarComponent,
     FooterComponent,
-    FooterComponent,
-
   ],
   imports: [
     BrowserModule,
