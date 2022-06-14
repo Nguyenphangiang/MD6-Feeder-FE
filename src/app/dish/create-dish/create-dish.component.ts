@@ -16,11 +16,11 @@ export class CreateDishComponent implements OnInit {
   status: DishStatus[] = [];
   userFile: any = File;
   dishForm: FormGroup = new FormGroup({
-    image: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl(),
-    price: new FormControl(),
-    status: new FormControl(),
+    image: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/), Validators.min(1000)]),
+    status: new FormControl('', [Validators.required]),
   });
 
   id_merchant: string;
@@ -63,5 +63,25 @@ export class CreateDishComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+
+  get nameControl() {
+    return this.dishForm.get('name');
+  }
+
+  get descriptionControl() {
+    return this.dishForm.get('description');
+  }
+
+  get priceControl() {
+    return this.dishForm.get('price');
+  }
+
+  get imageControl() {
+    return this.dishForm.get('image');
+  }
+
+  get statusControl() {
+    return this.dishForm.get('status');
   }
 }

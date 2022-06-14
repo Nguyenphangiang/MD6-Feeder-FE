@@ -13,8 +13,7 @@ export class DeleteComponent implements OnInit {
     image: new FormControl(),
     name: new FormControl(),
     description: new FormControl(),
-    price: new FormControl(),
-    status: new FormControl(),
+    price: new FormControl()
   });
   constructor(private dishService: DishService,
               private router: Router,
@@ -35,8 +34,7 @@ export class DeleteComponent implements OnInit {
         image: new FormControl(dish.image),
         name: new FormControl(dish.name),
         description: new FormControl(dish.description),
-        price: new FormControl(dish.price),
-        status: new FormControl(dish.status)
+        price: new FormControl(dish.price)
       });
     });
   }

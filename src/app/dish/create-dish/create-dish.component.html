@@ -5,19 +5,35 @@
     <div>
       <label for="image">Thêm hình ảnh</label>
       <input type="file" id="image" formControlName="image" class="form-control"   (change)="onselectFile($event)">
+      <div *ngIf="imageControl.touched && imageControl.invalid">
+        <p style="color: red" *ngIf="imageControl.errors?.required">Chưa chọn ảnh</p>
+      </div>
     </div>
     <div>
       <label for="name">Tên món</label>
       <input type="text" id="name" class="form-control" formControlName="name">
+      <div *ngIf="nameControl.touched && nameControl.invalid">
+        <p style="color: red" *ngIf="nameControl.errors?.required">Chưa điền tên món ăn</p>
+      </div>
 
     </div>
     <div>
       <label for="description">Mô tả</label>
       <input type="text" id="description" formControlName="description" class="form-control">
+      <div *ngIf="descriptionControl.touched && descriptionControl.invalid">
+        <p style="color: red" *ngIf="descriptionControl.errors?.required">Chưa điền mô tả</p>
+      </div>
     </div>
     <div>
       <label for="price">Giá</label>
       <input type="text" id="price" formControlName="price" class="form-control">
+      <div *ngIf="priceControl.touched && priceControl.invalid">
+        <p style="color: red" *ngIf="priceControl.errors?.required">Chưa nhập giá</p>
+        <p style="color: red" *ngIf="priceControl.errors?.pattern">
+          Vui lòng chỉ nhập số.
+        </p>
+        <p style="color: red" *ngIf="priceControl.errors?.min">Giá tiền trên 1000 đồng</p>
+      </div>
     </div>
     <div>
       <label for="status">Trạng thái</label>
@@ -27,6 +43,9 @@
           <option  [value]="status1.id">{{status1.name}}</option>
         </ng-container>
       </select>
+      <div *ngIf="statusControl.touched && statusControl.invalid">
+        <p style="color: red" *ngIf="statusControl.errors?.required">Chưa chọn trạng thái</p>
+      </div>
     </div>
 
     <div>
