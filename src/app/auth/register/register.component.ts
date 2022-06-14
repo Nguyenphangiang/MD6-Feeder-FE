@@ -10,14 +10,17 @@ import {AppUser} from '../../model/app-user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  users: AppUser[] = [];
-  userName: string[] = [];
+  userNames: string[] = [];
   customerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+    username: new FormControl('', [, Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
     pw: new FormGroup({
       password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
       confirmPassword: new FormControl('', [Validators.required]),
-    }),
+    },
+      {
+        validators: this.comparePassword
+      }
+      ),
     email: new FormControl('' , [Validators.required, Validators.email]),
     name: new FormControl('', [Validators.required]),
     phone: new FormControl('', [Validators.required, Validators.pattern(/^\d{9,10}$/)]),
@@ -30,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.customerForm = this.formBuilder.group({
-        username: ['', [Validators.required, this.forbiddenUsername , Validators.minLength(5), Validators.maxLength(12)]],
+        username: ['', [ Validators.required , Validators.minLength(5), Validators.maxLength(12)]],
         pw: this.formBuilder.group({
           password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]],
           confirmPassword: ['', [Validators.required]]
@@ -43,12 +46,6 @@ export class RegisterComponent implements OnInit {
         address: ['', [Validators.required]]
     });
   }
-  forbiddenUsername(c: AbstractControl) {
-    const users: string[] = this.userName;
-    return (users.includes(c.value)) ? {
-      invalidUsername: true
-    } : null;
-  }
   comparePassword(c: AbstractControl) {
     const v = c.value;
     return (v.password === v.confirmPassword) ? null : {
@@ -56,6 +53,9 @@ export class RegisterComponent implements OnInit {
     };
   }
   createNewCustomer() {
+    if (this.customerForm.invalid) {
+      return null;
+    }
     const customer: FormData = new FormData();
     customer.append('username', this.customerForm.get('username').value);
     customer.append('password', this.customerForm.get('pw.password').value);
@@ -67,18 +67,16 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(customer).subscribe(() => {
       Swal.fire('Vui lòng kiểm tra email xác nhận ');
       this.router.navigateByUrl('/login');
+    }, () => {
+      Swal.fire('Tài khoản đã có người sử dụng');
     });
   }
-  showAllUser(): any {
-     this.registerService.getAllUser().subscribe((user) => {
-      this.users = user;
-      console.log(user[0].username);
+  showAllUsername() {
+    this.registerService.getAllUser().subscribe((users) => {
       // tslint:disable-next-line:prefer-for-of
-      for (let i = 0; i < user.length; i++) {
-        this.userName.push(user[i].username);
+      for (let i = 0; i < users.length; i++) {
+        this.userNames.push(users[i].username);
       }
-      console.log(this.userName);
-      return this.userName;
     });
   }
   get usernameControl() {

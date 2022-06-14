@@ -9,6 +9,8 @@ import {FindMerchantByNameComponent} from './find-merchant-by-name/find-merchant
 import {MerchantDetailComponent} from './merchant-detail/merchant-detail.component';
 import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
+import {MerchantListComponent} from './merchant-list/merchant-list.component';
+import {MerchantGoldListComponent} from './merchant-gold-list/merchant-gold-list.component';
 
 
 
@@ -48,6 +50,14 @@ const routes: Routes = [
   {
     path: 'dishName/:dishName',
     component: FindDishByNameComponent
+  },
+  {
+    path: '',
+    component: MerchantListComponent
+  },
+  {
+    path: 'gold/list',
+    component: MerchantGoldListComponent
   }
 ];
 
