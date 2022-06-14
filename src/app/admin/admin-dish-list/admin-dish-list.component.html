@@ -9,12 +9,12 @@
         <div class="dropdown float-right">
           <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Danh sách: <span class="text-theme">Món ăn</span> &nbsp;&nbsp;
+            Tìm theo: <span class="text-theme">Yêu thích</span> &nbsp;&nbsp;
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" routerLink="/dish/list">Món ăn</a>
-            <a class="dropdown-item" routerLink="/dish/favorite/list">Món ăn yêu thích</a>
-            <a class="dropdown-item" routerLink="/merchant">Nhà hàng</a>
+            <a class="dropdown-item" routerLink="/admin/dish/list/sale">Yêu thích</a>
+            <a class="dropdown-item" routerLink="/admin/dish/list/sold">Ngừng bán</a>
+            <a class="dropdown-item" routerLink="/admin/dish/list">Đang hoạt động</a>
           </div>
         </div>
         <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">299 restaurants
@@ -374,11 +374,19 @@
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
-                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                  class="icofont-heart"></i></a></div>
+                <ng-container *ngIf="dish.recommend; else elseBlock">
+                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                    class="icofont-heart"></i></a></div>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <div class="favourite-heart text-danger position-absolute"><button class="btn btn-light btn-sm border-light-btn" (click)="changeDishRecommend(dish.id)"><i
+                    class="icofont-heart"></i> Yêu thích</button></div>
+                </ng-template>
                 <div class="member-plan position-absolute"><span
-                  class="badge badge-dark">Promoted</span></div>
-                <a href="detail.html">
+                  class="badge badge-dark">{{dish.dishStatus.name}}
+                </span>
+                </div>
+                <a routerLink="/dish/detail/nonCart/{{dish.id}}">
                   <img src="assets/img/{{dish.image}}"  class=" img-fluid item-img">
                   <!--                       height="161px" width="255"-->
                 </a>
@@ -516,3 +524,4 @@
     </div>
   </div>
 </section>
+

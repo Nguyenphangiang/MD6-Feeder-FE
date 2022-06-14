@@ -9,14 +9,14 @@
         <div class="dropdown float-right">
           <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Danh sách: <span class="text-theme">Món ăn</span> &nbsp;&nbsp;
+            Danh sách: <span class="text-theme">Món ăn yêu thích</span> &nbsp;&nbsp;
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" routerLink="/dish/favorite/list">Món ăn yêu thích</a>
+            <a class="dropdown-item" routerLink="/dish/list">Món ăn</a>
             <a class="dropdown-item" routerLink="/merchant">Nhà hàng</a>
           </div>
         </div>
-        <h4 class="font-weight-bold mt-0 mb-3">DISHES <small class="h6 mb-0 ml-2">{{dishes.length}} Món
+        <h4 class="font-weight-bold mt-0 mb-3">DISHES <small class="h6 mb-0 ml-2">{{dishes.length}} Món ăn được yêu thích
         </small>
         </h4>
       </div>
@@ -106,7 +106,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" >
           <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor="let dish of dishes">
             <form (ngSubmit)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)"
                   [formGroup]="cartForm">
@@ -114,10 +114,18 @@
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
-                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                  class="icofont-heart"></i></a></div>
-                <div class="member-plan position-absolute" ><span
-                  class="badge badge-dark">{{dish.dishStatus.name}}</span></div>
+                <ng-container *ngIf="dish.recommend; else elseBlock">
+                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                    class="icofont-heart"></i></a></div>
+                </ng-container>
+                <ng-template #elseBlock>
+                  <div class="favourite-heart text-danger position-absolute"><button class="btn-outline-primary" ><i
+                    class="icofont-heart"></i> Yêu thích</button></div>
+                </ng-template>
+                <div class="member-plan position-absolute"><span
+                  class="badge badge-dark">{{dish.dishStatus.name}}
+                </span>
+                </div>
                 <a routerLink="/dish/detail/{{dish.id}}">
                   <img src="assets/img/{{dish.image}}"  class=" img-fluid item-img">
                   <!--                       height="161px" width="255"-->
@@ -128,7 +136,7 @@
                   <h6 class="mb-1"><a href="detail.html" class="text-black">{{dish.name}}</a></h6>
                   <p class="text-gray mb-3">{{dish.description}}</p>
                   <p class="text-gray mb-3 time"><span
-                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2" ><button class="btn btn-outline-light text-primary" style=" font-size: 10px"><i   class="icofont-cart">Mua hàng</i> </button></span> <span
+                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><button class="btn btn-outline-light text-primary" style=" font-size: 10px"><i   class="icofont-cart">Mua hàng</i> </button></span> <span
                     class="float-right text-black-50"> {{dish.price}} VND</span></p>
                 </div>
                 <div class="list-card-badge">
@@ -290,8 +298,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho
-          khách hàng</a></h5>
+        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho khách hàng</a></h5>
       </div>
     </div>
   </div>
@@ -363,20 +370,15 @@
         <div class="search-links">
           <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> | <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
-          | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> | <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
-          | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
-          | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
-          | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
-          | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
           href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a>
         </div>
@@ -398,3 +400,4 @@
     </div>
   </div>
 </section>
+

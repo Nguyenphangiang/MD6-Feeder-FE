@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {DishService} from '../../service/dish.service';
-import {Router} from '@angular/router';
 import {Dish} from '../../model/dish';
+import {DishService} from '../../service/dish.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import Swal from 'sweetalert2';
 import {CartService} from '../../service/cart.service';
 import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {CartElement} from '../../model/cart-element';
-import Swal from 'sweetalert2';
 import {FormControl, FormGroup} from '@angular/forms';
-
+declare var jQuery: any;
 @Component({
-  selector: 'app-list-dish',
-  templateUrl: './list-dish.component.html',
-  styleUrls: ['./list-dish.component.css']
+  selector: 'app-dish-detail',
+  templateUrl: './dish-detail.component.html',
+  styleUrls: ['./dish-detail.component.css']
 })
-export class ListDishComponent implements OnInit {
-  dishes: Dish[] = [];
+export class DishDetailComponent implements OnInit {
+  dish: Dish = {};
   user = localStorage.getItem('user');
   temp = JSON.parse(this.user);
   customer: CustomerForm;
@@ -32,18 +32,45 @@ export class ListDishComponent implements OnInit {
     note: new FormControl(),
   });
   constructor(private dishService: DishService,
+              private activatedRouter: ActivatedRoute,
               private router: Router,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) { }
+              private customerService: AppUserServiceService) {
+    this.activatedRouter.paramMap.subscribe((paraMap) => {
+      const id = +paraMap.get('id');
+      this.showDishDetail(id);
+    });
+  }
 
   ngOnInit() {
-    this.showAllDish();
     this.findCustomerByUserId(this.temp.id);
   }
-  showAllDish() {
-    this.dishService.showSaleDish().subscribe((dishes) => {
-      this.dishes = dishes;
+  showDishDetail(id) {
+    this.dishService.findDishById(id).subscribe((dish) => {
+      this.dish = dish;
     });
+  }
+  merchantList(id) {
+    this.router.navigateByUrl(`/merchant/detail/${id}`);
+  }
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngAfterViewInit() {
+    // tslint:disable-next-line:only-arrow-functions
+    (function($) {
+      // tslint:disable-next-line:only-arrow-functions
+      $(document).ready(function() {
+        $('.owl-carousel').owlCarousel({
+          nav: true,
+          navText: ['<i class=\'icofont-arrow-left\'></i>', '<i class=\'icofont-arrow-right\'></i>'],
+          items: 3,
+          loop: true,
+          center: true,
+          margin: 0,
+          lazyLoad: true,
+          dots: false
+        });
+      });
+    })(jQuery);
   }
   findCustomerByUserId(userId) {
     this.customerService.showDetailCustomer(userId).subscribe((customer) => {

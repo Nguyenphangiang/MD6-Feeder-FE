@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
     pw: new FormGroup({
       password: new FormControl(),
       confirmPassword: new FormControl(),
-    }),
+    },{validators: this.comparePassword}),
     username: new FormControl(),
   });
 

@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {DishService} from '../../service/dish.service';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 import {Dish} from '../../model/dish';
-import {CartService} from '../../service/cart.service';
-import {AppUserServiceService} from '../../service/app-user-service.service';
+import {DishService} from '../../service/dish.service';
+import Swal from 'sweetalert2';
 import {CustomerForm} from '../../model/customer-form';
 import {CartElement} from '../../model/cart-element';
-import Swal from 'sweetalert2';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {CartService} from '../../service/cart.service';
+import {AppUserServiceService} from '../../service/app-user-service.service';
 
 @Component({
-  selector: 'app-list-dish',
-  templateUrl: './list-dish.component.html',
-  styleUrls: ['./list-dish.component.css']
+  selector: 'app-list-dish-favorite',
+  templateUrl: './list-dish-favorite.component.html',
+  styleUrls: ['./list-dish-favorite.component.css']
 })
-export class ListDishComponent implements OnInit {
+export class ListDishFavoriteComponent implements OnInit {
   dishes: Dish[] = [];
   user = localStorage.getItem('user');
   temp = JSON.parse(this.user);
@@ -31,26 +31,31 @@ export class ListDishComponent implements OnInit {
     quantity: new FormControl(this.quantity = 1),
     note: new FormControl(),
   });
+
   constructor(private dishService: DishService,
               private router: Router,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) { }
+              private customerService: AppUserServiceService) {
+  }
 
   ngOnInit() {
-    this.showAllDish();
+    this.showFavoriteDishList();
     this.findCustomerByUserId(this.temp.id);
   }
-  showAllDish() {
-    this.dishService.showSaleDish().subscribe((dishes) => {
+
+  showFavoriteDishList() {
+    this.dishService.showDishRecommend().subscribe((dishes) => {
       this.dishes = dishes;
     });
   }
+
   findCustomerByUserId(userId) {
     this.customerService.showDetailCustomer(userId).subscribe((customer) => {
       this.customer = customer;
       this.getAllCartElement();
     });
   }
+
   getAllCartElement() {
     this.cartElementService.getAllCartElement(this.customer.id).subscribe((carts) => {
       this.carts = carts;
@@ -61,6 +66,7 @@ export class ListDishComponent implements OnInit {
       }
     });
   }
+
   increaseQuantityOfCartElement(idCart: number) {
     this.cartElementService.increaseQuantityOfCartElement(idCart, this.quantity).subscribe(() => {
       this.getAllCartElement();
@@ -72,6 +78,7 @@ export class ListDishComponent implements OnInit {
       this.getAllCartElement();
     });
   }
+
   removeCartElement(idCart) {
     Swal.fire({
       title: 'Chắc chưa?',
@@ -94,6 +101,7 @@ export class ListDishComponent implements OnInit {
       }
     });
   }
+
   removeAllCartElementToOrder() {
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
       this.getAllCartElement();
@@ -114,6 +122,7 @@ export class ListDishComponent implements OnInit {
       title: 'Thanh toán nhanh không đói nàooooo !'
     });
   }
+
   createNewCartElement(idDish, idMerchant, nameMerchant, nameDish) {
     const cartElement = this.cartForm.value;
     const customer2 = this.customer;
