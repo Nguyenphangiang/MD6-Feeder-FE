@@ -8,6 +8,7 @@ import {AdminDishListComponent} from '../../admin/admin-dish-list/admin-dish-lis
 import {AdminDishListLoveComponent} from '../../admin/admin-dish-list-love/admin-dish-list-love.component';
 import {AdminDishListSoldComponent} from '../../admin/admin-dish-list-sold/admin-dish-list-sold.component';
 import {AdminMerchantListComponent} from '../../admin/admin-merchant-list/admin-merchant-list.component';
+import {AdminDishListOnSaleComponent} from '../../admin/admin-dish-list-on-sale/admin-dish-list-on-sale.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {AdminMerchantListComponent} from '../../admin/admin-merchant-list/admin-
     AdminDishListComponent,
     AdminDishListLoveComponent,
     AdminDishListSoldComponent,
-    AdminMerchantListComponent
+    AdminMerchantListComponent,
+    AdminDishListOnSaleComponent
   ],
   imports: [
     CommonModule,

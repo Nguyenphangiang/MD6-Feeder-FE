@@ -68,7 +68,7 @@
             <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel"
                  aria-labelledby="pills-order-online-tab">
               <div id="#menu" class="row">
-                 <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5>
+                <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5>
                 <div class="col-md-4 col-sm-6 mb-4">
                   <div
                     class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
@@ -171,10 +171,11 @@
                 <div class="col-md-12">
                   <div class="bg-white rounded border shadow-sm mb-4">
 
-                    <div class="menu-list p-3 border-bottom" *ngFor="let dish of dish">
-                      <form (ngSubmit)="createNewCartElement(dish.id)" [formGroup]="cartForm">
+                    <div class="menu-list p-3 border-bottom" *ngFor="let dish of dishes">
+                      <form (ngSubmit)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)"
+                            [formGroup]="cartForm">
                       <span class="count-number float-right">
-                                                    <button> <i class="icofont-cart"></i> </button>
+                                                    <button class="btn btn-outline-light text-primary" style=" font-size: 15px"><i   class="icofont-cart">Mua hàng</i> </button>
                         <!--                                                    <input class="count-number-input" type="text" value="1" formControlName="quantity" readonly="">-->
                         <!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
                         <!--                                                      class="icofont-plus"></i> </button>-->
@@ -572,8 +573,9 @@
           <div class="bg-white rounded shadow-sm mb-2">
             <div class="gold-members p-2 border-bottom" *ngFor="let cart of carts">
               <p class="text-gray mb-0 float-right ml-2">{{cart.dish.price * cart.quantity}}</p>
-              <span class="count-number float-right" >
-                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"
+              <span class="count-number float-right">
+                                    <button *ngIf="cart.quantity == 1" disabled
+                                            class="btn btn-outline-secondary  btn-sm left dec"
                                             (click)="reduceQuantityOfCartElement(cart.id)"> <i
                                       class="icofont-minus"></i> </button>
                                     <button *ngIf="cart.quantity > 1" class="btn btn-outline-secondary  btn-sm left dec"
@@ -585,8 +587,8 @@
                                       class="icofont-plus"></i> </button>
                                 </span>
               <div class="media">
-                <button  class="btn btn-outline-secondary  btn-sm left dec"
-                        (click)="removeCartElement(cart.id)"> <i class="icofont-ui-delete"></i> </button>
+                <button class="btn btn-outline-secondary  btn-sm left dec"
+                        (click)="removeCartElement(cart.id)"><i class="icofont-ui-delete"></i></button>
                 <div class="media-body">
                   <p class="mt-1 mb-0 text-black">{{cart.dish.name}}</p>
                 </div>

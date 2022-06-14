@@ -5,6 +5,7 @@ import {AdminDishListComponent} from '../../admin/admin-dish-list/admin-dish-lis
 import {AdminDishListLoveComponent} from '../../admin/admin-dish-list-love/admin-dish-list-love.component';
 import {AdminDishListSoldComponent} from '../../admin/admin-dish-list-sold/admin-dish-list-sold.component';
 import {AdminMerchantListComponent} from '../../admin/admin-merchant-list/admin-merchant-list.component';
+import {AdminDishListOnSaleComponent} from '../../admin/admin-dish-list-on-sale/admin-dish-list-on-sale.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
     path: 'dish/list/sold',
     component: AdminDishListSoldComponent,
   },
+  {
+   path: 'dish/list/onSale',
+   component: AdminDishListOnSaleComponent
+  }
 ];
 
 @NgModule({

@@ -24,6 +24,7 @@ import { DishDetailNonCartComponent } from './dish/dish-detail-non-cart/dish-det
 import { ListDishFavoriteComponent } from './dish/list-dish-favorite/list-dish-favorite.component';
 import { DishDetailComponent } from './dish/dish-detail/dish-detail.component';
 import { AdminMerchantListComponent } from './admin/admin-merchant-list/admin-merchant-list.component';
+import { AdminDishListOnSaleComponent } from './admin/admin-dish-list-on-sale/admin-dish-list-on-sale.component';
 
 @NgModule({
   declarations: [

@@ -8,7 +8,7 @@ export interface Dish {
   name?: string;
   description?: string;
   price?: number;
-  status?: DishStatus;
+  dishStatus?: DishStatus;
   merchant?: Merchant;
   recommend?: boolean;
 }

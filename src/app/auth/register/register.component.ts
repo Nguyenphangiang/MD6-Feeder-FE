@@ -12,7 +12,7 @@ import {AppUser} from '../../model/app-user';
 export class RegisterComponent implements OnInit {
   userNames: string[] = [];
   customerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+    username: new FormControl('', [, Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
     pw: new FormGroup({
       password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
       confirmPassword: new FormControl('', [Validators.required]),
