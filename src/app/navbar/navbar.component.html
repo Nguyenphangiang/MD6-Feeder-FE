@@ -22,15 +22,28 @@
           </ng-container>
         </ng-template>
         <ng-container [ngSwitch]="authority">
-          <li class="nav-item dropdown dropdown-cart" *ngSwitchCase="1">
+          <li  *ngSwitchCase="1">
             <a (click)="getAllCartElement()" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-basket"></i> Giỏ hàng
 <!--              <span class="badge badge-success">{{carts.length}}</span>-->
-            </a>
             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
               <div class="dropdown-cart-top-body border-top p-4">
-                <p class="mb-2" *ngFor="let cartElement of carts"><i class="icofont-ui-press text-danger food-item" ></i> {{cartElement.dish.name}} x {{cartElement.quantity}} <span class="float-right text-secondary">{{cartElement.dish.price*cartElement.quantity}}</span></p>
+                <p class="mb-2" *ngFor="let cartElement of carts"><i class="icofont-ui-press text-danger food-item" ></i>
+                  {{cartElement.dish.name}} x {{cartElement.quantity}}
+                  <span class="count-number float-right" >
+<!--                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"-->
+<!--                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i-->
+<!--                                      class="icofont-minus"></i> </button>-->
+                                    <button  class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"
+                                            > <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+                  <span class="float-right text-secondary">
+                    {{cartElement.dish.price*cartElement.quantity}}</span></p>
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas-->
 <!--                  Salad x 1 <span class="float-right text-secondary">209.000</span></p>-->
 <!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6"-->
@@ -49,6 +62,7 @@
                 <button class="btn btn-success btn-block btn-lg" (click)="removeAllCartElementToOrder()"> Thanh toán</button>
               </div>
             </div>
+            </a>
           </li>
         </ng-container>
       </ul>
