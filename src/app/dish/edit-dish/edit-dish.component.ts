@@ -73,9 +73,8 @@ export class EditDishComponent implements OnInit {
         status: new FormControl(dish.status),
         merchant: new FormControl(dish.merchant)
       });
-      alert('load Dish success!');
     }, () => {
-      alert('load Dish success!');
+      Swal.fire('Tải thông tin món ăn thất bại!!');
     });
   }
 
@@ -99,6 +98,7 @@ export class EditDishComponent implements OnInit {
     this.router.navigateByUrl('/merchant/detail/user/' + this.userId);
   }
   deleteDish() {
+    event.preventDefault();
     Swal.fire({
       title: 'Xóa món ăn này?',
       showCancelButton: true,
@@ -106,7 +106,12 @@ export class EditDishComponent implements OnInit {
       cancelButtonText: 'Quay lại'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.dishService.deleteDish(this.id);
+        this.dishService.deleteDish(this.id).subscribe(() => {
+          Swal.fire('Xóa thành công');
+          this.backToDishList();
+        }, () => {
+          Swal.fire('Xóa thất  bại');
+        });
       }
     });
   }

@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  selectedFile = null;
+  selectedFile = new File(['none'], 'null');
   image = null;
   merchant: MerchantForm;
   merchantForm: FormGroup = new FormGroup({
@@ -49,8 +49,6 @@ export class CreateComponent implements OnInit {
 
   onSelectedFile(event) {
     this.selectedFile = event.target.files[0] as File;
-    // this.image = document.getElementById('output');
-    // this.image.src = URL.createObjectURL(event.target.files[0]);
   }
   forbiddenUsername(c: AbstractControl) {
     const users = ['admin', 'manager'];
@@ -75,11 +73,10 @@ export class CreateComponent implements OnInit {
     merchantData.append('name', this.merchantForm.get('name').value);
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.createNew(merchantData).subscribe(() => {
-      Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !!!');
-      // alert('Signup Success!');
+      Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !');
       this.router.navigateByUrl('/login');
     }, () => {
-      alert('Signup Failed!');
+      Swal.fire('Đăng ký không thành công, kiểm tra thông tin nhập vào!');
     });
   }
   get usernameControl() {

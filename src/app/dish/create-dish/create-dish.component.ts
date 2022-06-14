@@ -7,6 +7,7 @@ import {DishStatus} from '../../model/dish-status';
 import {DishStatusService} from '../../service/dish-status.service';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {DomSanitizer} from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-dish',
@@ -65,9 +66,9 @@ export class CreateDishComponent implements OnInit {
     dish.append('price', this.dishForm.get('price').value);
     dish.append('status', this.dishForm.get('status').value);
     this.dishService.create(this.id_merchant, dish).subscribe(() => {
-      alert('Thanh cong');
-      this.dishForm.reset();
-      this.router.navigateByUrl('merchant/detail/user' + this.user.id);
+    Swal.fire('Tạo mới món ăn thành công!');
+    this.dishForm.reset();
+    this.router.navigateByUrl('merchant/detail/user/' + this.user.id);
     });
   }
 

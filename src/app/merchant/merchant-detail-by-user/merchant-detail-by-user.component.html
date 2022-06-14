@@ -93,7 +93,7 @@
                             class="btn btn-link btn-sm text-black" href="#">{{dish.price}}<span
                             class="badge badge-success"></span>VND</a> <span
                             class="float-right">
-                                                            <a class="btn btn-outline-success btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
+                                                            <a class="btn btn-outline-success btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhật</a>
                                                         </span>
                           </p>
                         </div>
@@ -484,7 +484,8 @@
             class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
             <img class="img-fluid float-left mr-3" src="assets/img/earn-score-icon.png">
             <h6 class="pt-0 text-primary mb-1 font-weight-bold">VSATTP</h6>
-            <p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p>
+            <ng-container *ngIf="merchant.safeFoodLicense!=='null'"><p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
+            <ng-container *ngIf="merchant.safeFoodLicense=='null'"><p class="mb-0">Nhà hàng chưa có giấy phép đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
             <div class="icon-overlap">
               <i class="icofont-sale-discount"></i>
             </div>

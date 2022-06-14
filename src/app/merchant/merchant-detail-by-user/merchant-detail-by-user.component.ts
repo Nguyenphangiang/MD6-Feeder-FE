@@ -35,7 +35,6 @@ export class MerchantDetailByUserComponent implements OnInit {
   }
   findDishByMerchantId(id) {
     this.dishService.getAll(id).subscribe((dishes) => {
-      console.log(dishes);
       this.dishes = dishes;
     });
   }
