@@ -17,7 +17,7 @@ export class ListDishComponent implements OnInit {
     this.showAllDish();
   }
   showAllDish() {
-    this.dishService.showAll().subscribe((dishes) => {
+    this.dishService.showSaleDish().subscribe((dishes) => {
       this.dishes = dishes;
     });
   }

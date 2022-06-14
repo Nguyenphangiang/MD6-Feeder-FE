@@ -16,7 +16,7 @@ export class AuthenticationService {
     return this.http.post(`${API_URL}/login`, {username, password})
       .pipe(map(user => {
         if (user === null) {
-          Swal.fire('Tài khoản của bạn chưa được kích hoạt');
+          Swal.fire('Tài khoản của bạn chưa được kích hoạt hoặc bị khóa');
           this.router.navigateByUrl('/login');
         } else {
           localStorage.setItem('user', JSON.stringify(user));

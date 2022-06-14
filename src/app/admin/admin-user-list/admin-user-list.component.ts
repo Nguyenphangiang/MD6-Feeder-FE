@@ -55,21 +55,24 @@ export class AdminUserListComponent implements OnInit {
 
   activeMerchant(id) {
     this.adminService.activeMerchant(id).subscribe(() => {
-      location.reload();
+      this.showMerchantList();
+      this.showCustomerList();
       }
     );
   }
 
   blockMerchant(id) {
     this.adminService.blockMerchant(id).subscribe(() => {
-        location.reload();
+      this.showMerchantList();
+      this.showCustomerList();
       }
     );
   }
 
   deleteMerchant(id) {
     this.adminService.deleteMerchant(id).subscribe(() => {
-      location.reload();
+      this.showMerchantList();
+      this.showCustomerList();
     });
   }
 }

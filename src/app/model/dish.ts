@@ -10,4 +10,5 @@ export interface Dish {
   price?: number;
   status?: DishStatus;
   merchant?: Merchant;
+  recommend?: boolean;
 }

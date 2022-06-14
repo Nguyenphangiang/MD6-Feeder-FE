@@ -4,11 +4,17 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import {AdminUserListComponent} from '../../admin/admin-user-list/admin-user-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdminDishListComponent} from '../../admin/admin-dish-list/admin-dish-list.component';
+import {AdminDishListLoveComponent} from '../../admin/admin-dish-list-love/admin-dish-list-love.component';
+import {AdminDishListSoldComponent} from '../../admin/admin-dish-list-sold/admin-dish-list-sold.component';
 
 
 @NgModule({
   declarations: [
-    AdminUserListComponent
+    AdminUserListComponent,
+    AdminDishListComponent,
+    AdminDishListLoveComponent,
+    AdminDishListSoldComponent
   ],
   imports: [
     CommonModule,

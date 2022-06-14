@@ -17,6 +17,12 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 import { RegisterSuccessComponent } from './auth/register-success/register-success.component';
 import { FindDishByNameComponent } from './dish/find-dish-by-name/find-dish-by-name.component';
+import { AdminDishListComponent } from './admin/admin-dish-list/admin-dish-list.component';
+import { AdminDishListLoveComponent } from './admin/admin-dish-list-love/admin-dish-list-love.component';
+import { AdminDishListSoldComponent } from './admin/admin-dish-list-sold/admin-dish-list-sold.component';
+import { DishDetailNonCartComponent } from './dish/dish-detail-non-cart/dish-detail-non-cart.component';
+import { ListDishFavoriteComponent } from './dish/list-dish-favorite/list-dish-favorite.component';
+import { DishDetailComponent } from './dish/dish-detail/dish-detail.component';
 
 @NgModule({
   declarations: [
