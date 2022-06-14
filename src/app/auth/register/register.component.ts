@@ -10,10 +10,9 @@ import {AppUser} from '../../model/app-user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  message = false;
   userNames: string[] = [];
   customerForm: FormGroup = new FormGroup({
-    username: new FormControl('', [, Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
     pw: new FormGroup({
       password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(12)]),
       confirmPassword: new FormControl('', [Validators.required]),
@@ -30,8 +29,6 @@ export class RegisterComponent implements OnInit {
   constructor(private registerService: RegisterService,
               private router: Router,
               private formBuilder: FormBuilder) {
-    this.showAllUsername();
-    this.forbiddenUsername();
   }
 
   ngOnInit() {
@@ -48,22 +45,6 @@ export class RegisterComponent implements OnInit {
         phone: ['', [Validators.required, Validators.pattern(/^\d{9,10}$/)]],
         address: ['', [Validators.required]]
     });
-  }
-  // forbiddenUsername(c: AbstractControl) {
-  //   const  usersName = [];
-  //   return (usersName.includes(c.value)) ? {
-  //       invalidUsername: true
-  //     } : null;
-  //   }
-  forbiddenUsername() {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < this.userNames.length; i++) {
-      if (this.userNames[i] === this.customerForm.get('username').value) {
-        console.log(this.customerForm.get('username').value);
-        this.message = true;
-        return;
-      }
-    }
   }
   comparePassword(c: AbstractControl) {
     const v = c.value;
@@ -86,6 +67,8 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(customer).subscribe(() => {
       Swal.fire('Vui lòng kiểm tra email xác nhận ');
       this.router.navigateByUrl('/login');
+    }, () => {
+      Swal.fire('Tài khoản đã có người sử dụng');
     });
   }
   showAllUsername() {

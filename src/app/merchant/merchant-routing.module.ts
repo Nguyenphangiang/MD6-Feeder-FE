@@ -10,6 +10,7 @@ import {MerchantDetailComponent} from './merchant-detail/merchant-detail.compone
 import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
 import {MerchantListComponent} from './merchant-list/merchant-list.component';
+import {MerchantGoldListComponent} from './merchant-gold-list/merchant-gold-list.component';
 
 
 
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: '',
     component: MerchantListComponent
+  },
+  {
+    path: 'gold/list',
+    component: MerchantGoldListComponent
   }
 ];
 

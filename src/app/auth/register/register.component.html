@@ -18,9 +18,6 @@
 <!--                       && customerForm.get('username').touched">-->
 <!--                    <i class="icofont-close-circled"></i>  Tài khoản không hợp lệ.-->
 <!--                  </div>-->
-                  <div class="col alert-danger" *ngIf="message">
-                    <div [hidden]="message"><i class="icofont-close-circled"></i>  Tài khoản đã được sử dụng</div>
-                  </div>
                   <div class="col alert alert-danger" role="alert"
                     *ngIf="!usernameControl?.valid && (usernameControl?.dirty ||usernameControl?.touched)">
                     <div [hidden]="!usernameControl.errors.required">

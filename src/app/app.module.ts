@@ -23,6 +23,7 @@ import { AdminDishListSoldComponent } from './admin/admin-dish-list-sold/admin-d
 import { DishDetailNonCartComponent } from './dish/dish-detail-non-cart/dish-detail-non-cart.component';
 import { ListDishFavoriteComponent } from './dish/list-dish-favorite/list-dish-favorite.component';
 import { DishDetailComponent } from './dish/dish-detail/dish-detail.component';
+import { AdminMerchantListComponent } from './admin/admin-merchant-list/admin-merchant-list.component';
 
 @NgModule({
   declarations: [

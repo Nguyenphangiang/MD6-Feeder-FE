@@ -12,22 +12,15 @@ import {Router} from '@angular/router';
 })
 export class AdminUserListComponent implements OnInit {
   customers: CustomerForm[] = [];
-  merchants: Merchant[] = [];
   constructor(private adminService: AdminService,
               private router: Router) { }
 
   ngOnInit() {
     this.showCustomerList();
-    this.showMerchantList();
   }
   showCustomerList() {
     this.adminService.showListCustomer().subscribe((customers) => {
       this.customers = customers;
-    });
-  }
-  showMerchantList() {
-    this.adminService.showListMerchant().subscribe((merchants) => {
-      this.merchants = merchants;
     });
   }
 
@@ -50,29 +43,6 @@ export class AdminUserListComponent implements OnInit {
         icon: 'success',
         title: 'Xóa thành công !!!'
       });
-    });
-  }
-
-  activeMerchant(id) {
-    this.adminService.activeMerchant(id).subscribe(() => {
-      this.showMerchantList();
-      this.showCustomerList();
-      }
-    );
-  }
-
-  blockMerchant(id) {
-    this.adminService.blockMerchant(id).subscribe(() => {
-      this.showMerchantList();
-      this.showCustomerList();
-      }
-    );
-  }
-
-  deleteMerchant(id) {
-    this.adminService.deleteMerchant(id).subscribe(() => {
-      this.showMerchantList();
-      this.showCustomerList();
     });
   }
 }

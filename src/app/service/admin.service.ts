@@ -30,4 +30,7 @@ export class AdminService {
   deleteMerchant(id): Observable<Merchant> {
     return this.http.delete<Merchant>(`${API_URL}/merchant/${id}`);
   }
+  setGoldPartner(id): Observable<Merchant> {
+    return this.http.get<Merchant>(`${API_URL}/merchant/setGold/${id}`);
+  }
 }

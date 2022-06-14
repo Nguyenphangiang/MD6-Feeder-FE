@@ -10,5 +10,5 @@ export interface Merchant {
   address?: string;
   user?: AppUser;
   status?: any;
-
+  goldPartner?: boolean;
 }
