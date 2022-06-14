@@ -11,6 +11,7 @@ import { DishListComponent } from './dish-list/dish-list.component';
 import {DishModule} from '../module/dish/dish.module';
 import { MerchantDetailByUserComponent } from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
+import { MerchantOrderComponent } from './merchant-order/merchant-order.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-na
     DishListComponent,
     MerchantDetailByUserComponent,
     FindDishByNameComponent,
+    MerchantOrderComponent,
   ],
   imports: [
     CommonModule,

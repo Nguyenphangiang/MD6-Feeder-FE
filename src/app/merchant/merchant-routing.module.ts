@@ -9,6 +9,7 @@ import {FindMerchantByNameComponent} from './find-merchant-by-name/find-merchant
 import {MerchantDetailComponent} from './merchant-detail/merchant-detail.component';
 import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
+import {MerchantOrderComponent} from './merchant-order/merchant-order.component';
 
 
 
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'detail/user/:id',
     component: MerchantDetailByUserComponent
+  },
+  {
+    path: 'detail/user/:id/orders',
+    component: MerchantOrderComponent
   },
   {
     path: 'dishName/:dishName',
