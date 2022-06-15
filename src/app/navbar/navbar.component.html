@@ -11,7 +11,7 @@
           <a class="nav-link" routerLink="/">Trang chủ <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" *ngIf="!display; else elseBlock">
-          <a  class="nav-link" routerLink="/login" >Đăng ký<span class="sr-only"></span></a>
+          <a  class="nav-link" routerLink="/login" >Đăng nhập<span class="sr-only"></span></a>
         </li>
         <ng-template #elseBlock>
           <ng-container [ngSwitch]="authority">

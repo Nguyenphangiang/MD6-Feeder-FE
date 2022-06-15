@@ -1,7 +1,4 @@
-<section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
-  <h1 class="text-white">Offers Near You</h1>
-  <h6 class="text-white-50">Best deals at your favourite restaurants</h6>
-</section>
+
 <section class="section pt-5 pb-5 products-listing">
   <div class="container">
     <div class="row d-none-m">
@@ -9,14 +6,15 @@
         <div class="dropdown float-right">
           <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Danh sách: <span class="text-theme">Món ăn</span> &nbsp;&nbsp;
+            Danh sách: <span class="text-theme"> Món ăn</span> &nbsp;&nbsp;
           </a>
-          <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" routerLink="/admin/dish/list/sale">Yêu thích</a>
-            <a class="dropdown-item" routerLink="/admin/dish/list/sold">Ngừng bán</a>
-            <a class="dropdown-item" routerLink="/admin/dish/list/onSale">Đang hoạt động</a>
-            <a class="dropdown-item" routerLink="/merchant">Nhà hàng</a>
-            <a class="dropdown-item" routerLink="/merchant/gold/list">Nhà hàng GOLD</a>
+          <div class="dropdown-menu dropdown-menu-left shadow-sm border-0 ">
+            <a class="dropdown-item" routerLink="/admin/merchant"> Người bán</a>
+            <a class="dropdown-item" routerLink="/admin/user"> Khách hàng</a>
+            <a class="dropdown-item" routerLink="/admin/dish/list/sale"> Món ăn yêu thích</a>
+            <a class="dropdown-item" routerLink="/admin/dish/list/sold"> Món ăn ngừng bán</a>
+            <a class="dropdown-item" routerLink="/admin/merchant/list"> Nhà hàng</a>
+            <a class="dropdown-item" routerLink="/admin/merchant/list/gold"> Nhà hàng GOLD</a>
           </div>
         </div>
         <h4 class="font-weight-bold mt-0 mb-3">Món ăn <small class="h6 mb-0 ml-2">{{dishes.length}} Món
@@ -377,8 +375,8 @@
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
                 <ng-container *ngIf="dish.recommend; else elseBlock">
-                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                    class="icofont-heart"></i></a></div>
+                  <div class="favourite-heart text-danger position-absolute"><button class="btn btn-sm border-danger text-danger" (click)="changeDishRecommend(dish.id)"><i
+                    class="icofont-heart"></i></button></div>
                 </ng-container>
                 <ng-template #elseBlock>
                   <div class="favourite-heart text-danger position-absolute"><button class="btn btn-light btn-sm border-light-btn" (click)="changeDishRecommend(dish.id)"><i
@@ -395,7 +393,7 @@
               </div>
               <div class="p-3 position-relative">
                 <div class="list-card-body">
-                  <h6 class="mb-1"><a routerLink="/dish/detail/nonCart/{{dish.id}}" class="text-black">{{dish.name}}</a></h6>
+                  <h6 class="mb-1"><a routerLink="/admin/dish/detail/{{dish.id}}" class="text-black">{{dish.name}}</a></h6>
                   <p class="text-gray mb-3">{{dish.description}}</p>
                   <p class="text-gray mb-3 time"><span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i

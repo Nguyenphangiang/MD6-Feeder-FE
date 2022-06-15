@@ -41,9 +41,6 @@ export class DishService {
   findDishByName(name): Observable<Dish[]> {
     return this.http.get<Dish[]>(`${API_URL}/dish/dishName/${name}`);
   }
-  addDishRecommend(id): Observable<Dish> {
-    return this.http.get<Dish>(`${API_URL}/dish/recommend/${id}`);
-  }
   showDishRecommend(): Observable<Dish[]> {
     return this.http.get<Dish[]>(`${API_URL}/dish/recommend/sale`);
   }

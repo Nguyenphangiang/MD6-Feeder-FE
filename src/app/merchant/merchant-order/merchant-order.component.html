@@ -1,0 +1,24 @@
+<table border="1">
+  <tr>
+    <th>#</th>
+    <th>Khách hàng</th>
+    <th>SĐT khách</th>
+    <th>Món ăn</th>
+    <th>Số lượng</th>
+    <th>Ghi chú</th>
+    <th>Ngày đặt hàng</th>
+    <th>Trạng thái đơn</th>
+  </tr>
+  <ng-container *ngFor="let order of orders,index as i" >
+    <tr>
+      <td>{{i+1}}</td>
+      <td>{{order.customer.name}}</td>
+      <td>{{order.customer.phone}}</td>
+      <td>{{order.dish.name}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.note}}</td>
+      <td>{{order.orderTime.toDateString()}}</td>
+      <td>{{order.status}}</td>
+    </tr>
+  </ng-container>
+</table>

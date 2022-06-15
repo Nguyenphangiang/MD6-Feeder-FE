@@ -55,11 +55,11 @@ export class DishDetailNonCartComponent implements OnInit {
     this.router.navigateByUrl(`/merchant/detail/${id}`);
   }
 
-  changeRecommend(id) {
-    this.dishService.addDishRecommend(id).subscribe(() => {
-      Swal.fire('Thêm yêu thích thành công');
-    }, () => {
-      Swal.fire('Thêm yêu thích thất bại');
-  });
-  }
+  // changeRecommend(id) {
+  //   this.dishService.addDishRecommend(id).subscribe(() => {
+  //     Swal.fire('Thêm yêu thích thành công');
+  //   }, () => {
+  //     Swal.fire('Thêm yêu thích thất bại');
+  // });
+  // }
 }

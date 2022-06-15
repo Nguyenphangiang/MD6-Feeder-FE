@@ -92,6 +92,7 @@ export class MerchantDetailComponent implements OnInit {
         this.sumOfMoney += cart.quantity * cart.dish.price;
         this.quantity = cart.quantity;
       }
+      console.log(carts);
     });
   }
 
@@ -242,6 +243,7 @@ export class MerchantDetailComponent implements OnInit {
   removeAllCartElementToOrder() {
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
       this.getAllCartElement();
+      this.router.navigateByUrl('/order');
     });
     const Toast = Swal.mixin({
       toast: true,
