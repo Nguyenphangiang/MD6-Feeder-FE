@@ -10,6 +10,8 @@ import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {OrderService} from '../../service/order/order.service';
+import {Order} from '../../model/order';
 
 
 @Component({
@@ -31,6 +33,7 @@ export class MerchantDetailComponent implements OnInit {
   sumOfMoney: number;
   cartElement: CartElement;
   dish: Dish;
+  orderElement: Order = {};
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -43,7 +46,8 @@ export class MerchantDetailComponent implements OnInit {
               private router: Router,
               private dishService: DishService,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) {
+              private customerService: AppUserServiceService,
+              private orderService: OrderService) {
     this.activatedRouter.paramMap.subscribe((paraMap) => {
       const id = +paraMap.get('id');
       this.showDetailMerchant(id);
@@ -241,7 +245,7 @@ export class MerchantDetailComponent implements OnInit {
 
   removeAllCartElementToOrder() {
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
-      this.getAllCartElement();
+      this.router.navigateByUrl('/order');
     });
     const Toast = Swal.mixin({
       toast: true,
@@ -260,4 +264,15 @@ export class MerchantDetailComponent implements OnInit {
     });
   }
 
+  addNewOrderElement() {
+    const carts = this.carts;
+    for (const cart of carts) {
+      this.orderElement.quantity = cart.quantity;
+      this.orderElement.dish = cart.dish;
+      this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+      });
+    }
+    this.removeAllCartElementToOrder();
+
+  }
 }

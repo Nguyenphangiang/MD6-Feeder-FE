@@ -17,21 +17,21 @@ export class OrderListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllOrder();
+    // this.getAllOrder();
   }
 
-  getAllOrder() {
-    this.orderService.getAllOrder().subscribe((data) => {
-      this.orderList = data;
-      this.orderList.forEach(order => {
-        if (!this.customerAddressList.includes(order.customer.address)) {
-          this.customerAddressList.push(order.customer.address);
-        }
-      });
-    }, error => {
-      console.log(error);
-    });
-  }
+  // getAllOrder() {
+  //   this.orderService.getAllOrder().subscribe((data) => {
+  //     this.orderList = data;
+  //     this.orderList.forEach(order => {
+  //       if (!this.customerAddressList.includes(order.customer.address)) {
+  //         this.customerAddressList.push(order.customer.address);
+  //       }
+  //     });
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
   orderStatusToString(status) {
     switch (status) {

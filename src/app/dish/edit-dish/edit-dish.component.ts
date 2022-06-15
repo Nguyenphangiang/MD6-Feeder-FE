@@ -70,7 +70,7 @@ export class EditDishComponent implements OnInit {
         name: new FormControl(dish.name),
         description: new FormControl(dish.description),
         price: new FormControl(dish.price),
-        status: new FormControl(dish.status),
+        status: new FormControl(dish.dishStatus),
         merchant: new FormControl(dish.merchant)
       });
     }, () => {
