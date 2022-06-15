@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Dish} from '../../model/dish';
 import {DishService} from '../../service/dish.service';
 import Swal from 'sweetalert2';
+import {AdminService} from '../../service/admin.service';
 
 @Component({
   selector: 'app-admin-dish-list',
@@ -10,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class AdminDishListComponent implements OnInit {
   dishes: Dish[] = [];
-  constructor(private dishService: DishService) { }
+  constructor(private dishService: DishService,
+              private adminService: AdminService) { }
 
   ngOnInit() {
     this.showAllDish();
@@ -21,8 +23,7 @@ export class AdminDishListComponent implements OnInit {
     });
   }
   changeDishRecommend(id) {
-    this.dishService.addDishRecommend(id).subscribe(() => {
-      Swal.fire('Thêm vào danh sách yêu thích');
+    this.adminService.changeDishRecommend(id).subscribe(() => {
       this.showAllDish();
     });
   }

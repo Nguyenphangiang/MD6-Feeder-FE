@@ -6,16 +6,15 @@ import {AdminDishListLoveComponent} from '../../admin/admin-dish-list-love/admin
 import {AdminDishListSoldComponent} from '../../admin/admin-dish-list-sold/admin-dish-list-sold.component';
 import {AdminMerchantListComponent} from '../../admin/admin-merchant-list/admin-merchant-list.component';
 import {AdminDishListOnSaleComponent} from '../../admin/admin-dish-list-on-sale/admin-dish-list-on-sale.component';
+import {AdminMerchantGoldListComponent} from '../../admin/admin-merchant-gold-list/admin-merchant-gold-list.component';
+import {AdminMerchantRestaurantComponent} from '../../admin/admin-merchant-restaurant/admin-merchant-restaurant.component';
+import {AdminDishDetailComponent} from '../../admin/admin-dish-detail/admin-dish-detail.component';
 
 
 const routes: Routes = [
   {
     path: 'user',
     component: AdminUserListComponent
-  },
-  {
-    path: 'merchant',
-    component: AdminMerchantListComponent
   },
   {
     path: 'dish/list',
@@ -27,11 +26,27 @@ const routes: Routes = [
   },
   {
     path: 'dish/list/sold',
-    component: AdminDishListSoldComponent,
+    component: AdminDishListSoldComponent
   },
   {
    path: 'dish/list/onSale',
    component: AdminDishListOnSaleComponent
+  },
+  {
+    path: 'merchant/list/gold',
+    component: AdminMerchantGoldListComponent
+  },
+  {
+    path: 'merchant',
+    component: AdminMerchantListComponent
+  },
+  {
+    path: 'merchant/list',
+    component: AdminMerchantRestaurantComponent
+  },
+  {
+    path: 'dish/detail/:id',
+    component: AdminDishDetailComponent
   }
 ];
 

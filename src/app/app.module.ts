@@ -26,6 +26,9 @@ import { DishDetailComponent } from './dish/dish-detail/dish-detail.component';
 import { AdminMerchantListComponent } from './admin/admin-merchant-list/admin-merchant-list.component';
 import { AdminDishListOnSaleComponent } from './admin/admin-dish-list-on-sale/admin-dish-list-on-sale.component';
 import { InvoiceCreateComponent } from './invoice/invoice-create/invoice-create.component';
+import { AdminMerchantGoldListComponent } from './admin/admin-merchant-gold-list/admin-merchant-gold-list.component';
+import { AdminMerchantRestaurantComponent } from './admin/admin-merchant-restaurant/admin-merchant-restaurant.component';
+import { AdminDishDetailComponent } from './admin/admin-dish-detail/admin-dish-detail.component';
 
 @NgModule({
   declarations: [
