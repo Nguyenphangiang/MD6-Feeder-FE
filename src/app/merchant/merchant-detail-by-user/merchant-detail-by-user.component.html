@@ -32,8 +32,9 @@
     <div class="row">
       <div class="col-md-12">
                     <span class="restaurant-detailed-action-btn float-right">
-                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i
-                          class="icofont-heart text-danger"></i> Yêu thích</button>
+                      <a routerLink="/merchant/{{id}}/dishes/create" class="btn btn-success">Tạo món ăn mới</a>
+<!--                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i-->
+<!--                          class="icofont-heart text-danger"></i> Yêu thích</button>-->
                     </span>
         <ul class="nav" id="pills-tab" role="tablist">
           <li class="nav-item">
@@ -75,24 +76,30 @@
                       <div class="list-card-image">
                         <!-- <div class="star position-absolute"><span class="badge badge-success"><i
                                     class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                        <div class="favourite-heart text-danger position-absolute"><a
-                          href="#"><i class="icofont-heart"></i></a></div>
+<!--                        <a href="#" (click)="deleteDish()" >Xóa món ăn</a>-->
+                        <ng-container *ngIf="dish.recommend">
+                          <div class="favourite-heart text-danger position-absolute"><a
+                            href="#"><i class="icofont-heart"></i></a></div>
+                        </ng-container>
                         <div class="member-plan position-absolute"><span
                           class="badge badge-dark">{{dish.dishStatus.name
                           }}</span></div>
                         <a href="#">
-                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
+                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img" >
                         </a>
                       </div>
                       <div class="p-3 position-relative">
                         <div class="list-card-body">
                           <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}</a></h6>
+                          <div class="favourite-heart text-danger position-absolute">
+                            <button (click)="deleteDish(dish.id)" class="btn btn-outline-primary btn-sm"><i class="icofont-trash"></i></button>
+                          </div>
                           <p class="text-gray mb-2">{{merchant.address}}</p>
                           <p class="text-gray time mb-0"><a
                             class="btn btn-link btn-sm text-black" href="#">{{dish.price}}<span
                             class="badge badge-success"></span>VND</a> <span
                             class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
+                                                            <button class="btn btn-outline-success " routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}"><i class="icofont-look"></i></button>
                                                         </span>
                           </p>
                         </div>
@@ -103,68 +110,68 @@
                 <!-- <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5> -->
               </div>
 
-              <div class="row">
-                <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3
-                  ITEMS</small></h5>
-                <div class="col-md-12">
-                  <div class="bg-white rounded border shadow-sm mb-4">
-                    <div class="menu-list p-3 border-bottom">
-                                                <span class="count-number float-right">
-                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                                      class="icofont-minus"></i> </button>
-                                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                                      class="icofont-plus"></i> </button>
-                                                </span>
-                      <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/5.jpg"
-                             alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h6 class="mb-1">Chả Nấm Tươi</h6>
-                          <p class="text-gray mb-0">150.000 (1kg)</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="menu-list p-3 border-bottom">
-                                                <span class="count-number float-right">
-                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                                      class="icofont-minus"></i> </button>
-                                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                                      class="icofont-plus"></i> </button>
-                                                </span>
-                      <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"
-                             alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span
-                            class="badge badge-danger">BESTSELLER</span></h6>
-                          <p class="text-gray mb-0">60.000/1kg</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="menu-list p-3">
-                                                <span class="count-number float-right">
-                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                                      class="icofont-minus"></i> </button>
-                                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                                      class="icofont-plus"></i> </button>
-                                                </span>
-                      <div class="media">
-                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"
-                             alt="Generic placeholder image">
-                        <div class="media-body">
-                          <h6 class="mb-1">Chả Mỡ Phố Cổ
-                            <span class="badge badge-success">Siêu giảm giá</span>
-                          </h6>
-                          <p class="text-gray mb-0">45.000/1kg</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<!--              <div class="row">-->
+<!--                <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3-->
+<!--                  ITEMS</small></h5>-->
+<!--                <div class="col-md-12">-->
+<!--                  <div class="bg-white rounded border shadow-sm mb-4">-->
+<!--                    <div class="menu-list p-3 border-bottom">-->
+<!--                                                <span class="count-number float-right">-->
+<!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+<!--                                                      class="icofont-minus"></i> </button>-->
+<!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+<!--                                                      class="icofont-plus"></i> </button>-->
+<!--                                                </span>-->
+<!--                      <div class="media">-->
+<!--                        <img class="mr-3 rounded-pill" src="assets/img/5.jpg"-->
+<!--                             alt="Generic placeholder image">-->
+<!--                        <div class="media-body">-->
+<!--                          <h6 class="mb-1">Chả Nấm Tươi</h6>-->
+<!--                          <p class="text-gray mb-0">150.000 (1kg)</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="menu-list p-3 border-bottom">-->
+<!--                                                <span class="count-number float-right">-->
+<!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+<!--                                                      class="icofont-minus"></i> </button>-->
+<!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+<!--                                                      class="icofont-plus"></i> </button>-->
+<!--                                                </span>-->
+<!--                      <div class="media">-->
+<!--                        <img class="mr-3 rounded-pill" src="assets/img/2.jpg"-->
+<!--                             alt="Generic placeholder image">-->
+<!--                        <div class="media-body">-->
+<!--                          <h6 class="mb-1">Chả Cốm Non Ước Lễ <span-->
+<!--                            class="badge badge-danger">BESTSELLER</span></h6>-->
+<!--                          <p class="text-gray mb-0">60.000/1kg</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                    <div class="menu-list p-3">-->
+<!--                                                <span class="count-number float-right">-->
+<!--                                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+<!--                                                      class="icofont-minus"></i> </button>-->
+<!--                                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+<!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+<!--                                                      class="icofont-plus"></i> </button>-->
+<!--                                                </span>-->
+<!--                      <div class="media">-->
+<!--                        <img class="mr-3 rounded-pill" src="assets/img/3.jpg"-->
+<!--                             alt="Generic placeholder image">-->
+<!--                        <div class="media-body">-->
+<!--                          <h6 class="mb-1">Chả Mỡ Phố Cổ-->
+<!--                            <span class="badge badge-success">Siêu giảm giá</span>-->
+<!--                          </h6>-->
+<!--                          <p class="text-gray mb-0">45.000/1kg</p>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
 
             </div>
             <div class="tab-pane fade" id="pills-gallery" role="tabpanel"
@@ -483,110 +490,15 @@
             class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
             <img class="img-fluid float-left mr-3" src="assets/img/earn-score-icon.png">
             <h6 class="pt-0 text-primary mb-1 font-weight-bold">VSATTP</h6>
-            <p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p>
+            <ng-container *ngIf="merchant.safeFoodLicense!=='null'"><p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
+            <ng-container *ngIf="merchant.safeFoodLicense=='null'"><p class="mb-0">Nhà hàng chưa có giấy phép đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
             <div class="icon-overlap">
               <i class="icofont-sale-discount"></i>
             </div>
           </div>
         </div>
         <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
-          <h5 class="mb-1 text-white">Đặt hàng ngay</h5>
-          <p class="mb-4 text-white">5 sản phẩm</p>
-          <div class="bg-white rounded shadow-sm mb-2">
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">60.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thịt nướng</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">15.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">60.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">20.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Bánh đa</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">15.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="mb-2 bg-white rounded p-2 clearfix">
-            <img class="img-fluid float-left" src="assets/img/wallet-icon.png">
-            <h6 class="font-weight-bold text-right mb-2">Tổng đơn: <span
-              class="text-danger">235.000</span> vnđ</h6>
-            <h6 class="font-weight-bold text-right mb-2">Giảm giá: <span
-              class="text-danger">30.000</span> vnđ</h6>
-            <h6 class="font-weight-bold text-right mb-2">Thanh toán: <span
-              class="text-danger">205.000</span> vnđ</h6>
-            <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
-            <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
-          </div>
-          <a href="checkout.html" class="btn btn-success btn-block btn-lg">Checkout <i
-            class="icofont-long-arrow-right"></i></a>
+          <img src="assets/img/{{merchant.safeFoodLicense}}" alt="" class="img-fluid">
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {Merchant} from '../../model/merchant';
 import {MerchantForm} from '../../model/merchant-form';
 import {Dish} from '../../model/dish';
 import {DishService} from '../../service/dish.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-merchant-detail-by-user',
@@ -35,8 +36,26 @@ export class MerchantDetailByUserComponent implements OnInit {
   }
   findDishByMerchantId(id) {
     this.dishService.getAll(id).subscribe((dishes) => {
-      console.log(dishes);
       this.dishes = dishes;
+    });
+  }
+
+  deleteDish(id) {
+    event.preventDefault();
+    Swal.fire({
+      title: 'Xóa món ăn này?',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Quay lại'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dishService.deleteDish(id).subscribe(() => {
+          Swal.fire('Xóa thành công');
+          this.findDishByMerchantId(this.id);
+        }, () => {
+          Swal.fire('Xóa thất  bại');
+        });
+      }
     });
   }
 }
