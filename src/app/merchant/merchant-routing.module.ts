@@ -11,6 +11,7 @@ import {MerchantDetailByUserComponent} from './merchant-detail-by-user/merchant-
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
 import {MerchantListComponent} from './merchant-list/merchant-list.component';
 import {MerchantGoldListComponent} from './merchant-gold-list/merchant-gold-list.component';
+import {MerchantOrderComponent} from './merchant-order/merchant-order.component';
 
 
 
@@ -28,7 +29,7 @@ const routes: Routes = [
     component : DishListComponent
   },
   {
-    path : ':id/dishes/create/:id_merchant',
+    path : ':id/dishes/create',
     component : CreateDishComponent
   },
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: 'detail/user/:id',
     component: MerchantDetailByUserComponent
+  },
+  {
+    path: 'detail/user/:id/orders',
+    component: MerchantOrderComponent
   },
   {
     path: 'dishName/:dishName',

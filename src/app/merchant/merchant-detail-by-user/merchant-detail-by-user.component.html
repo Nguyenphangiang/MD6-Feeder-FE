@@ -32,8 +32,9 @@
     <div class="row">
       <div class="col-md-12">
                     <span class="restaurant-detailed-action-btn float-right">
-                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i
-                          class="icofont-heart text-danger"></i> Yêu thích</button>
+                      <a routerLink="/merchant/{{id}}/dishes/create" class="btn btn-success">Tạo món ăn mới</a>
+<!--                        <button class="btn btn-light btn-sm border-light-btn" type="button"><i-->
+<!--                          class="icofont-heart text-danger"></i> Yêu thích</button>-->
                     </span>
         <ul class="nav" id="pills-tab" role="tablist">
           <li class="nav-item">
@@ -53,6 +54,10 @@
           <li class="nav-item">
             <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews"
                role="tab" aria-controls="pills-reviews" aria-selected="false">Đánh giá & Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-orders-tab" data-toggle="pill" href="#pills-orders"
+               role="tab" aria-controls="pills-reviews" aria-selected="false">Các đơn hiện có</a>
           </li>
         </ul>
       </div>
@@ -81,7 +86,7 @@
                           class="badge badge-dark">{{dish.dishStatus.name
                           }}</span></div>
                         <a href="#">
-                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
+                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img" style="width: 180px;height: 180px">
                         </a>
                       </div>
                       <div class="p-3 position-relative">
@@ -92,7 +97,7 @@
                             class="btn btn-link btn-sm text-black" href="#">{{dish.price}}<span
                             class="badge badge-success"></span>VND</a> <span
                             class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhập</a>
+                                                            <a class="btn btn-outline-success btn-sm" routerLink="/merchant/{{merchant.id}}/dishes/edit/{{dish.id}}">Cập nhật</a>
                                                         </span>
                           </p>
                         </div>
@@ -474,6 +479,10 @@
                 </form>
               </div>
             </div>
+            <div class="tab-pane fade" id="pills-orders" role="tabpanel"
+                 aria-labelledby="pills-reviews-tab">
+              <app-merchant-order></app-merchant-order>
+            </div>
           </div>
         </div>
       </div>
@@ -483,7 +492,8 @@
             class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
             <img class="img-fluid float-left mr-3" src="assets/img/earn-score-icon.png">
             <h6 class="pt-0 text-primary mb-1 font-weight-bold">VSATTP</h6>
-            <p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p>
+            <ng-container *ngIf="merchant.safeFoodLicense!=='null'"><p class="mb-0">Nhà hàng chứng nhận đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
+            <ng-container *ngIf="merchant.safeFoodLicense=='null'"><p class="mb-0">Nhà hàng chưa có giấy phép đảm bảo vệ sinh an toàn thực phẩm</p></ng-container>
             <div class="icon-overlap">
               <i class="icofont-sale-discount"></i>
             </div>

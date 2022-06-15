@@ -5,6 +5,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DishStatus} from '../../model/dish-status';
 import {DishStatusService} from '../../service/dish-status.service';
+import {MerchantServiceService} from '../../service/merchant-service.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-dish',
@@ -22,15 +25,18 @@ export class CreateDishComponent implements OnInit {
     price: new FormControl(),
     status: new FormControl(),
   });
-
+  imageLink;
   id_merchant: string;
-
+  user;
   constructor(private dishService: DishService,
+              private merchantService: MerchantServiceService,
               private statusService: DishStatusService,
               private activateRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private sanitizer: DomSanitizer) {
     this.activateRoute.paramMap.subscribe((paramMap) => {
-      this.id_merchant = paramMap.get('id_merchant');
+      this.id_merchant = paramMap.get('id');
+      this.getUser();
     });
   }
 
@@ -38,11 +44,20 @@ export class CreateDishComponent implements OnInit {
     this.getStatus();
   }
 
-  onselectFile(event: Event) {
-    // @ts-ignore
-    this.userFile = event.target.files[0];
+  backToDishList() {
+    this.router.navigateByUrl('/merchant/detail/user/' + this.user.id);
   }
 
+  onselectFile(event) {
+    this.userFile = event.target.files[0];
+    this.imageLink = URL.createObjectURL(this.userFile);
+  }
+
+  getUser() {
+    this.merchantService.findById(+this.id_merchant).subscribe((data) => {
+      this.user = data.user;
+    });
+  }
   createDish() {
     const dish = new FormData();
     dish.append('image', this.userFile);
@@ -51,9 +66,9 @@ export class CreateDishComponent implements OnInit {
     dish.append('price', this.dishForm.get('price').value);
     dish.append('status', this.dishForm.get('status').value);
     this.dishService.create(this.id_merchant, dish).subscribe(() => {
-      alert('Thanh cong');
-      this.dishForm.reset();
-      this.router.navigateByUrl('merchant/' + this.id_merchant + '/dishes');
+    Swal.fire('Tạo mới món ăn thành công!');
+    this.dishForm.reset();
+    this.router.navigateByUrl('merchant/detail/user/' + this.user.id);
     });
   }
 
