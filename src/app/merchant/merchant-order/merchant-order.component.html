@@ -1,24 +1,38 @@
-<table border="1">
-  <tr>
+<div class="bg-white rounded shadow-sm p-4 mb-4">
+<table class="table table-bordered table-striped">
+
+  <thead class="thead-dark"><tr>
     <th>#</th>
-    <th>Khách hàng</th>
-    <th>SĐT khách</th>
-    <th>Món ăn</th>
+  <th>Khách hàng</th>
+   <th>SĐT khách</th>
+   <th>Món ăn</th>
     <th>Số lượng</th>
     <th>Ghi chú</th>
-    <th>Ngày đặt hàng</th>
-    <th>Trạng thái đơn</th>
+   <th>Ngày đặt hàng</th>
+   <th>Trạng thái đơn</th>
   </tr>
+  </thead>
   <ng-container *ngFor="let order of orders,index as i" >
+<!--    <tr>-->
+<!--      <td>{{i+1}}</td>-->
+<!--      <td>{{order.customer.name}}</td>-->
+<!--      <td>{{order.customer.phone}}</td>-->
+<!--      <td>{{order.dish.name}}</td>-->
+<!--      <td>{{order.quantity}}</td>-->
+<!--      <td>{{order.note}}</td>-->
+<!--      <td>{{order.orderTime.toDateString()}}</td>-->
+<!--      <td>{{order.status}}</td>-->
+<!--    </tr>-->
     <tr>
       <td>{{i+1}}</td>
-      <td>{{order.customer.name}}</td>
-      <td>{{order.customer.phone}}</td>
-      <td>{{order.dish.name}}</td>
-      <td>{{order.quantity}}</td>
-      <td>{{order.note}}</td>
-      <td>{{order.orderTime.toDateString()}}</td>
-      <td>{{order.status}}</td>
+      <td><div [innerText]="orders[i].customer.name"></div></td>
+      <td><div [innerText]="orders[i].customer.phone"></div></td>
+      <td><div [innerText]="orders[i].dish.name"></div></td>
+      <td><div [innerText]="orders[i].quantity"></div></td>
+      <td><div [innerText]="orders[i].note"></div></td>
+      <td><div [innerText]="orders[i].orderTime"></div></td>
+      <td><div [innerText]="orders[i].status"></div></td>
     </tr>
   </ng-container>
 </table>
+</div>

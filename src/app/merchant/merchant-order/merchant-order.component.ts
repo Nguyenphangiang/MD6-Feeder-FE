@@ -13,7 +13,7 @@ export class MerchantOrderComponent implements OnInit {
   user = localStorage.getItem('user');
   temp = JSON.parse(this.user);
   idMerchant: number;
-  orders: Order[];
+  orders: Order[] = [];
   constructor(private orderService: OrderService,
               private merchantService: MerchantServiceService) {
     this.loadOrders();

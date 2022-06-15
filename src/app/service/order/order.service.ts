@@ -35,6 +35,6 @@ export class OrderService {
     return this.httpClient.delete(`${API_URL}/order`);
   }
   getOrdersByMerchantId(idMerchant): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(`${API_URL}/merchant/${idMerchant}`);
+    return this.httpClient.get<Order[]>(`${API_URL}/order/merchant/${idMerchant}`);
   }
 }
