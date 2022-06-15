@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit } from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {ActivatedRoute} from '@angular/router';
 import {Merchant} from '../../model/merchant';
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class MerchantDetailByUserComponent implements OnInit {
   dishes: Dish[] = [];
   merchant: Merchant = {};
-  id: number;
+  @Output() id: number;
   constructor(private merchantService: MerchantServiceService,
               private activatedRouter: ActivatedRoute,
               private dishService: DishService) {
