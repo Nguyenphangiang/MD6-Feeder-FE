@@ -1,0 +1,42 @@
+<div class="dropdown float-right">
+  <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
+     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Danh sách: <span class="text-theme"> Nhà hàng</span> &nbsp;&nbsp;
+  </a>
+  <div class="dropdown-menu dropdown-menu-left shadow-sm border-0 ">
+    <a class="dropdown-item" routerLink="/admin/dish/list"><i class="icofont-fast-food"></i> Món ăn</a>
+    <a class="dropdown-item" routerLink="/admin/user"><i class="icofont-search-restaurant"></i> Khách hàng</a>
+  </div>
+</div>
+<div class="container-fluid">
+  <table class="table">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Name</th>
+      <th scope="col">Role</th>
+      <th scope="col">Status</th>
+      <th scope="col" colspan="4" style="text-align: center">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+<tr *ngFor="let merchant of merchants, index as i">
+  <th scope="row">{{i +1}}</th>
+  <td><a routerLink="/merchant/detail/{{merchant.id}}">{{merchant.user.username}}</a></td>
+  <ng-container *ngIf="!merchant.goldPartner; else elseBlock">
+    <td>{{merchant.name}}</td>
+  </ng-container>
+  <ng-template #elseBlock>
+    <td><i class="icofont-badge">{{merchant.name}}</i></td>
+  </ng-template>
+  <td>{{merchant.user.roles[0].name}}</td>
+  <td>{{merchant.status.name}}</td>
+  <td><button (click)="activeMerchant(merchant.id)" class="btn btn-outline-primary"><i class="icofont-check-circled"> Active</i></button></td>
+  <td><button (click)="setGold(merchant.id)" class="btn btn-outline-primary"><i class="icofont-badge">Set gold</i></button></td>
+  <td><button (click)="blockMerchant(merchant.id)" class="btn btn-primary"><i class="icofont-close-circled"> Block</i></button></td>
+  <td><button (click)="deleteMerchant(merchant.id)" class="btn btn-primary"><i class="icofont-delete"></i></button></td>
+</tr>
+    </tbody>
+  </table>
+</div>

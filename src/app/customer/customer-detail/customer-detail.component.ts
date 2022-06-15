@@ -10,7 +10,7 @@ import {CustomerForm} from '../../model/customer-form';
   styleUrls: ['./customer-detail.component.css']
 })
 export class CustomerDetailComponent implements OnInit {
-  customer: CustomerForm;
+  customer: Customer;
   id: number;
   constructor(private customerService: AppUserServiceService,
               private activatedRouter: ActivatedRoute) {

@@ -20,7 +20,6 @@ import {OrderRemoveAllComponent} from '../../orders/order-remove-all/order-remov
     CommonModule,
     OrderRoutingModule,
     ReactiveFormsModule,
-    AppRoutingModule
   ]
 })
 export class OrderModule { }

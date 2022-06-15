@@ -7,6 +7,8 @@ import {RegisterComponent} from './auth/register/register.component';
 import {SwitchRegisterComponent} from './auth/switch-register/switch-register.component';
 import {CreateComponent} from './merchant/create/create.component';
 
+
+
 const routes: Routes = [
   {
     path: 'login',
@@ -47,8 +49,12 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./module/admin/admin.module').then(module => module.AdminModule)
+  },
+  {
+    path: 'invoice',
+    loadChildren: () => import('./module/invoice/invoice.module').then(module => module.InvoiceModule)
   }
-  ];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

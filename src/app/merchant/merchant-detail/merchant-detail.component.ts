@@ -19,17 +19,18 @@ import Swal from 'sweetalert2';
 })
 export class MerchantDetailComponent implements OnInit {
   merchant: Merchant = {};
-  dish: Dish[] = [];
+  dishes: Dish[] = [];
   carts: CartElement [] = [];
   user = localStorage.getItem('user');
   temp = JSON.parse(this.user);
   userId: number;
   quantity: number;
-  check: number;
+  checkDish: number;
+  checkMerchant: number;
   customer: CustomerForm;
   sumOfMoney: number;
   cartElement: CartElement;
-  dish1: Dish;
+  dish: Dish;
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -55,6 +56,7 @@ export class MerchantDetailComponent implements OnInit {
   ngOnInit() {
     this.userId = this.temp.id;
     this.findCustomerByUserId(this.temp.id);
+    // this.getAllCartElement();
   }
 
   showDetailMerchant(id) {
@@ -65,7 +67,7 @@ export class MerchantDetailComponent implements OnInit {
 
   showAllDishMerchant(id) {
     this.dishService.getAll(id).subscribe((dish) => {
-      this.dish = dish;
+      this.dishes = dish;
     });
   }
 
@@ -78,7 +80,7 @@ export class MerchantDetailComponent implements OnInit {
 
   findDishById(dishId) {
     this.dishService.findDishById(dishId).subscribe((dish) => {
-      this.dish1 = dish;
+      this.dish = dish;
     });
   }
 
@@ -90,86 +92,70 @@ export class MerchantDetailComponent implements OnInit {
         this.sumOfMoney += cart.quantity * cart.dish.price;
         this.quantity = cart.quantity;
       }
+      console.log(carts);
     });
   }
 
-  createNewCartElement(idDish) {
+  createNewCartElement1(idCustomer, idDish, cartElement, nameDish, nameMerchant) {
+    this.cartElementService.addCartElement(idCustomer, idDish, cartElement).subscribe(() => {
+      this.getAllCartElement();
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Đã thêm món ' + nameDish + ' tại cửa hàng ' + nameMerchant,
+      });
+    });
+  }
+
+  createNewCartElement(idDish, idMerchant, nameMerchant, nameDish) {
     const cartElement = this.cartForm.value;
     const customer2 = this.customer;
     const carts1 = this.carts;
+    let merchantName = '';
     cartElement.customer1 = {
       id: customer2
     };
     cartElement.dish = {
       id: idDish
     };
-    for (const cart of carts1) {
-      if (idDish === cart.dish.id) {
-        this.check = 1;
-        break;
-      } else {
-        this.check = 2;
+    if (this.carts.length === 0) {
+      this.checkMerchant = 1;
+      this.checkDish = 2;
+    } else {
+      for (const cart of carts1) {
+        if (idDish === cart.dish.id) {
+          this.checkDish = 1;
+          break;
+        } else {
+          this.checkDish = 2;
+        }
+        if (idMerchant === cart.dish.merchant.id) {
+          this.checkMerchant = 1;
+        } else {
+          this.checkMerchant = 2;
+        }
+        merchantName = cart.dish.merchant.name;
       }
     }
-    if (this.check !== 1) {
-      this.cartElementService.addCartElement(this.customer.id, cartElement.dish.id, cartElement).subscribe(() => {
-        this.getAllCartElement();
-        if (this.carts.length === 1) {
+    if (this.checkMerchant === 1) {
+      if (this.checkDish !== 1) {
+        this.cartElementService.addCartElement(this.customer.id, cartElement.dish.id, cartElement).subscribe(() => {
+          this.getAllCartElement();
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            }
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Người có tâm hồn đẹp như bạn nên chọn thêm món '
-          });
-        }
-        if (this.carts.length === 2) {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            }
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Mua 2 món chưa đủ chất dinh dưỡng đâu :3 '
-          });
-        }
-        if (this.carts.length === 3) {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            }
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Thôi thì thêm món nữa để thay đổi khẩu vị cho đỡ ngán đi <3 '
-          });
-        } else {
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
+            timer: 1000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -180,26 +166,43 @@ export class MerchantDetailComponent implements OnInit {
             icon: 'success',
             title: 'Bạn mà số 2 thì không ai số 1 hí hí :v '
           });
-        }
-      });
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer);
+          }
+        });
+        Toast.fire({
+          icon: 'error',
+          title: 'Ôi bạn ơi! Món này chọn rồi'
+        });
+      }
     } else {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
+      Swal.fire({
+        title: 'Tạo một giỏ hàng mới ?',
+        text: 'Thêm món ăn này từ ' + nameMerchant + 'sẽ xóa giỏ hàng của' + merchantName + ' .Tiếp tục?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đúng tôi muốn đặt cửa hàng khác!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
+            this.createNewCartElement1(this.customer.id, idDish, cartElement, nameDish, nameMerchant);
+            this.getAllCartElement();
+          });
+          // this.createNewCartElement(idDish, idMerchant, nameMerchant, nameDish);
         }
-      });
-      Toast.fire({
-        icon: 'error',
-        title: 'Ôi bạn ơi! Món này chọn rồi'
       });
     }
-
   }
 
   increaseQuantityOfCartElement(idCart: number) {
@@ -240,6 +243,7 @@ export class MerchantDetailComponent implements OnInit {
   removeAllCartElementToOrder() {
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
       this.getAllCartElement();
+      this.router.navigateByUrl('/order');
     });
     const Toast = Swal.mixin({
       toast: true,

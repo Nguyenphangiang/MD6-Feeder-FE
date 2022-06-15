@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   roles: any;
   role: string;
   carts: CartElement [] = [];
+  cartLength: number;
   customer: CustomerForm;
   authority = 0;
   sumOfMoney: number;
@@ -69,6 +70,7 @@ export class NavbarComponent implements OnInit {
     this.cartElementService.getAllCartElement(this.customer.id).subscribe((carts) => {
       this.carts = carts;
       this.sumOfMoney = 0;
+      this.cartLength = carts.length;
       for (const cart of carts) {
         this.sumOfMoney += cart.quantity * cart.dish.price;
       }

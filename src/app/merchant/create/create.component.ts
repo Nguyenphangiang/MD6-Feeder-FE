@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
     pw: new FormGroup({
       password: new FormControl(),
       confirmPassword: new FormControl(),
-    }),
+    }, {validators: this.comparePassword}),
     username: new FormControl(),
   });
 
@@ -76,7 +76,7 @@ export class CreateComponent implements OnInit {
       Swal.fire('Đăng ký thành công, Kiểm tra email để kích hoạt !');
       this.router.navigateByUrl('/login');
     }, () => {
-      Swal.fire('Đăng ký không thành công, kiểm tra thông tin nhập vào!');
+      Swal.fire('Tài khoản đã có người sử dụng');
     });
   }
   get usernameControl() {

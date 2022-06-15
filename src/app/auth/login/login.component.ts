@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../service/authentication.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password)
       .subscribe(data => {
+      }, () => {
+        Swal.fire('Tài khoản hoặc mật khẩu không chính xác');
       });
   }
 }

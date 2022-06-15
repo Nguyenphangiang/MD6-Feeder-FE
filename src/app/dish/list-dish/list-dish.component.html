@@ -9,282 +9,21 @@
         <div class="dropdown float-right">
           <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort by: <span class="text-theme">Distance</span> &nbsp;&nbsp;
+            Danh sách: <span class="text-theme">Món ăn</span> &nbsp;&nbsp;
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" href="#">Distance</a>
-            <a class="dropdown-item" href="#">No Of Offers</a>
-            <a class="dropdown-item" href="#">Rating</a>
+            <a class="dropdown-item" routerLink="/dish/favorite/list">Món ăn yêu thích</a>
+            <a class="dropdown-item" routerLink="/merchant">Nhà hàng</a>
+            <a class="dropdown-item" routerLink="/merchant/list/gold">Nhà hàng GOLD</a>
           </div>
         </div>
-        <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">299 restaurants
+        <h4 class="font-weight-bold mt-0 mb-3">DISHES <small class="h6 mb-0 ml-2">{{dishes.length}} Món
         </small>
         </h4>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3">
-        <div class="filters shadow-sm rounded bg-white mb-4">
-          <div class="filters-header border-bottom pl-4 pr-4 pt-3 pb-3">
-            <h5 class="m-0">Filter By</h5>
-          </div>
-          <div class="filters-body">
-            <div id="accordion">
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingOne">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapseOne" aria-expanded="true"
-                       aria-controls="collapseOne">
-                      Location <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb1">
-                      <label class="custom-control-label" for="cb1">Ludhiana Junction <small
-                        class="text-black-50">230</small>
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb2">
-                      <label class="custom-control-label" for="cb2">Model Town <small
-                        class="text-black-50">95</small>
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb3">
-                      <label class="custom-control-label" for="cb3">Civil Lines <small
-                        class="text-black-50">35</small>
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb4">
-                      <label class="custom-control-label" for="cb4">Dugri <small
-                        class="text-black-50">46</small>
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb5">
-                      <label class="custom-control-label" for="cb5">PAU <small
-                        class="text-black-50">20</small></label>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingTwo">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapsetwo" aria-expanded="true"
-                       aria-controls="collapsetwo">
-                      All cuisines
-                      <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapsetwo" class="collapse show" aria-labelledby="headingTwo"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <form class="filters-search mb-3" [formGroup]="">
-                      <div class="form-group">
-                        <i class="icofont-search"></i>
-                        <input type="text" class="form-control"
-                               placeholder="Start typing to search...">
-                      </div>
-                    </form>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb6">
-                      <label class="custom-control-label" for="cb6">American <small
-                        class="text-black-50">156</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb7">
-                      <label class="custom-control-label" for="cb7">Pizza <small
-                        class="text-black-50">120</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb8">
-                      <label class="custom-control-label" for="cb8">Healthy <small
-                        class="text-black-50">130</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb9">
-                      <label class="custom-control-label" for="cb9">Vegetarian <small
-                        class="text-black-50">120</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb10">
-                      <label class="custom-control-label" for="cb10"> Chinese <small
-                        class="text-black-50">111</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb11">
-                      <label class="custom-control-label" for="cb11"> Hamburgers <small
-                        class="text-black-50">95</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb12">
-                      <label class="custom-control-label" for="cb12"> Dessert <small
-                        class="text-black-50">50</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb13">
-                      <label class="custom-control-label" for="cb13"> Chicken <small
-                        class="text-black-50">32</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb14">
-                      <label class="custom-control-label" for="cb14"> Indian <small
-                        class="text-black-50">156</small></label>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingCategory">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapseFeature" aria-expanded="true"
-                       aria-controls="collapseFeature">
-                      Feature <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseFeature" class="collapse" aria-labelledby="headingCategory"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb15">
-                      <label class="custom-control-label" for="cb15">Free Delivery <small
-                        class="text-black-50">156</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb26">
-                      <label class="custom-control-label" for="cb26">Coupons <small
-                        class="text-black-50">120</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb37">
-                      <label class="custom-control-label" for="cb37">Open Now [1:31am] <small
-                        class="text-black-50">85</small>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card border-bottom p-4">
-                <div class="filters-card-header" id="headingOffer">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapseOffer" aria-expanded="true"
-                       aria-controls="collapseOffer">
-                      Delivery time <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseOffer" class="collapse" aria-labelledby="headingOffer"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb19">
-                      <label class="custom-control-label" for="cb19">Any Time </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb20">
-                      <label class="custom-control-label" for="cb20">25 min
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb36">
-                      <label class="custom-control-label" for="cb36">30 min
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb47">
-                      <label class="custom-control-label" for="cb47">40 min
-                      </label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb58">
-                      <label class="custom-control-label" for="cb58">50 min
-                      </label>
-                    </div>
-                    <div class="mt-2"><a href="#" class="link">See all</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="filters-card p-4">
-                <div class="filters-card-header" id="headingCategory">
-                  <h6 class="mb-0">
-                    <a href="#" class="btn-link" data-toggle="collapse"
-                       data-target="#collapseCategory" aria-expanded="true"
-                       aria-controls="collapseCategory">
-                      Category <i class="icofont-arrow-down float-right"></i>
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
-                     data-parent="#accordion">
-                  <div class="filters-card-body card-shop-filters">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb15">
-                      <label class="custom-control-label" for="cb15">Delivery <small
-                        class="text-black-50">156</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb26">
-                      <label class="custom-control-label" for="cb26">Dine-out <small
-                        class="text-black-50">120</small></label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="cb37">
-                      <label class="custom-control-label" for="cb37">Cafés<small
-                        class="text-black-50">85</small>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="filters pt-2">
-          <div class="filters-body rounded shadow-sm bg-white">
-            <div class="filters-card p-4">
-              <div>
-                <div class="filters-card-body card-shop-filters pt-0">
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" name="customRadio"
-                           class="custom-control-input" checked="">
-                    <label class="custom-control-label" for="customRadio1">Gold Partner</label>
-                  </div>
-                  <div class="custom-control custom-radio mt-1 mb-1">
-                    <input type="radio" id="customRadio2" name="customRadio"
-                           class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio2">Order Food
-                      Online</label>
-                  </div>
-                  <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio3" name="customRadio"
-                           class="custom-control-input" checked="">
-                    <label class="custom-control-label" for="customRadio3">Osahan Eat</label>
-                  </div>
-                  <hr>
-                  <small class="text-success">Use code OSAHAN50 to get 50% OFF (up to $30) on
-                    first 5 orders. T&Cs apply.</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
+      <div class="col-md-8">
         <div class="owl-carousel owl-carousel-category owl-theme list-cate-page mb-4">
           <div class="item">
             <div class="osahan-category-item">
@@ -368,17 +107,19 @@
             </div>
           </div>
         </div>
-        <div class="row" >
+        <div class="row">
           <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor="let dish of dishes">
+            <form (ngSubmit)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)"
+                  [formGroup]="cartForm">
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
                 <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
                   class="icofont-heart"></i></a></div>
-                <div class="member-plan position-absolute"><span
-                  class="badge badge-dark">Promoted</span></div>
-                <a href="detail.html">
+                <div class="member-plan position-absolute" ><span
+                  class="badge badge-dark">{{dish.dishStatus.name}}</span></div>
+                <a routerLink="/dish/detail/{{dish.id}}">
                   <img src="assets/img/{{dish.image}}"  class=" img-fluid item-img">
                   <!--                       height="161px" width="255"-->
                 </a>
@@ -388,8 +129,7 @@
                   <h6 class="mb-1"><a href="detail.html" class="text-black">{{dish.name}}</a></h6>
                   <p class="text-gray mb-3">{{dish.description}}</p>
                   <p class="text-gray mb-3 time"><span
-                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                    class="icofont-wall-clock"></i> 20–25 min</span> <span
+                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2" ><button class="btn btn-outline-light text-primary" style=" font-size: 10px"><i   class="icofont-cart">Mua hàng</i> </button></span> <span
                     class="float-right text-black-50"> {{dish.price}} VND</span></p>
                 </div>
                 <div class="list-card-badge">
@@ -398,12 +138,149 @@
                 </div>
               </div>
             </div>
+            </form>
           </div>
           <div class="col-md-12 text-center load-more">
             <button class="btn btn-primary" type="button" disabled>
               <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
               Loading...
             </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+          <h5 class="mb-1 text-white">Đặt hàng ngay</h5>
+          <p class="mb-4 text-white">{{carts.length}} sản phẩm</p>
+          <div class="bg-white rounded shadow-sm mb-2">
+            <div class="gold-members p-2 border-bottom" *ngFor="let cart of carts">
+              <p class="text-gray mb-0 float-right ml-2">{{cart.dish.price * cart.quantity}}</p>
+              <span class="count-number float-right" >
+                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"
+                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <button *ngIf="cart.quantity > 1" class="btn btn-outline-secondary  btn-sm left dec"
+                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="{{cart.quantity}}" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"
+                                            (click)="increaseQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <button  class="btn btn-outline-secondary  btn-sm left dec"
+                         (click)="removeCartElement(cart.id)"> <i class="icofont-ui-delete"></i> </button>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">{{cart.dish.name}}</p>
+                </div>
+              </div>
+            </div>
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">60.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">20.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Bánh đa</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+          </div>
+          <div class="mb-2 bg-white rounded p-2 clearfix">
+            <img class="img-fluid float-left" src="assets/img/wallet-icon.png">
+            <h6 class="font-weight-bold text-right mb-2">Tổng đơn: <span
+              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+            <h6 class="font-weight-bold text-right mb-2">Giảm giá: <span
+              class="text-danger">30.000</span> vnđ</h6>
+            <h6 class="font-weight-bold text-right mb-2">Thanh toán: <span
+              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+            <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
+            <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
+          </div>
+          <button (click)="removeAllCartElementToOrder()" class="btn btn-success btn-block btn-lg">Checkout <i
+            class="icofont-long-arrow-right"></i></button>
+        </div>
+        <div class="filters pt-2">
+          <div class="filters-body rounded shadow-sm bg-white">
+            <div class="filters-card p-4">
+              <div>
+                <div class="filters-card-body card-shop-filters pt-0">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio"
+                           class="custom-control-input" checked="">
+                    <label class="custom-control-label" for="customRadio1">Gold Partner</label>
+                  </div>
+                  <div class="custom-control custom-radio mt-1 mb-1">
+                    <input type="radio" id="customRadio2" name="customRadio"
+                           class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">Order Food
+                      Online</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio3" name="customRadio"
+                           class="custom-control-input" checked="">
+                    <label class="custom-control-label" for="customRadio3">Osahan Eat</label>
+                  </div>
+                  <hr>
+                  <small class="text-success">Use code OSAHAN50 to get 50% OFF (up to $30) on
+                    first 5 orders. T&Cs apply.</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -414,7 +291,8 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho khách hàng</a></h5>
+        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho
+          khách hàng</a></h5>
       </div>
     </div>
   </div>
@@ -486,15 +364,20 @@
         <div class="search-links">
           <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> | <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> | <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
-          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
           href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
           href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a>
         </div>

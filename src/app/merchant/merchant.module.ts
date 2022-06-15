@@ -11,6 +11,10 @@ import { DishListComponent } from './dish-list/dish-list.component';
 import {DishModule} from '../module/dish/dish.module';
 import { MerchantDetailByUserComponent } from './merchant-detail-by-user/merchant-detail-by-user.component';
 import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-name.component';
+import { MerchantListComponent } from './merchant-list/merchant-list.component';
+import { MerchantGoldListComponent } from './merchant-gold-list/merchant-gold-list.component';
+
+
 import { MerchantOrderComponent } from './merchant-order/merchant-order.component';
 
 @NgModule({
@@ -23,6 +27,8 @@ import { MerchantOrderComponent } from './merchant-order/merchant-order.componen
     DishListComponent,
     MerchantDetailByUserComponent,
     FindDishByNameComponent,
+    MerchantListComponent,
+    MerchantGoldListComponent,
     MerchantOrderComponent,
   ],
   imports: [
