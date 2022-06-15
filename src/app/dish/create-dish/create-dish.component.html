@@ -1,39 +1,74 @@
-<p>Thêm mới món ăn</p>
+<body class="bg-white">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+              <h3 class="login-heading mb-4">Thêm mới món ăn</h3>
+              <a routerLink="#" (click)="backToDishList()">Quay lại danh sách món ăn</a>
 
 <form [formGroup]="dishForm" (ngSubmit)="createDish()" enctype="multipart/form-data">
-  <table>
+  <div class="form-label-group">
+    <input type="text" id="name" class="form-control" formControlName="name">
+    <label for="name">Tên món</label>
+    <ng-container *ngIf="nameControl.touched && nameControl.invalid">
+      <div *ngIf="nameControl.errors?.required" class="col alert alert-danger" role="alert">
+        <i class="icofont-close-circled"></i> Tên món không được để trống.
+      </div>
+    </ng-container>
+  </div>
     <div>
-      <label for="image">Thêm hình ảnh</label>
+      <label for="image">Thêm hình ảnh</label><br>
       <input type="file" id="image" formControlName="image" class="form-control"   (change)="onselectFile($event)">
+      <ng-container *ngIf="check">
+        <img [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">
+      </ng-container>
+      <!--      <img [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">-->
     </div>
-    <div>
-      <label for="name">Tên món</label>
-      <input type="text" id="name" class="form-control" formControlName="name">
-
-    </div>
-    <div>
-      <label for="description">Mô tả</label>
+    <div class="form-label-group">
       <input type="text" id="description" formControlName="description" class="form-control">
+      <label for="description">Mô tả</label>
+      <ng-container *ngIf="descriptionControl.touched && descriptionControl.invalid">
+        <div *ngIf="descriptionControl.errors?.required" class="col alert alert-danger" role="alert">
+          <i class="icofont-close-circled"></i> Mô tả không được để trống.
+        </div>
+      </ng-container>
     </div>
-    <div>
-      <label for="price">Giá</label>
+  <div>
+    <label for="status">Trạng thái</label>
+    <select id="status" formControlName="dishStatus" class="form-control">
+      <option [ngValue]="null">Chọn trạng thái </option>
+      <ng-container *ngFor="let status1 of status">
+        <option  [value]="status1.id">{{status1.name}}</option>
+      </ng-container>
+    </select>
+  </div>
+    <div class="form-label-group">
       <input type="text" id="price" formControlName="price" class="form-control">
+      <label for="price">Đơn Giá</label>
     </div>
+  <ng-container *ngIf="priceControl.touched && priceControl.invalid">
+    <div *ngIf="priceControl.errors?.required" class="col alert alert-danger" role="alert">
+      <i class="icofont-close-circled"></i> Vui lòng nhập giá tiền.
+    </div>
+    <div *ngIf="priceControl.errors?.pattern" class="col alert alert-danger" role="alert">
+      <i class="icofont-close-circled"></i> Giá tiền chỉ nhập số.
+    </div>
+  </ng-container>
     <div>
-      <label for="status">Trạng thái</label>
-      <select id="status" formControlName="status" class="form-control">
-        <option [ngValue]="null">Chọn trạng thái </option>
-        <ng-container *ngFor="let status1 of status">
-          <option  [value]="status1.id">{{status1.name}}</option>
-        </ng-container>
-      </select>
+      <button class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Tạo mới</button>
     </div>
-
-    <div>
-      <button class="btn btn-primary mr-1">Tạo mới</button>
-    </div>
-  </table>
 </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

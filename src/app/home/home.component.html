@@ -165,33 +165,33 @@
       <div class="col-md-12">
         <div class="owl-carousel owl-carousel-four owl-theme">
           <div class="item">
-            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-              <div class="list-card-image">
-                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                  class="icofont-heart"></i></a></div>
-                <div class="member-plan position-absolute"><span class="badge badge-dark">KM</span>
+              <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                <div class="list-card-image">
+                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                    class="icofont-heart"></i></a></div>
+                  <div class="member-plan position-absolute"><span class="badge badge-dark">KM</span>
+                  </div>
+                  <a href="detail.html">
+                    <img src="../../assets/img/list/1.png" class="img-fluid item-img">
+                  </a>
                 </div>
-                <a href="detail.html">
-                  <img src="../../assets/img/list/1.png" class="img-fluid item-img">
-                </a>
-              </div>
-              <div class="p-3 position-relative">
-                <div class="list-card-body">
-                  <h6 class="mb-1"><a href="detail.html" class="text-black">Ba rọi heo Rút Xương
-                    Loại 1kg</a></h6>
-                  <p class="text-gray mb-3">P. Bình Trị Đông, Bình Tân, TP. HCM</p>
-                  <p class="text-gray mb-3 time"><span
-                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                    class="icofont-wall-clock"></i> 20–25 min</span> <span
-                    class="float-right text-black-50"> 250.00O</span></p>
-                </div>
-                <div class="list-card-badge">
-                  <span class="badge badge-success">Giảm</span> <small>65% | Coupon
-                  OSAHAN50</small>
+                <div class="p-3 position-relative">
+                  <div class="list-card-body">
+                    <h6 class="mb-1"><a href="detail.html" class="text-black">Ba rọi heo Rút Xương
+                      Loại 1kg</a></h6>
+                    <p class="text-gray mb-3">P. Bình Trị Đông, Bình Tân, TP. HCM</p>
+                    <p class="text-gray mb-3 time"><span
+                      class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                      class="icofont-wall-clock"></i> 20–25 min</span> <span
+                      class="float-right text-black-50"> 250.00O</span></p>
+                  </div>
+                  <div class="list-card-badge">
+                    <span class="badge badge-success">Giảm</span> <small>65% | Coupon
+                    OSAHAN50</small>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           <div class="item">
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
               <div class="list-card-image">
@@ -318,226 +318,229 @@
 <section class="section pt-5 pb-5 bg-white becomemember-section border-bottom">
   <div class="container">
     <div class="section-header text-center white-text">
-      <h2>Giảm giá nhiều nhất</h2>
+      <h2>Món ăn yêu thích</h2>
       <span class="line"></span>
     </div>
     <div class="row">
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
+      <ng-container *ngFor="let dish of dishes">
+        <div class="col-md-3 col-sm-6 mb-4">
+          <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
+            <div class="list-card-image">
+              <div class="favourite-heart text-danger position-absolute"><a routerLink="/dish/detail/{{dish.id}}"><i
+                class="icofont-heart"></i></a></div>
+              <div class="member-plan position-absolute"><span class="badge badge-dark">{{dish.dishStatus.name}}</span>
+              </div>
+              <a routerLink="/dish/detail/{{dish.id}}">
+                <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
+              </a>
             </div>
-            <a href="#">
-              <img src="assets/img/list/7.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Sò lông cồ (20-25 con/kg)</a></h6>
-              <p class="text-gray mb-2">P. Bình Trị Đông, Bình Tân, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 250.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>65% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/8.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Cua gạch Cà Mau</a></h6>
-              <p class="text-gray mb-2">P. Bình Trị Đông, Bình Tân, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 250.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>14% | Coupon
-              OSAHAN50</small>
+            <div class="p-3 position-relative">
+              <div class="list-card-body">
+                <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}</a></h6>
+                <p class="text-gray mb-2">{{dish.merchant.address}}</p>
+                <p class="text-gray mb-3 time"><span
+                  class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                  class="icofont-wall-clock"></i> 20–25 min</span> <span
+                  class="float-right text-black-50"> {{dish.price}} VND</span></p>
+              </div>
+              <div class="list-card-badge">
+                <span class="badge badge-success">Giảm</span> <small>65% | Coupon
+                OSAHAN50</small>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/9.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Bao tử heo G Kitchen - 500gr </a></h6>
-              <p class="text-gray mb-2">P. Bình Trị Đông, Bình Tân, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>54% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/1.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>
-              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>54% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/3.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>
-              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>6% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/4.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>
-              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>6% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/5.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>
-              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>6% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6 mb-4">
-        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">
-          <div class="list-card-image">
-            <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-              class="icofont-heart"></i></a></div>
-            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>
-            </div>
-            <a href="#">
-              <img src="assets/img/list/6.png" class="img-fluid item-img">
-            </a>
-          </div>
-          <div class="p-3 position-relative">
-            <div class="list-card-body">
-              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>
-              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>
-              <p class="text-gray mb-3 time"><span
-                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                class="icofont-wall-clock"></i> 20–25 min</span> <span
-                class="float-right text-black-50"> 150.00O</span></p>
-            </div>
-            <div class="list-card-badge">
-              <span class="badge badge-success">Giảm</span> <small>6% | Coupon
-              OSAHAN50</small>
-            </div>
-          </div>
-        </div>
-      </div>
+      </ng-container>
+
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/8.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Cua gạch Cà Mau</a></h6>-->
+<!--              <p class="text-gray mb-2">P. Bình Trị Đông, Bình Tân, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 250.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>14% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/9.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Bao tử heo G Kitchen - 500gr </a></h6>-->
+<!--              <p class="text-gray mb-2">P. Bình Trị Đông, Bình Tân, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>54% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/1.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>-->
+<!--              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>54% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/3.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>-->
+<!--              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>6% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/4.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>-->
+<!--              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>6% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/5.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>-->
+<!--              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>6% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-sm-6 mb-4">-->
+<!--        <div class="list-card bg-white rounded overflow-hidden position-relative shadow-sm">-->
+<!--          <div class="list-card-image">-->
+<!--            <div class="favourite-heart text-danger position-absolute"><a href="#"><i-->
+<!--              class="icofont-heart"></i></a></div>-->
+<!--            <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span>-->
+<!--            </div>-->
+<!--            <a href="#">-->
+<!--              <img src="assets/img/list/6.png" class="img-fluid item-img">-->
+<!--            </a>-->
+<!--          </div>-->
+<!--          <div class="p-3 position-relative">-->
+<!--            <div class="list-card-body">-->
+<!--              <h6 class="mb-1"><a href="#" class="text-black">Ba rọi heo Rút Xương </a></h6>-->
+<!--              <p class="text-gray mb-2">P. 2, Quận 3, TP. HCM</p>-->
+<!--              <p class="text-gray mb-3 time"><span-->
+<!--                class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i-->
+<!--                class="icofont-wall-clock"></i> 20–25 min</span> <span-->
+<!--                class="float-right text-black-50"> 150.00O</span></p>-->
+<!--            </div>-->
+<!--            <div class="list-card-badge">-->
+<!--              <span class="badge badge-success">Giảm</span> <small>6% | Coupon-->
+<!--              OSAHAN50</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
     </div>

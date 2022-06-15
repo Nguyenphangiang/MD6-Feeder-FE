@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MerchantServiceService} from '../../service/merchant-service.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import {MerchantForm} from '../../model/merchant-form';
-import {environment} from '../../../environments/environment';
+
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -14,6 +14,7 @@ export class DetailComponent implements OnInit {
   selectedFile = new File(['none'], 'null');
   image = null;
   merchant: MerchantForm;
+  user;
   merchantForm: FormGroup = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
@@ -55,8 +56,9 @@ export class DetailComponent implements OnInit {
         status: new FormControl(data.status.id),
         oldSafeFoodLicense: new FormControl(data.safeFoodLicense)
       });
+      this.user = data.user;
     }, () => {
-      alert('Cant Load Merchant\'s Detail!');
+      Swal.fire('Không tải được dữ liệu của quán!');
     });
   }
 
@@ -78,11 +80,13 @@ export class DetailComponent implements OnInit {
     merchantData.append('status', this.merchantForm.get('status').value);
     merchantData.append('safeFoodLicense', this.selectedFile);
     this.merchantService.updateOld(this.id, merchantData).subscribe(() => {
-      // Swal.fire('Update success!');
-      // this.router.navigateByUrl('/login');
-      alert('update success!');
+      Swal.fire('Sửa thành công!');
+      this.backToDishList();
     }, () => {
-      alert('update failed!');
+      Swal.fire('Sửa thất bại!');
     });
+  }
+  backToDishList() {
+    this.router.navigateByUrl('/merchant/detail/user/' + this.user.id);
   }
 }

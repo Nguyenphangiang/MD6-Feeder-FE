@@ -6,6 +6,8 @@ import {HomeService} from '../service/home.service';
 import {Merchant} from '../model/merchant';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Dish} from '../model/dish';
+import {DishService} from '../service/dish.service';
 declare var jQuery: any;
 
 @Component({
@@ -14,6 +16,7 @@ declare var jQuery: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  dishes: Dish[] = [];
   selectedOption = [
     {id: 1, name: 'Nhà hàng'},
     {id: 2, name: 'Món ăn'}
@@ -25,10 +28,18 @@ export class HomeComponent implements OnInit {
   name: string;
   constructor(private homeService: HomeService,
               private activatedRouter: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private dishService: DishService) {
   }
 
   ngOnInit() {
+    this.showFavoriteDish();
+  }
+  showFavoriteDish() {
+    this.dishService.showDishRecommend().subscribe((dishes) => {
+      this.dishes = dishes;
+      console.log(dishes);
+    });
   }
   changeList() {
     console.log(this.merchantForm.get('findName').value);

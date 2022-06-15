@@ -14,8 +14,6 @@ import {FindDishByNameComponent} from '../dish/find-dish-by-name/find-dish-by-na
 import { MerchantListComponent } from './merchant-list/merchant-list.component';
 import { MerchantGoldListComponent } from './merchant-gold-list/merchant-gold-list.component';
 
-
-
 @NgModule({
   declarations: [
     CreateComponent,
@@ -34,6 +32,6 @@ import { MerchantGoldListComponent } from './merchant-gold-list/merchant-gold-li
     MerchantRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    DishModule
+    DishModule,
   ]})
 export class MerchantModule { }
