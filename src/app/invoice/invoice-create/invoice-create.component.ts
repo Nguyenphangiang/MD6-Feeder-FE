@@ -3,7 +3,6 @@ import {InvoiceService} from '../../service/invoice.service';
 import {OrderAddress} from '../../model/order-address';
 import {OrderService} from '../../service/order/order.service';
 import {CustomerForm} from '../../model/customer-form';
-
 @Component({
   selector: 'app-invoice-create',
   templateUrl: './invoice-create.component.html',

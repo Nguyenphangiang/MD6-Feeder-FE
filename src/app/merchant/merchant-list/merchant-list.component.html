@@ -19,7 +19,7 @@
           </div>
         </div>
         </div>
-        <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">299 restaurants
+        <h4 class="font-weight-bold mt-0 mb-3">Nhà hàng:  <small class="h6 mb-0 ml-2">{{merchants.length}}
         </small>
         </h4>
       </div>
@@ -376,8 +376,10 @@
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
-                <div class="favourite-heart text-danger position-absolute"><a href="#"><i
-                  class="icofont-heart"></i></a></div>
+                <ng-container *ngIf="merchant.goldPartner">
+                  <div class="favourite-heart text-danger position-absolute"><a href="#"><i
+                    class="icofont-heart"></i></a></div>
+                </ng-container>
                 <div class="member-plan position-absolute"><span
                   class="badge badge-dark">Promoted</span></div>
                 <a routerLink="/merchant/detail/{{merchant.id}}">

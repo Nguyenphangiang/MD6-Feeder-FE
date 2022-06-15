@@ -15,7 +15,8 @@ import {HttpClientModule} from '@angular/common/http';
     CommonModule,
     InvoiceRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ]
 })
 export class InvoiceModule { }
