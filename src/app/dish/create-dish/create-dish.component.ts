@@ -20,14 +20,15 @@ export class CreateDishComponent implements OnInit {
   userFile: any = File;
   dishForm: FormGroup = new FormGroup({
     image: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl(),
-    price: new FormControl(),
-    status: new FormControl(),
+    name: new FormControl('', [ Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
+    dishStatus: new FormControl(),
   });
   imageLink;
-  id_merchant: string;
+  idMerchant: string;
   user;
+  check = false;
   constructor(private dishService: DishService,
               private merchantService: MerchantServiceService,
               private statusService: DishStatusService,
@@ -35,7 +36,7 @@ export class CreateDishComponent implements OnInit {
               private router: Router,
               private sanitizer: DomSanitizer) {
     this.activateRoute.paramMap.subscribe((paramMap) => {
-      this.id_merchant = paramMap.get('id');
+      this.idMerchant = paramMap.get('id');
       this.getUser();
     });
   }
@@ -50,11 +51,12 @@ export class CreateDishComponent implements OnInit {
 
   onselectFile(event) {
     this.userFile = event.target.files[0];
+    this.check = true;
     this.imageLink = URL.createObjectURL(this.userFile);
   }
 
   getUser() {
-    this.merchantService.findById(+this.id_merchant).subscribe((data) => {
+    this.merchantService.findById(+this.idMerchant).subscribe((data) => {
       this.user = data.user;
     });
   }
@@ -64,8 +66,8 @@ export class CreateDishComponent implements OnInit {
     dish.append('name', this.dishForm.get('name').value);
     dish.append('description', this.dishForm.get('description').value);
     dish.append('price', this.dishForm.get('price').value);
-    dish.append('status', this.dishForm.get('status').value);
-    this.dishService.create(this.id_merchant, dish).subscribe(() => {
+    dish.append('dishStatus', this.dishForm.get('dishStatus').value);
+    this.dishService.create(this.idMerchant, dish).subscribe(() => {
     Swal.fire('Tạo mới món ăn thành công!');
     this.dishForm.reset();
     this.router.navigateByUrl('merchant/detail/user/' + this.user.id);
@@ -78,5 +80,14 @@ export class CreateDishComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  get nameControl() {
+   return this.dishForm.get('name');
+  }
+  get priceControl() {
+    return this.dishForm.get('price');
+  }
+  get descriptionControl() {
+    return this.dishForm.get('description');
   }
 }

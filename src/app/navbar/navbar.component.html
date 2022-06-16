@@ -26,7 +26,7 @@
             <a (click)="getAllCartElement()" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-basket"></i> Giỏ hàng
-<!--              <span class="badge badge-success">{{carts.length}}</span>-->
+<!--              <span class="badge badge-success" [ngModel]="cartLength">{{carts.length}}</span>-->
             <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
               <div class="dropdown-cart-top-body border-top p-4">
                 <p class="mb-2" *ngFor="let cartElement of carts"><i class="icofont-ui-press text-danger food-item" ></i>

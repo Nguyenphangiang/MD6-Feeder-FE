@@ -3,6 +3,7 @@ import {Order} from '../../model/order';
 import {OrderService} from '../../service/order/order.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CustomerForm} from '../../model/customer-form';
+import {Customer} from '../../model/customer';
 
 @Component({
   selector: 'app-order-list',
@@ -10,6 +11,10 @@ import {CustomerForm} from '../../model/customer-form';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  user = localStorage.getItem('user');
+  temp = JSON.parse(this.user);
+  userId = this.temp.id;
+  customer: CustomerForm;
   orderList: Order[] = [];
   customerAddressList: string[] = [];
 
@@ -18,6 +23,7 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit() {
     // this.getAllOrder();
+    this.findCustomerByUserId(this.userId);
   }
 
   // getAllOrder() {
@@ -32,7 +38,6 @@ export class OrderListComponent implements OnInit {
   //     console.log(error);
   //   });
   // }
-
   orderStatusToString(status) {
     switch (status) {
       case 1:
@@ -60,5 +65,10 @@ export class OrderListComponent implements OnInit {
         return 'Canceled';
     }
   }
-
+ findCustomerByUserId(id) {
+    this.orderService.findCustomerByUserId(id).subscribe((customer) => {
+      this.customer = customer;
+      console.log(this.customer);
+    });
+ }
 }

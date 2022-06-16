@@ -14,6 +14,7 @@ import {RouterModule} from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { InvoiceDetailComponent } from './invoice/invoice-detail/invoice-detail.component';
 
 
 @NgModule({
