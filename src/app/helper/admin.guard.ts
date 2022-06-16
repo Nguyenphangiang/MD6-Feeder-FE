@@ -14,9 +14,13 @@ export class AdminGuard implements CanActivate, CanActivateChild {
     const currentUser = localStorage.getItem('user');
     const user = JSON.parse(currentUser);
     if (user != null) {
-      if (user.roles === 'ROLE_ADMIN') {
+      const roles = user.roles;
+      const role = roles.pop().authority;
+      if (role === 'ROLE_ADMIN') {
         return true;
       } else {
+        localStorage.removeItem('user');
+        location.reload();
         this.router.navigateByUrl('/login');
         return false;
       }
