@@ -10,6 +10,10 @@ import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {OrderService} from '../../service/order/order.service';
+import {Order} from '../../model/order';
+import {InvoiceService} from '../../service/invoice.service';
+import {Invoice} from '../../model/invoice';
 
 
 @Component({
@@ -29,9 +33,15 @@ export class MerchantDetailComponent implements OnInit {
   checkDish: number;
   checkMerchant: number;
   customer: CustomerForm;
-  sumOfMoney: number;
+  sumOfMoney1: number;
   cartElement: CartElement;
   dish: Dish;
+  orderElement: Order = {};
+  invoice: Invoice = {};
+  orders: Order[] = [];
+  merchantAdress: any;
+  merchantName: any;
+  merchantId: number;
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -44,7 +54,9 @@ export class MerchantDetailComponent implements OnInit {
               private router: Router,
               private dishService: DishService,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) {
+              private customerService: AppUserServiceService,
+              private orderService: OrderService,
+              private invoiceService: InvoiceService) {
     this.activatedRouter.paramMap.subscribe((paraMap) => {
       const id = +paraMap.get('id');
       this.showDetailMerchant(id);
@@ -57,6 +69,7 @@ export class MerchantDetailComponent implements OnInit {
   ngOnInit() {
     this.userId = this.temp.id;
     this.findCustomerByUserId(this.temp.id);
+    // this.findAllOrderByOrderCheck(this.customer.id);
     // this.getAllCartElement();
   }
 
@@ -75,6 +88,7 @@ export class MerchantDetailComponent implements OnInit {
   findCustomerByUserId(userId) {
     this.customerService.showDetailCustomer(userId).subscribe((customer) => {
       this.customer = customer;
+      this.findAllOrderByOrderCheck(this.customer.id);
       this.getAllCartElement();
     });
   }
@@ -88,12 +102,11 @@ export class MerchantDetailComponent implements OnInit {
   getAllCartElement() {
     this.cartElementService.getAllCartElement(this.customer.id).subscribe((carts) => {
       this.carts = carts;
-      this.sumOfMoney = 0;
+      this.sumOfMoney1 = 0;
       for (const cart of carts) {
-        this.sumOfMoney += cart.quantity * cart.dish.price;
+        this.sumOfMoney1 += cart.quantity * cart.dish.price;
         this.quantity = cart.quantity;
       }
-      console.log(carts);
     });
   }
 
@@ -140,6 +153,8 @@ export class MerchantDetailComponent implements OnInit {
         } else {
           this.checkDish = 2;
         }
+      }
+      for (const cart of carts1) {
         if (idMerchant === cart.dish.merchant.id) {
           this.checkMerchant = 1;
         } else {
@@ -242,25 +257,138 @@ export class MerchantDetailComponent implements OnInit {
   }
 
   removeAllCartElementToOrder() {
+    if (this.carts.length === 0) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'Đã đặt gì đâu mà đòi thanh toán :) !'
+      });
+    } else {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Thanh toán nhanh không đói nàooooo !'
+      });
+    }
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
-      this.getAllCartElement();
-      this.router.navigateByUrl('/order');
-    });
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
-      }
-    });
-    Toast.fire({
-      icon: 'success',
-      title: 'Thanh toán nhanh không đói nàooooo !'
+      this.router.navigateByUrl(`/invoice/create`);
     });
   }
 
+  createNewOrder(or: any) {
+    this.orderService.createNewOrder(or).subscribe(() => {
+    });
+  }
+
+  removeAllOrderElement() {
+    this.orderService.deleteAllOrderByCheckFalseAndCustomerId(this.customer.id).subscribe(() => {
+    });
+  }
+
+  addNewOrderElement() {
+    if (this.orders.length === 0) {
+      for (const cart of this.carts) {
+        this.orderElement.quantity = cart.quantity;
+        this.orderElement.dish = cart.dish;
+        this.orderElement.customer = cart.customer;
+        this.orderElement.ordercheck = false;
+        this.createNewOrder(this.orderElement);
+        // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+        // this.orders.push(this.orderElement);
+        // });
+      }
+      // console.log(this.orders);
+      this.removeAllCartElementToOrder();
+    } else {
+      Swal.fire({
+        title: 'Bạn đang có đơn chưa hoàn thành',
+        text: 'Bạn có muốn đặt lại đơn đó không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: ' Tôi muốn đặt đơn mới!',
+        cancelButtonText: ' Tôi muốn đặt lại đơn cũ!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.removeAllOrderElement();
+          for (const cart of this.carts) {
+            this.orderElement.quantity = cart.quantity;
+            this.orderElement.dish = cart.dish;
+            this.orderElement.customer = cart.customer;
+            this.orderElement.ordercheck = false;
+            this.createNewOrder(this.orderElement);
+            // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+            // this.orders.push(this.orderElement);
+            // });
+          }
+          // console.log(this.orders);
+          this.removeAllCartElementToOrder();
+          Swal.fire(
+            'Mời bạn đặt đơn mới!',
+            '',
+            'success'
+          );
+        } else {
+          this.removeAllCartElementToOrder();
+        }
+      });
+    }
+  }
+
+  findAllOrderByOrderCheck(id) {
+    this.orderService.getAllOrderByCheckFalseAndCustomerId(id).subscribe((orders) => {
+      this.orders = orders;
+      for (const order of orders) {
+        this.sumOfMoney1 = order.quantity * order.dish.price;
+        this.quantity = order.quantity;
+        this.merchantAdress = order.dish.merchant.address;
+        this.merchantName = order.dish.merchant.name;
+        this.merchantId = order.dish.merchant.id;
+      }
+      console.log(orders);
+    });
+  }
+
+  // addNewInvoiceElement(orders) {
+  //   this.invoice.invoiceStatus = null;
+  //   this.invoice.date = null;
+  //   this.invoice.orders = orders;
+  //   this.invoice.note = null;
+  //   this.invoice.merchant = this.merchant;
+  //   this.invoiceService.createNewInvoice(this.customer.id, this.invoice).subscribe(() => {
+  //     const id = this.invoice.id;
+  //     console.log('id nè ' + id);
+  //   });
+  //   // this.invoiceService.createNewInvoice(this.customer.id, this.invoice).subscribe(() => {
+  //   // this.removeAllCartElementToOrder(this.invoice);
+  //   // });
+  // }
+  //
+  // createNewInvoice(idCustomer: any, invoice: any) {
+  //   this.invoiceService.createNewInvoice(idCustomer, invoice).subscribe(() => {
+  //     const id = invoice.id;
+  //     console.log('id nè ' + id);
+  //   });
+  // }
 }

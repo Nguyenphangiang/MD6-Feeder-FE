@@ -16,6 +16,7 @@ import { MerchantGoldListComponent } from './merchant-gold-list/merchant-gold-li
 
 
 import { MerchantOrderComponent } from './merchant-order/merchant-order.component';
+import { MerchantSalesAmountComponent } from './merchant-sales-amount/merchant-sales-amount.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MerchantOrderComponent } from './merchant-order/merchant-order.componen
     MerchantListComponent,
     MerchantGoldListComponent,
     MerchantOrderComponent,
+    MerchantSalesAmountComponent,
   ],
   imports: [
     CommonModule,

@@ -99,4 +99,22 @@ export class EditDishComponent implements OnInit {
   backToDishList() {
     this.router.navigateByUrl('/merchant/detail/user/' + this.userId);
   }
+  deleteDish() {
+    event.preventDefault();
+    Swal.fire({
+      title: 'Xóa món ăn này?',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Quay lại'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dishService.deleteDish(this.id).subscribe(() => {
+          Swal.fire('Xóa thành công');
+          this.backToDishList();
+        }, () => {
+          Swal.fire('Xóa thất  bại');
+        });
+      }
+    });
+  }
 }

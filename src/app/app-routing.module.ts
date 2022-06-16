@@ -6,6 +6,7 @@ import {AuthGuard} from './helper/auth.guard';
 import {RegisterComponent} from './auth/register/register.component';
 import {SwitchRegisterComponent} from './auth/switch-register/switch-register.component';
 import {CreateComponent} from './merchant/create/create.component';
+import {AdminGuard} from './helper/admin.guard';
 
 
 
@@ -48,6 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./module/admin/admin.module').then(module => module.AdminModule)
   },
   {

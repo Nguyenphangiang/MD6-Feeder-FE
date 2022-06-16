@@ -1,24 +1,39 @@
-<table border="1">
+<div class="bg-white rounded shadow-sm p-4 mb-4">
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
   <tr>
     <th>#</th>
     <th>Khách hàng</th>
     <th>SĐT khách</th>
-    <th>Món ăn</th>
-    <th>Số lượng</th>
     <th>Ghi chú</th>
     <th>Ngày đặt hàng</th>
     <th>Trạng thái đơn</th>
+    <th>Thao tác</th>
   </tr>
-  <ng-container *ngFor="let order of orders,index as i" >
+  </thead>
+  <ng-container *ngFor="let invoice of invoices,index as i" >
     <tr>
-      <td>{{i+1}}</td>
-      <td>{{order.customer.name}}</td>
-      <td>{{order.customer.phone}}</td>
-      <td>{{order.dish.name}}</td>
-      <td>{{order.quantity}}</td>
-      <td>{{order.note}}</td>
-      <td>{{order.orderTime.toDateString()}}</td>
-      <td>{{order.status}}</td>
+      <td rowspan="2">{{i+1}}</td>
+      <td><div [innerText]="invoice.customer.name"></div></td>
+      <td><div [innerText]="invoice.customer.phone"></div></td>
+      <td><div [innerText]="invoice.note"></div></td>
+      <td><div [innerText]="invoice.date.toString()"></div></td>
+      <td><div [innerText]="invoice.invoiceStatus.name"></div>
+       <td>
+      <a class="btn btn-success" style="width: 76.7px" (click)="changeStatusToReceived(invoice.id)">Đã giao</a>
+      <a class="btn btn-warning" style="width: 76.7px" (click)="rejectOrder(invoice.id)">Hủy đơn</a>
+      </td>
+      </tr>
+    <tr>
+      <td colspan="6">
+      <ng-container *ngFor="let order of invoice.orders,index as j" >
+      (<span [innerText]="order.quantity"></span>
+        &nbsp;&nbsp;<span [innerText]="order.dish.name"></span>
+      )
+        <span *ngIf="j<invoice.orders.length-1">____</span>
+      </ng-container>
+      </td>
     </tr>
   </ng-container>
 </table>
+</div>

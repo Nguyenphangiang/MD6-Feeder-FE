@@ -115,8 +115,10 @@
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
                   class="icofont-star"></i> 3.1 (300+)</span></div>
-                <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
-                  class="icofont-heart"></i></a></div>
+                <ng-container *ngIf="dish.recommend">
+                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                    class="icofont-heart"></i></a></div>
+                </ng-container>
                 <div class="member-plan position-absolute" ><span
                   class="badge badge-dark">{{dish.dishStatus.name}}</span></div>
                 <a routerLink="/dish/detail/{{dish.id}}">
@@ -251,7 +253,7 @@
             <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
             <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
           </div>
-          <button (click)="removeAllCartElementToOrder()" class="btn btn-success btn-block btn-lg">Checkout <i
+          <button (click)="addNewOrderElement()" class="btn btn-success btn-block btn-lg">Checkout <i
             class="icofont-long-arrow-right"></i></button>
         </div>
         <div class="filters pt-2">

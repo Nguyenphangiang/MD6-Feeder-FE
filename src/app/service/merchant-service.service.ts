@@ -5,6 +5,7 @@ import {Merchant} from '../model/merchant';
 import {environment} from '../../environments/environment';
 import {MerchantForm} from '../model/merchant-form';
 import {AppUser} from '../model/app-user';
+import {MerchantAmount} from '../model/merchant-amount';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,14 @@ export class MerchantServiceService {
   // }
   findMerchantByUserId(id: number): Observable<Merchant> {
     return this.http.get<Merchant>(`${API_URL}/merchant/userId/${id}`);
+  }
+  showMerchantSaleAmountByYear(year: number): Observable<MerchantAmount[]> {
+    return this.http.get<MerchantAmount[]>(`${API_URL}/merchant/sale/amount/${year}`);
+  }
+  showMerchantSaleAmountByMonth(month: number): Observable<MerchantAmount[]> {
+    return this.http.get<MerchantAmount[]>(`${API_URL}/merchant/sale/amount/month/${month}`);
+  }
+  showMerchantSaleAmountByQuarter(quarter: number): Observable<MerchantAmount[]> {
+    return this.http.get<MerchantAmount[]>(`${API_URL}/merchant/sale/amount/quarter/${quarter}`);
   }
 }
