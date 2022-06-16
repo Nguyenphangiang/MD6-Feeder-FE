@@ -334,7 +334,7 @@ export class MerchantDetailComponent implements OnInit {
           for (const cart of carts) {
             this.orderElement.quantity = cart.quantity;
             this.orderElement.dish = cart.dish;
-            this.orderElement.customer = cart.customer;
+            this.orderElement = cart.customer;
             this.orderElement.ordercheck = false;
             this.createNewOrder(this.orderElement);
             // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
