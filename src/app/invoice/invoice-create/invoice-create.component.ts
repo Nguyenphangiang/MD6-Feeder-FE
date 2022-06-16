@@ -12,6 +12,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./invoice-create.component.css']
 })
 export class InvoiceCreateComponent implements OnInit {
+  oldAddress: OrderAddress = {};
+  editAddressForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    type: new FormControl(),
+    name: new FormControl(),
+  });
   home = 'Nhà';
   company = 'Công ty';
   other = 'Khác';
@@ -52,6 +58,28 @@ export class InvoiceCreateComponent implements OnInit {
     this.invoiceService.addNewOrderAddress(this.orderAddressForm.value, this.customerId).subscribe(() => {
       Swal.fire('Thêm địa chỉ thành công');
       this.findCustomerByUserId(this.userId);
+    });
+  }
+  deleteOrderAddress(id) {
+    this.invoiceService.deleteOrderAddress(id).subscribe(() => {
+      Swal.fire('Xóa thành công');
+      this.findCustomerByUserId(this.userId);
+    });
+  }
+  findOldOrderAddress(id) {
+    this.invoiceService.findOneOrderAddress(id).subscribe((data) => {
+      this.oldAddress = data;
+      this.editAddressForm = new FormGroup({
+        id: new FormControl(data.id),
+        type: new FormControl(),
+        name: new FormControl(data.name)
+      });
+    });
+  }
+  editOrderAddress() {
+    this.invoiceService.updateOrderAddress(this.oldAddress.id, this.customerId, this.editAddressForm.value).subscribe(() => {
+      this.findCustomerByUserId(this.userId);
+      Swal.fire('Cập nhật địa chỉ thành công.');
     });
   }
 }
