@@ -16,14 +16,17 @@ export class MerchantOrderComponent implements OnInit {
   temp = JSON.parse(this.user);
   idMerchant: number;
   invoices: Invoice[] = [];
-  invoicesByName: Invoice[] = [];
-  invoicesByPhone: Invoice[] = [];
+  // invoicesByName: Invoice[] = [];
+  // invoicesByPhone: Invoice[] = [];
+  notSorted = true;
   searchInput;
-
+  tempInvoice: Invoice[] = [];
+  invoiceStatus: InvoiceStatus[] = [];
   constructor(private invoiceService: InvoiceService,
               private merchantService: MerchantServiceService,
               private router: Router) {
     this.loadOrders();
+    this.showAllInvoiceStatus();
   }
 
   ngOnInit() {
@@ -95,18 +98,45 @@ export class MerchantOrderComponent implements OnInit {
       Swal.fire('Tìm kiếm không thành công!');
     });
   }
-  searchByCustomerName(name) {
-    this.invoiceService.showAllByCustomerName(name).subscribe((data) => {
-      this.invoicesByName = data;
+  showAllInvoiceStatus() {
+    this.invoiceService.showAllInvoiceStatus().subscribe((data) => {
+      this.invoiceStatus = data;
     }, () => {
-      Swal.fire('Tìm kiếm không thành công!');
+      Swal.fire('Không tải được thanh lựa chọn trạng thái đơn hàng!');
     });
   }
-  searchByCustomerPhone(phone) {
-    this.invoiceService.showAllByCustomerPhone(phone).subscribe((data) => {
-      this.invoicesByPhone = data;
-    }, () => {
-      Swal.fire('Tìm kiếm không thành công!');
-    });
+  showInvoicesSortedBy(idStatus) {
+    if (idStatus !== '99') {
+      if (this.notSorted) {
+        this.tempInvoice = this.invoices;
+        this.notSorted = false;
+      }
+      const list: Invoice[] = [];
+      for (const invoice of this.tempInvoice) {
+        if (invoice.invoiceStatus.id === +idStatus) {
+          list.push(invoice);
+        }
+      }
+      this.invoices = list;
+    } else {
+      this.showAllInvoice();
+    }
   }
+  showAllInvoice() {
+    this.invoices = this.tempInvoice;
+  }
+  // searchByCustomerName(name) {
+  //   this.invoiceService.showAllByCustomerName(name).subscribe((data) => {
+  //     this.invoicesByName = data;
+  //   }, () => {
+  //     Swal.fire('Tìm kiếm không thành công!');
+  //   });
+  // }
+  // searchByCustomerPhone(phone) {
+  //   this.invoiceService.showAllByCustomerPhone(phone).subscribe((data) => {
+  //     this.invoicesByPhone = data;
+  //   }, () => {
+  //     Swal.fire('Tìm kiếm không thành công!');
+  //   });
+  // }
 }

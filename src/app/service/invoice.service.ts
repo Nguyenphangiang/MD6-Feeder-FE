@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {OrderAddress} from '../model/order-address';
 import {Invoice} from '../model/invoice';
+import {InvoiceStatus} from '../model/invoice-status';
 const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,8 @@ export class InvoiceService {
   }
   showAllByCustomerInfo(input): Observable<Invoice[]> {
     return this.http.get<Invoice[]>(`${API_URL}/invoice/customerInfo?input=${input}`);
+  }
+  showAllInvoiceStatus(): Observable<InvoiceStatus[]> {
+    return this.http.get<InvoiceStatus[]>(`${API_URL}/invoice/status`);
   }
 }

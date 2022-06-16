@@ -66,7 +66,7 @@ export class CreateDishComponent implements OnInit {
     dish.append('name', this.dishForm.get('name').value);
     dish.append('description', this.dishForm.get('description').value);
     dish.append('price', this.dishForm.get('price').value);
-    dish.append('dishStatus', this.dishForm.get('dishStatus').value);
+    dish.append('status', this.dishForm.get('dishStatus').value);
     this.dishService.create(this.idMerchant, dish).subscribe(() => {
     Swal.fire('Tạo mới món ăn thành công!');
     this.dishForm.reset();

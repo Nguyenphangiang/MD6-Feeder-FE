@@ -1,6 +1,12 @@
 <div class="bg-white rounded shadow-sm p-4 mb-4">
-  <span class="text-black-50">Tìm kiếm theo Khách</span> <input class="input-group-text" type="text" [(ngModel)]="searchInput" [defaultValue]="" (keyup)="searchByInput(searchInput)">
-
+<div> <span class="text-black-50">Tìm kiếm theo Khách</span><input class="input-group-text" style="width: 186.8px" type="text" [(ngModel)]="searchInput" [defaultValue]="" (keyup)="searchByInput(searchInput)"></div>
+<div style="position: relative"><span class="text-black-50">Lọc theo trạng thái đơn</span>
+  <select class="input-group-text" name="sortInvoice" id="sortInvoice" (change)="showInvoicesSortedBy($event.target.value)">
+    <option [value]='99' (select)="showAllInvoice()">Tất cả đơn hàng</option>
+    <ng-container *ngFor="let status of invoiceStatus">
+      <option  [value]="status.id" (select)="showInvoicesSortedBy(status.id)">{{status.name}}</option>
+    </ng-container>
+  </select></div>
   <table class="table table-bordered table-striped">
   <thead class="thead-dark">
   <tr>
