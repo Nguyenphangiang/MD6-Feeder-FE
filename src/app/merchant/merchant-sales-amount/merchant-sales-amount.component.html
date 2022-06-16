@@ -1,0 +1,34 @@
+<div class="bg-white rounded shadow-sm p-4 mb-4">
+  <button class="btn btn-outline-primary" (click)="changeSearchYearMonth()"><i class="icofont-search-document icofont-2x"></i> Tìm theo năm, tháng</button>
+  <button class="btn btn-outline-primary" (click)="changeSearchQuarter()"><i class="icofont-search-document icofont-2x"></i> Tìm theo quý</button>
+  <br>
+  <ng-container *ngIf="flag; else elseBlock">
+    <br>
+    <label  for="yearMonth" style="font-size: larger">Doanh số theo năm hoặc tháng</label>
+    <br>
+    <input class="form-control" id="yearMonth" type="search" placeholder="nhập năm hoặc tháng" #searchInput (keyup)="search(searchInput.value)" >
+  </ng-container>
+  <ng-template #elseBlock>
+    <br>
+    <label for="quarter" style="font-size: larger">Doanh số theo quý</label>
+    <br>
+    <input class="form-control" id="quarter" type="search" placeholder="quý vd: 1,2" #searchInput (keyup)="searchQuarter(searchInput.value)" >
+  </ng-template>
+  <hr>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Thời gian</th>
+      <th>Tổng doanh số</th>
+      <th>Tổng doanh thu</th>
+    </tr>
+    </thead>
+    <tr *ngFor="let mer of merchantAmounts,index as i">
+      <td>{{i+1}}</td>
+      <td>{{mer.date}}</td>
+      <td>{{mer.total | number}} VND</td>
+      <td>{{vat | number}} VND</td>
+    </tr>
+  </table>
+</div>
