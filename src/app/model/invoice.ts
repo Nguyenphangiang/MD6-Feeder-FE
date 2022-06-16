@@ -11,4 +11,5 @@ export interface Invoice {
   invoiceStatus?: InvoiceStatus;
   orders?: any;
   merchant?: Merchant;
+  orderAdress?: string;
 }
