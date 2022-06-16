@@ -7,10 +7,10 @@
       <div class="row d-flex align-items-end">
         <div class="col-md-8">
           <div class="restaurant-detailed-header-left">
-            <img class="img-fluid mr-3 float-left" alt="osahan" src="assets/img/{{dish.image}}">
-            <h2 class="text-white">{{dish.name}}</h2>
-            <p class="text-white mb-1"><i class="icofont-location-pin"></i> {{dish.merchant.address}} </p>
-            <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{dish.dishStatus.name}}</p>
+            <img class="img-fluid mr-3 float-left" alt="osahan" src="assets/img/{{dish2.image}}">
+            <h2 class="text-white">{{dish2.name}}</h2>
+            <p class="text-white mb-1"><i class="icofont-location-pin"></i> {{dish2.merchant.address}} </p>
+            <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{dish2.dishStatus.name}}</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -32,7 +32,7 @@
     <div class="row">
       <div class="col-md-12">
                     <span class="restaurant-detailed-action-btn float-right">
-                      <ng-container *ngIf="dish.recommend,else elseBlock">
+                      <ng-container *ngIf="dish2.recommend,else elseBlock">
                         <button class="btn btn-light btn-sm border-light-btn" type="button"><i
                           class="icofont-heart text-danger"></i> Yêu thích</button>
                       </ng-container>
@@ -40,7 +40,7 @@
                         <button class="btn btn-light btn-sm border-light-btn" type="button"><i
                           class="icofont-heart text-danger"></i>Thêm yêu thích</button>
                       </ng-template>
-                        <button class="btn btn-light btn-sm border-light-btn" type="button" (click)="merchantList(dish.merchant.id)"><i
+                        <button class="btn btn-light btn-sm border-light-btn" type="button" (click)="merchantList(dish2.merchant.id)"><i
                           class="icofont-cauli-flower text-success"></i> Xem cửa hàng</button>
                     </span>
         <ul class="nav" id="pills-tab" role="tablist">
@@ -73,25 +73,25 @@
                             src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
                             frameborder="0" scrolling="no" marginheight="0"
                             marginwidth="0"></iframe></div> -->
-                    <img width="300" height="170" class="img-fluid" src="assets/img/{{dish.image}}">
+                    <img width="300" height="170" class="img-fluid" src="assets/img/{{dish2.image}}">
                   </div>
                 </div>
-                <h5 class="mb-4">{{dish.name}} </h5>
+                <h5 class="mb-4">{{dish2.name}} </h5>
                 <p class="mb-3">
-                  <span class="fa fa-location-arrow locationicon"></span>{{dish.merchant.address}}
+                  <span class="fa fa-location-arrow locationicon"></span>{{dish2.merchant.address}}
                 </p>
                 <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i>
-                  {{dish.merchant.phone}}</p>
+                  {{dish2.merchant.phone}}</p>
                 <p class="mb-2 text-black"><i class="icofont-dollar text-primary mr-2"></i> <a
                   href="https://thaotrinh.info/cdn-cgi/l/email-protection"
                   class="__cf_email__"
-                  data-cfemail="97fef6faf8e4f6fff6f9d7f0faf6fefbb9f4f8fa">{{dish.price}} VND</a>
+                  data-cfemail="97fef6faf8e4f6fff6f9d7f0faf6fefbb9f4f8fa">{{dish2.price}} VND</a>
                 </p>
                 <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i>
                   Today 11am – 5pm, 6pm – 11pm
                   <span class="badge badge-success"> OPEN NOW </span>
                 </p>
-                <button class="btn btn-outline-primary" (click)="createNewCartElement(dish.id, dish.merchant.id, dish.merchant.name, dish.name)"><i class="icofont-cart-alt"></i> Mua ngay</button>
+                <button class="btn btn-outline-primary" (click)="createNewCartElement(dish2.id, dish2.merchant.id, dish2.merchant.name, dish2.name)"><i class="icofont-cart-alt"></i> Mua ngay</button>
                 <hr class="clearfix">
                 <p class="text-black mb-0"> Ba mẹ cho bạc cho vàng 😳. KHÔNG BẰNG NHẬN ĐƯỢC KH ĐÁNH
                   5⭐️ -😍. Ace LH cho quán để sử lý đơn hàng tại số dt ở dưới 👇</p>
@@ -663,7 +663,7 @@
             <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
             <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
           </div>
-          <button (click)="removeAllCartElementToOrder()" class="btn btn-success btn-block btn-lg">Checkout <i
+          <button (click)="addNewOrderElement()" class="btn btn-success btn-block btn-lg">Checkout <i
             class="icofont-long-arrow-right"></i></button>
         </div>
       </div>

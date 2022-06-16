@@ -5,6 +5,7 @@ import {OrderService} from '../../service/order/order.service';
 import {InvoiceService} from '../../service/invoice.service';
 import {Invoice} from '../../model/invoice';
 import {Dish} from '../../model/dish';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-invoice-list',
@@ -30,22 +31,16 @@ export class InvoiceListComponent implements OnInit {
     this.orderService.findCustomerByUserId(id).subscribe((customer) => {
       this.customer = customer;
       this.showAllInvoiceByCustomer(customer.id);
-      console.log(this.customer);
     });
   }
  showAllInvoiceByCustomer(id) {
-   this.sumOfMoney = 0;
    this.invoiceService.showAllInvoiceByCustomer(id).subscribe((invoice) => {
       this.invoices = invoice;
-      this.getTotalPrice(invoice);
-      console.log(invoice);
-      console.log(this.sumOfMoney);
     });
  }
- getTotalPrice(invoice: any) {
-   for (let i = 0; i < invoice.length; i++) {
-     this.orders.push(invoice[i].orders[i]);
-     this.sumOfMoney += this.orders[i].dish.price * this.orders[i].quantity;
+ getAllOrder(or: any) {
+   for (let i = 0; i < or.length; i++) {
+
    }
  }
 }

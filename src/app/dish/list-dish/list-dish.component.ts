@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DishService} from '../../service/dish.service';
 import {Router} from '@angular/router';
 import {Dish} from '../../model/dish';
@@ -8,6 +8,9 @@ import {CustomerForm} from '../../model/customer-form';
 import {CartElement} from '../../model/cart-element';
 import Swal from 'sweetalert2';
 import {FormControl, FormGroup} from '@angular/forms';
+import {Order} from '../../model/order';
+import {Invoice} from '../../model/invoice';
+import {OrderService} from '../../service/order/order.service';
 
 @Component({
   selector: 'app-list-dish',
@@ -24,6 +27,15 @@ export class ListDishComponent implements OnInit {
   sumOfMoney: number;
   checkDish: number;
   checkMerchant: number;
+  sumOfMoney1: number;
+  cartElement: CartElement;
+  dish: Dish;
+  orderElement: Order = {};
+  invoice: Invoice = {};
+  orders: Order[] = [];
+  merchantAdress: any;
+  merchantName: any;
+  merchantId: number;
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -31,26 +43,33 @@ export class ListDishComponent implements OnInit {
     quantity: new FormControl(this.quantity = 1),
     note: new FormControl(),
   });
+
   constructor(private dishService: DishService,
               private router: Router,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) { }
+              private customerService: AppUserServiceService,
+              private orderService: OrderService) {
+  }
 
   ngOnInit() {
     this.showAllDish();
     this.findCustomerByUserId(this.temp.id);
   }
+
   showAllDish() {
     this.dishService.showSaleDish().subscribe((dishes) => {
       this.dishes = dishes;
     });
   }
+
   findCustomerByUserId(userId) {
     this.customerService.showDetailCustomer(userId).subscribe((customer) => {
       this.customer = customer;
+      this.findAllOrderByOrderCheck(this.customer.id);
       this.getAllCartElement();
     });
   }
+
   getAllCartElement() {
     this.cartElementService.getAllCartElement(this.customer.id).subscribe((carts) => {
       this.carts = carts;
@@ -61,6 +80,7 @@ export class ListDishComponent implements OnInit {
       }
     });
   }
+
   increaseQuantityOfCartElement(idCart: number) {
     this.cartElementService.increaseQuantityOfCartElement(idCart, this.quantity).subscribe(() => {
       this.getAllCartElement();
@@ -72,6 +92,7 @@ export class ListDishComponent implements OnInit {
       this.getAllCartElement();
     });
   }
+
   removeCartElement(idCart) {
     Swal.fire({
       title: 'Chắc chưa?',
@@ -94,26 +115,7 @@ export class ListDishComponent implements OnInit {
       }
     });
   }
-  removeAllCartElementToOrder() {
-    this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
-      this.getAllCartElement();
-    });
-    const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
-      }
-    });
-    Toast.fire({
-      icon: 'success',
-      title: 'Thanh toán nhanh không đói nàooooo !'
-    });
-  }
+
   createNewCartElement(idDish, idMerchant, nameMerchant, nameDish) {
     const cartElement = this.cartForm.value;
     const customer2 = this.customer;
@@ -221,5 +223,119 @@ export class ListDishComponent implements OnInit {
         title: 'Đã thêm món ' + nameDish + ' tại cửa hàng ' + nameMerchant,
       });
     });
+  }
+
+  findAllOrderByOrderCheck(id) {
+    this.orderService.getAllOrderByCheckFalseAndCustomerId(id).subscribe((orders) => {
+      this.orders = orders;
+      for (const order of orders) {
+        this.sumOfMoney1 = order.quantity * order.dish.price;
+        this.quantity = order.quantity;
+        this.merchantAdress = order.dish.merchant.address;
+        this.merchantName = order.dish.merchant.name;
+        this.merchantId = order.dish.merchant.id;
+      }
+      console.log(orders);
+    });
+  }
+
+  removeAllCartElementToOrder() {
+    if (this.carts.length === 0) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'error',
+        title: 'Đã đặt gì đâu mà đòi thanh toán :) !'
+      });
+    } else {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer);
+          toast.addEventListener('mouseleave', Swal.resumeTimer);
+        }
+      });
+      Toast.fire({
+        icon: 'success',
+        title: 'Thanh toán nhanh không đói nàooooo !'
+      });
+    }
+    this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
+      this.router.navigateByUrl(`/invoice/create`);
+    });
+  }
+
+  createNewOrder(or: any) {
+    this.orderService.createNewOrder(or).subscribe(() => {
+    });
+  }
+
+  removeAllOrderElement() {
+    this.orderService.deleteAllOrderByCheckFalseAndCustomerId(this.customer.id).subscribe(() => {
+    });
+  }
+
+  addNewOrderElement() {
+    if (this.orders.length === 0) {
+      for (const cart of this.carts) {
+        this.orderElement.quantity = cart.quantity;
+        this.orderElement.dish = cart.dish;
+        this.orderElement.customer = cart.customer;
+        this.orderElement.ordercheck = false;
+        this.createNewOrder(this.orderElement);
+        // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+        // this.orders.push(this.orderElement);
+        // });
+      }
+      // console.log(this.orders);
+      this.removeAllCartElementToOrder();
+    } else {
+      Swal.fire({
+        title: 'Bạn đang có đơn chưa hoàn thành',
+        text: 'Bạn có muốn đặt lại đơn đó không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: ' Tôi muốn đặt đơn mới!',
+        cancelButtonText: ' Tôi muốn đặt lại đơn cũ!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.removeAllOrderElement();
+          for (const cart of this.carts) {
+            this.orderElement.quantity = cart.quantity;
+            this.orderElement.dish = cart.dish;
+            this.orderElement.customer = cart.customer;
+            this.orderElement.ordercheck = false;
+            this.createNewOrder(this.orderElement);
+            // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+            // this.orders.push(this.orderElement);
+            // });
+          }
+          // console.log(this.orders);
+          this.removeAllCartElementToOrder();
+          Swal.fire(
+            'Mời bạn đặt đơn mới!',
+            '',
+            'success'
+          );
+        } else {
+          this.removeAllCartElementToOrder();
+        }
+      });
+    }
   }
 }
