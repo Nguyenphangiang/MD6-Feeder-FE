@@ -1,3 +1,107 @@
+<div class="modal fade" id="add-address-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-address">Thêm Địa chỉ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="orderAddressForm" (ngSubmit)="addNewOrderAddress()">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="name">Địa chỉ</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="name" formControlName="name">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                    class="icofont-ui-pointer"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-0 col-md-12">
+              <label for="inputPassword4">Thể loại
+              </label>
+              <div class="btn-group btn-group-toggle d-flex justify-content-center"
+                   data-toggle="buttons">
+                <label class="btn btn-info active">
+                  <input type="radio" name="type" id="option1" autocomplete="off" checked [(ngModel)]="home" formControlName="type"> Nhà
+                </label>
+                <label class="btn btn-info">
+                  <input type="radio" name="type" id="option2" autocomplete="off" [(ngModel)]="company" formControlName="type"> Công ty
+                </label>
+                <label class="btn btn-info">
+                  <input type="radio" name="type" id="option3" autocomplete="off" [(ngModel)]="other" formControlName="type"> Khác
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary"
+                  data-dismiss="modal">HỦY
+          </button><button type="button"
+                           class="btn d-flex w-50 text-center justify-content-center btn-primary" (click)="addNewOrderAddress()">THÊM</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="add-address-modal-one" tabindex="-1" role="dialog" aria-labelledby="add-address"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-address-one">Địa chỉ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="editAddressForm" (ngSubmit)="editOrderAddress()">
+      <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="name">Địa chỉ</label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="name-one" formControlName="name">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2-one"><i
+                    class="icofont-ui-pointer"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb-0 col-md-12">
+              <label for="inputPassword4">Thể loại
+              </label>
+              <div class="btn-group btn-group-toggle d-flex justify-content-center"
+                   data-toggle="buttons">
+                <label class="btn btn-info active">
+                  <input type="radio" name="type" id="option1-one" autocomplete="off" checked [(ngModel)]="home" formControlName="type"> Nhà
+                </label>
+                <label class="btn btn-info">
+                  <input type="radio" name="type" id="option2-one" autocomplete="off" [(ngModel)]="company" formControlName="type"> Công ty
+                </label>
+                <label class="btn btn-info">
+                  <input type="radio" name="type" id="option3-one" autocomplete="off" [(ngModel)]="other" formControlName="type"> Khác
+                </label>
+              </div>
+            </div>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary"
+                data-dismiss="modal">HỦY
+        </button><button type="button"
+                         class="btn d-flex w-50 text-center justify-content-center btn-primary" (click)="editOrderAddress()">SỬA</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 <section class="offer-dedicated-body mt-4 mb-4 pt-2 pb-2">
   <div class="container">
     <div class="row">
@@ -22,8 +126,12 @@
                         </p>
                         <p class="mb-0 text-black font-weight-bold"><a
                           class="btn btn-sm btn-success mr-2" href="#"> Giao tới địa
-                          chỉ này</a>
-                          <span>30MIN</span>
+                          chỉ này</a><button data-toggle="modal"
+                                             data-target="#add-address-modal-one"
+                                             class="btn btn-sm btn-primary mr-2" (click)="findOldOrderAddress(address.id)"> Sửa
+                        </button>
+                          <span><button class="btn btn-sm btn-danger mr-2" (click)="deleteOrderAddress(address.id)">Xóa</button>
+                          </span>
                         </p>
                       </div>
                     </div>
@@ -38,10 +146,10 @@
                       <div class="media-body">
                         <h6 class="mb-1 text-secondary">Other</h6>
                         <p>Địa chỉ giao hàng mới</p>
-                        <p class="mb-0 text-black font-weight-bold"><a data-toggle="modal"
+                        <p class="mb-0 text-black font-weight-bold"><button data-toggle="modal"
                                                                        data-target="#add-address-modal"
                                                                        class="btn btn-sm btn-primary mr-2" href="#"> Thêm địa chỉ
-                          giao hàng mới</a>
+                          giao hàng mới</button>
                         </p>
                       </div>
                     </div>

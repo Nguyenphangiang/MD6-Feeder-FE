@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./merchant-detail.component.css']
 })
 export class MerchantDetailComponent implements OnInit {
+  isRunning = true;
   merchant: Merchant = {};
   dishes: Dish[] = [];
   carts: CartElement [] = [];

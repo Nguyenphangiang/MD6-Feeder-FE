@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Order} from '../../model/order';
 import {environment} from '../../../environments/environment';
 import {Customer} from '../../model/customer';
+import {CustomerForm} from '../../model/customer-form';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -38,7 +39,7 @@ export class OrderService {
   getOrdersByMerchantId(idMerchant): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${API_URL}/merchant/${idMerchant}`);
   }
-  findCustomerByUserId(id): Observable<Customer> {
-    return this.httpClient.get<Customer>(`${API_URL}/customer/detail/${id}`);
+  findCustomerByUserId(id): Observable<CustomerForm> {
+    return this.httpClient.get<CustomerForm>(`${API_URL}/customer/detail/${id}`);
   }
 }

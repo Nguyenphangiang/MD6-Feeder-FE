@@ -69,105 +69,50 @@
                  aria-labelledby="pills-order-online-tab">
               <div id="#menu" class="row">
                 <h5 class="mb-4 mt-3 col-md-12">Bán chạy</h5>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/7.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Gafood - Gà Ủ
-                          Muối</a></h6>
-                        <p class="text-gray mb-2">Bạch Mai</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">30.000 <span
-                          class="badge badge-success">5% Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay</a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/8.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Trà Sữa - Đường 18
+                <ng-container *ngFor="let dish of dishes">
+                  <div class="col-md-4 col-sm-6 mb-4">
+                    <div
+                      class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                      <div class="list-card-image">
+                        <!-- <div class="star position-absolute"><span class="badge badge-success"><i
+                                    class="icofont-star"></i> 3.1 (300+)</span></div> -->
+                        <ng-container *ngIf="dish.recommend">
+                          <div class="favourite-heart text-danger position-absolute"><a
+                            href="#"><i class="icofont-heart"></i></a></div>
+                        </ng-container>
+                        <div class="member-plan position-absolute"><span
+                          class="badge badge-dark">{{dish.dishStatus.name}}</span></div>
+                        <a href="#">
+                          <img src="assets/img/{{dish.image}}" class="img-fluid item-img">
                         </a>
-                        </h6>
-                        <p class="text-gray mb-2">P. Mộ Lao, Hà Đông, Hà Nội</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">5.000 <span
-                          class="badge badge-primary">Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay</a>
-                                                        </span>
-                        </p>
+                      </div>
+                      <div class="p-3 position-relative">
+                        <div class="list-card-body">
+                          <h6 class="mb-1"><a href="#" class="text-black">{{dish.name}}</a></h6>
+                          <p class="text-gray mb-2">{{dish.merchant.address}}</p>
+                          <p class="text-gray time mb-0"><a
+                            class="btn btn-link btn-sm text-black" href="#">{{dish.price}} VND<span
+                            class="badge badge-success"></span></a> <span
+                            class="float-right">
+
+                            <button *ngIf="dish.dishStatus.id == 2" hidden
+                                    class="btn btn-outline-secondary btn-sm" (click)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)">Mua
+                              ngay</button>
+                            <button *ngIf="dish.dishStatus.id == 1" 
+                                    class="btn btn-outline-secondary btn-sm" (click)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)">Mua
+                              ngay</button>
+                          </span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/9.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Nem
-                          Chua Rán</a></h6>
-                        <p class="text-gray mb-2">P. Bồ Đề, Long Biên, Hà Nội</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">50.000 <span
-                          class="badge badge-info">Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua
-                                                                ngay </a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </ng-container>
               </div>
 
               <div class="row">
-                <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3
-                  ITEMS</small></h5>
+                <h5 class="mb-4 mt-3 col-md-12">Món ăn <small class="h6 text-black-50">{{dishes.length}}
+                  món</small></h5>
                 <div class="col-md-12">
                   <div class="bg-white rounded border shadow-sm mb-4">
 
@@ -175,7 +120,7 @@
                       <form (ngSubmit)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)"
                             [formGroup]="cartForm">
                       <span class="count-number float-right">
-                                                    <button class="btn btn-outline-light text-primary" style=" font-size: 15px"><i   class="icofont-cart">Mua hàng</i> </button>
+                                                    <button class="btn btn-outline-light text-success" ><i   class="icofont-cart icofont-3x"></i> </button>
                         <!--                                                    <input class="count-number-input" type="text" value="1" formControlName="quantity" readonly="">-->
                         <!--                                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
                         <!--                                                      class="icofont-plus"></i> </button>-->
