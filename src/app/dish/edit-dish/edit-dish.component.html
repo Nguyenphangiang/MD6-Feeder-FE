@@ -1,0 +1,61 @@
+<body class="bg-white">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
+              <h3 class="login-heading mb-4">Cập nhật thông tin món ăn </h3>
+              <a routerLink="#" (click)="backToDishList()">Quay lại danh sách món ăn</a>
+              <form [formGroup]="dishForm" (ngSubmit)="edit()">
+                <input type="hidden" formControlName="id">
+                <div class="form-label-group">
+                  <input type="text" id="name" class="form-control"
+                         placeholder="tên món" formControlName="name">
+                  <label for="name">Tên món </label>
+                </div>
+                <div >
+                  <label for="name">Ảnh</label>
+                  <br>
+                  <input type="file" id="image" class="form-control"
+                    (change)="onSelectedFile($event)">
+                  <ng-container *ngIf="check">
+                    <img [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">
+                  </ng-container>
+<!--                  <img [src]="sanitizer.bypassSecurityTrustUrl(imageLink)" style="width: 100px;height: 100px">-->
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="description" class="form-control"
+                         placeholder="enter phone number" formControlName="description">
+                  <label for="description">Mô tả</label>
+                </div>
+                <div>
+                  <label for="status">Trạng thái</label>
+                  <select id="status" class="form-control" formControlName="dishStatus">
+                    <option [ngValue]="null" >Chọn lại trạng thái </option>
+                    <ng-container *ngFor="let status1 of status">
+                      <option [value]="status1.id">{{status1.name}}</option></ng-container>
+                  </select>
+                </div>
+                <div class="form-label-group">
+                  <input type="text" id="price" class="form-control"
+                         placeholder="enter address" formControlName="price">
+                  <label for="price">Đơn giá</label>
+                </div>
+                <button
+                  class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cập nhật</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

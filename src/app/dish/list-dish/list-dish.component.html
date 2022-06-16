@@ -1,0 +1,403 @@
+<section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
+  <h1 class="text-white">Offers Near You</h1>
+  <h6 class="text-white-50">Best deals at your favourite restaurants</h6>
+</section>
+<section class="section pt-5 pb-5 products-listing">
+  <div class="container">
+    <div class="row d-none-m">
+      <div class="col-md-12">
+        <div class="dropdown float-right">
+          <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Danh sách: <span class="text-theme">Món ăn</span> &nbsp;&nbsp;
+          </a>
+          <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
+            <a class="dropdown-item" routerLink="/dish/favorite/list">Món ăn yêu thích</a>
+            <a class="dropdown-item" routerLink="/merchant">Nhà hàng</a>
+            <a class="dropdown-item" routerLink="/merchant/list/gold">Nhà hàng GOLD</a>
+          </div>
+        </div>
+        <h4 class="font-weight-bold mt-0 mb-3">DISHES <small class="h6 mb-0 ml-2">{{dishes.length}} Món
+        </small>
+        </h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="owl-carousel owl-carousel-category owl-theme list-cate-page mb-4">
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/1.png" alt="">
+                <h6>American</h6>
+                <p>156</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/2.png" alt="">
+                <h6>Pizza</h6>
+                <p>120</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/3.png" alt="">
+                <h6>Healthy</h6>
+                <p>130</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/4.png" alt="">
+                <h6>Vegetarian</h6>
+                <p>120</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/5.png" alt="">
+                <h6>Chinese</h6>
+                <p>111</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/6.png" alt="">
+                <h6>Hamburgers</h6>
+                <p>958</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/7.png" alt="">
+                <h6>Dessert</h6>
+                <p>56</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/8.png" alt="">
+                <h6>Chicken</h6>
+                <p>40</p>
+              </a>
+            </div>
+          </div>
+          <div class="item">
+            <div class="osahan-category-item">
+              <a href="#">
+                <img class="img-fluid" src="assets/img/list/9.png" alt="">
+                <h6>Indian</h6>
+                <p>156</p>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor="let dish of dishes">
+            <form (ngSubmit)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)"
+                  [formGroup]="cartForm">
+            <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+              <div class="list-card-image">
+                <div class="star position-absolute"><span class="badge badge-success"><i
+                  class="icofont-star"></i> 3.1 (300+)</span></div>
+                <ng-container *ngIf="dish.recommend">
+                  <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
+                    class="icofont-heart"></i></a></div>
+                </ng-container>
+                <div class="member-plan position-absolute" ><span
+                  class="badge badge-dark">{{dish.dishStatus.name}}</span></div>
+                <a routerLink="/dish/detail/{{dish.id}}">
+                  <img src="assets/img/{{dish.image}}"  class=" img-fluid item-img">
+                  <!--                       height="161px" width="255"-->
+                </a>
+              </div>
+              <div class="p-3 position-relative">
+                <div class="list-card-body">
+                  <h6 class="mb-1"><a href="detail.html" class="text-black">{{dish.name}}</a></h6>
+                  <p class="text-gray mb-3">{{dish.description}}</p>
+                  <p class="text-gray mb-3 time"><span
+                    class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2" ><button class="btn btn-outline-light text-success" style=" font-size: 10px"><i   class="icofont-cart icofont-3x"></i> </button></span> <span
+                    class="float-right text-black-50"> {{dish.price}} VND</span></p>
+                </div>
+                <div class="list-card-badge">
+                  <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
+                  OSAHAN50</small>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+          <div class="col-md-12 text-center load-more">
+            <button class="btn btn-primary" type="button" disabled>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
+          <h5 class="mb-1 text-white">Đặt hàng ngay</h5>
+          <p class="mb-4 text-white">{{carts.length}} sản phẩm</p>
+          <div class="bg-white rounded shadow-sm mb-2">
+            <div class="gold-members p-2 border-bottom" *ngFor="let cart of carts">
+              <p class="text-gray mb-0 float-right ml-2">{{cart.dish.price * cart.quantity}}</p>
+              <span class="count-number float-right" >
+                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"
+                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <button *ngIf="cart.quantity > 1" class="btn btn-outline-secondary  btn-sm left dec"
+                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="{{cart.quantity}}" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"
+                                            (click)="increaseQuantityOfCartElement(cart.id)"> <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+              <div class="media">
+                <button  class="btn btn-outline-secondary  btn-sm left dec"
+                         (click)="removeCartElement(cart.id)"> <i class="icofont-ui-delete"></i> </button>
+                <div class="media-body">
+                  <p class="mt-1 mb-0 text-black">{{cart.dish.name}}</p>
+                </div>
+              </div>
+            </div>
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">60.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">20.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Bánh đa</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="gold-members p-2 border-bottom">-->
+            <!--              <p class="text-gray mb-0 float-right ml-2">15.000</p>-->
+            <!--              <span class="count-number float-right">-->
+            <!--                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i-->
+            <!--                                      class="icofont-minus"></i> </button>-->
+            <!--                                    <input class="count-number-input" type="text" value="1" readonly="">-->
+            <!--                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i-->
+            <!--                                      class="icofont-plus"></i> </button>-->
+            <!--                                </span>-->
+            <!--              <div class="media">-->
+            <!--                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>-->
+            <!--                <div class="media-body">-->
+            <!--                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+          </div>
+          <div class="mb-2 bg-white rounded p-2 clearfix">
+            <img class="img-fluid float-left" src="assets/img/wallet-icon.png">
+            <h6 class="font-weight-bold text-right mb-2">Tổng đơn: <span
+              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+            <h6 class="font-weight-bold text-right mb-2">Giảm giá: <span
+              class="text-danger">30.000</span> vnđ</h6>
+            <h6 class="font-weight-bold text-right mb-2">Thanh toán: <span
+              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+            <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
+            <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
+          </div>
+          <button (click)="removeAllCartElementToOrder()" class="btn btn-success btn-block btn-lg">Checkout <i
+            class="icofont-long-arrow-right"></i></button>
+        </div>
+        <div class="filters pt-2">
+          <div class="filters-body rounded shadow-sm bg-white">
+            <div class="filters-card p-4">
+              <div>
+                <div class="filters-card-body card-shop-filters pt-0">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" name="customRadio"
+                           class="custom-control-input" checked="">
+                    <label class="custom-control-label" for="customRadio1">Gold Partner</label>
+                  </div>
+                  <div class="custom-control custom-radio mt-1 mb-1">
+                    <input type="radio" id="customRadio2" name="customRadio"
+                           class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio2">Order Food
+                      Online</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio3" name="customRadio"
+                           class="custom-control-input" checked="">
+                    <label class="custom-control-label" for="customRadio3">Osahan Eat</label>
+                  </div>
+                  <hr>
+                  <small class="text-success">Use code OSAHAN50 to get 50% OFF (up to $30) on
+                    first 5 orders. T&Cs apply.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section pt-5 pb-5 text-center bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h5 class="m-0">Bạn có cửa hàng? <a href="login.html">Gia nhập với chúng tôi cùng cung cấp sản phẩm tốt nhất cho
+          khách hàng</a></h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="footer pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-12 col-sm-12">
+        <h6 class="mb-3">Đăng ký nhận thông tin khi có giảm giá</h6>
+        <form class="newsletter-form mb-1" [formGroup]="">
+          <div class="input-group">
+            <input type="text" placeholder="Email của bạn" class="form-control">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-primary">
+                Đăng ký
+              </button>
+            </div>
+          </div>
+        </form>
+        <p><a class="text-info" href="register.html">Đăng ký</a> để nhận<a
+          href="offers.html"> hàng ngàn ưu đãi khác</a></p>
+        <div class="app">
+          <p class="mb-2">DOWNLOAD APP</p>
+          <a href="#">
+            <img class="img-fluid" src="assets/img/google.png">
+          </a>
+          <a href="#">
+            <img class="img-fluid" src="assets/img/apple.png">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-1 col-sm-6 mobile-none">
+      </div>
+      <div class="col-md-2 col-6 col-sm-4">
+        <h6 class="mb-3">Về chúng tôi</h6>
+        <ul>
+          <li><a href="#">Thông tin liên hệ</a></li>
+          <li><a href="#">Văn hóa doanh nghiệp</a></li>
+          <li><a href="#">Tầm nhìn - Sứ mệnh</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 col-6 col-sm-4">
+        <h6 class="mb-3">Dành cho cửa hàng</h6>
+        <ul>
+          <li><a href="#">Hỗ trợ kỹ thuật</a></li>
+          <li><a href="#">Hỗ trợ bán hàng</a></li>
+          <li><a href="#">Góp ý</a></li>
+          <li><a href="#">Khiếu nại</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 m-none col-4 col-sm-4">
+        <h6 class="mb-3">Khách hàng</h6>
+        <ul>
+          <li><a href="#">Bảo vệ quyền lợi người tiêu dùng</a></li>
+          <li><a href="#">Chăm sóc khách hàng</a></li>
+          <li><a href="#">Khiếu nại</a></li>
+          <li><a href="#">Góp ý</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="footer-bottom-search pt-5 pb-5 bg-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <p class="text-black">Từ khóa phổ biến</p>
+        <div class="search-links">
+          <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a> | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> | <a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a> |<a href="#">Gà rán</a> | <a href="#">Nem chua rán</a>
+          | <a href="#">Pizza</a> | <a
+          href="#">Highland</a> | <a href="#">Starbuck</a> | <a href="#">Bánh bèo</a> | <a
+          href="#">Tôm alaska</a> | <a href="#">Tôm hoàng đế</a>
+        </div>
+        <p class="mt-4 text-black">Danh mục món ăn</p>
+        <div class="search-links">
+          <a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a
+          href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South
+          Indian</a> | <a href="#">Punjabi Food</a> | <a href="#">Fast Food</a> | <a
+          href="#">Chinese</a> | <a href="#">Street Food</a> | <a href="#">Continental</a> | <a
+          href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South Indian</a> | <a
+          href="#">Punjabi Food</a><a href="#">Fast Food</a> | <a href="#">Chinese</a> | <a
+          href="#">Street Food</a> | <a href="#">Continental</a> | <a href="#">Mithai</a> | <a
+          href="#">Cafe</a> | <a href="#">South Indian</a> | <a href="#">Punjabi Food</a> | <a
+          href="#">Fast Food</a> | <a href="#">Chinese</a> | <a href="#">Street Food</a> | <a
+          href="#">Continental</a> | <a href="#">Mithai</a> | <a href="#">Cafe</a> | <a href="#">South
+          Indian</a> | <a href="#">Punjabi Food</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

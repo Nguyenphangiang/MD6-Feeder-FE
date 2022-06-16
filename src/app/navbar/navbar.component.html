@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/"><img alt="logo" src="assets/img/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto" >
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Trang chủ <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" *ngIf="!display; else elseBlock">
+          <a  class="nav-link" routerLink="/login" >Đăng nhập<span class="sr-only"></span></a>
+        </li>
+        <ng-template #elseBlock>
+          <ng-container [ngSwitch]="authority">
+              <a  *ngSwitchCase="1" class="nav-link" routerLink="/customer/detail/{{userId}}" >{{display}}<span class="sr-only"></span></a>
+              <a  *ngSwitchCase="2" class="nav-link" routerLink="/merchant/detail/user/{{userId}}" >{{display}}<span class="sr-only"></span></a>
+              <a  *ngSwitchCase="3" class="nav-link" routerLink="/admin/user" >{{display}}<span class="sr-only"></span></a>
+              <a  class="nav-link" href="/" (click)="logout()">Đăng xuất</a>
+          </ng-container>
+        </ng-template>
+        <ng-container [ngSwitch]="authority">
+          <li  *ngSwitchCase="1">
+            <a (click)="getAllCartElement()" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-shopping-basket"></i> Giỏ hàng
+<!--              <span class="badge badge-success" [ngModel]="cartLength">{{carts.length}}</span>-->
+            <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+              <div class="dropdown-cart-top-body border-top p-4">
+                <p class="mb-2" *ngFor="let cartElement of carts"><i class="icofont-ui-press text-danger food-item" ></i>
+                  {{cartElement.dish.name}} x {{cartElement.quantity}}
+                  <span class="count-number float-right" >
+<!--                                    <button *ngIf="cart.quantity == 1" disabled class="btn btn-outline-secondary  btn-sm left dec"-->
+<!--                                            (click)="reduceQuantityOfCartElement(cart.id)"> <i-->
+<!--                                      class="icofont-minus"></i> </button>-->
+                                    <button  class="btn btn-outline-secondary  btn-sm left dec"> <i
+                                      class="icofont-minus"></i> </button>
+                                    <input class="count-number-input" type="text" value="1" readonly="">
+                                    <button class="btn btn-outline-secondary btn-sm right inc"
+                                            > <i
+                                      class="icofont-plus"></i> </button>
+                                </span>
+                  <span class="float-right text-secondary">
+                    {{cartElement.dish.price*cartElement.quantity}}</span></p>
+<!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas-->
+<!--                  Salad x 1 <span class="float-right text-secondary">209.000</span></p>-->
+<!--                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh Sub 6"-->
+<!--                  (15 cm) x 1 <span class="float-right text-secondary">133.000</span></p>-->
+<!--                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka Sub-->
+<!--                  12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>-->
+<!--                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas Salad-->
+<!--                  x 1 <span class="float-right text-secondary">209.000</span></p>-->
+              </div>
+              <div class="dropdown-cart-top-footer border-top p-4">
+                <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
+                  class="float-right text-dark">{{sumOfMoney}}</span></p>
+                <!-- <small class="text-info">Extra charges may apply</small> -->
+              </div>
+              <div class="dropdown-cart-top-footer border-top p-2">
+                <button class="btn btn-success btn-block btn-lg" (click)="removeAllCartElementToOrder()"> Thanh toán</button>
+              </div>
+            </div>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
