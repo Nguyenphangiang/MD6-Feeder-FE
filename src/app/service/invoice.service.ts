@@ -13,10 +13,16 @@ export class InvoiceService {
   showAllCustomerOrderAddress(id): Observable<OrderAddress[]> {
    return this.http.get<OrderAddress[]>(`${API_URL}/orderAddress/${id}`);
   }
+  showAllByMerchantId(id): Observable<Invoice[]> {
+   return this.http.get<Invoice[]>(`${API_URL}/invoice/merchant/${id}`);
+  }
   createNewInvoice(id, data): Observable<Invoice> {
     return this.http.post<Invoice>(`${API_URL}/invoice/${id}`, data);
   }
   getDetailInvoice(id): Observable<Invoice> {
     return this.http.get<Invoice>(`${API_URL}/invoice/${id}`);
+  }
+  updateInvoice(id: number, invoice: Invoice): Observable<Invoice> {
+    return this.http.put<Invoice>(`${API_URL}/invoice/${id}`, invoice);
   }
 }

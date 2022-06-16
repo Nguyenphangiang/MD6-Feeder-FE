@@ -5,6 +5,6 @@ export interface Order {
   id ?: number;
   dish ?: Dish;
   quantity ?: number;
-  ordercheck ?: boolean;
-  customer ?: CustomerForm;
+  // ordercheck ?: boolean;
+  // customer ?: CustomerForm;
 }
