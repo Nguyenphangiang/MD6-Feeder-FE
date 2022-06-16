@@ -12,4 +12,7 @@ export class InvoiceService {
   showAllCustomerOrderAddress(id): Observable<OrderAddress[]> {
    return this.http.get<OrderAddress[]>(`${API_URL}/orderAddress/${id}`);
   }
+  addNewOrderAddress(data, id): Observable<OrderAddress> {
+    return this.http.post<OrderAddress>(`${API_URL}/orderAddress/${id}`, data);
+  }
 }
