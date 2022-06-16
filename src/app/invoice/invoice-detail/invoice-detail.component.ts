@@ -4,8 +4,8 @@ import {OrderAddress} from '../../model/order-address';
 import {InvoiceService} from '../../service/invoice.service';
 import {OrderService} from '../../service/order/order.service';
 import {ActivatedRoute} from '@angular/router';
-import {Invoice} from "../../model/invoice";
-import {Order} from "../../model/order";
+import {Invoice} from '../../model/invoice';
+import {Order} from '../../model/order';
 
 @Component({
   selector: 'app-invoice-detail',
@@ -13,13 +13,6 @@ import {Order} from "../../model/order";
   styleUrls: ['./invoice-detail.component.css']
 })
 export class InvoiceDetailComponent implements OnInit {
-  user = localStorage.getItem('user');
-  temp = JSON.parse(this.user);
-  userId = this.temp.id;
-  customer: CustomerForm;
-  orderAddress: OrderAddress[] = [];
-  invoice: Invoice = {};
-  orders: Order [] = [];
 
   constructor(private invoiceService: InvoiceService,
               private orderService: OrderService,
@@ -29,7 +22,17 @@ export class InvoiceDetailComponent implements OnInit {
       this.findDetailInvoice(id);
     });
   }
-
+  user = localStorage.getItem('user');
+  temp = JSON.parse(this.user);
+  userId = this.temp.id;
+  customer: CustomerForm;
+  orderAddress: OrderAddress[] = [];
+  invoice: Invoice = {};
+  orders: Order [] = [];
+  expectedDay: Date;
+  sumOfMoney = 0;
+  vat: number;
+  totalPrice = 0;
   ngOnInit() {
     this.findCustomerByUserId(this.userId);
   }
@@ -53,6 +56,22 @@ export class InvoiceDetailComponent implements OnInit {
     this.invoiceService.getDetailInvoice(id).subscribe((invoice) => {
       this.invoice = invoice;
       this.orders = this.invoice.orders;
+      this.getTotalPrice(this.orders);
+      this.expectedDay = this.invoice.date;
+      this.addHour(this.expectedDay);
     });
+  }
+  getTotalPrice(orders: Order[]): number {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < orders.length; i++) {
+      this.sumOfMoney += orders[i].dish.price;
+    }
+    this.vat = this.sumOfMoney / 100 * 10;
+    this.totalPrice = this.vat + this.sumOfMoney + 25000;
+    return this.sumOfMoney;
+  }
+  addHour(date: Date): Date {
+    date.setHours(date.getHours() + 3);
+    return date;
   }
 }

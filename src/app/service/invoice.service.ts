@@ -40,4 +40,7 @@ export class InvoiceService {
   showAllInvoiceByCustomer(id): Observable<Invoice[]> {
     return this.http.get<Invoice[]>(`${API_URL}/invoice/customer/${id}`);
   }
+  findDetailInvoice(id): Observable<Invoice> {
+    return this.http.get<Invoice>(`${API_URL}/invoice/${id}`);
+  }
 }

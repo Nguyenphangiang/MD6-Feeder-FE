@@ -12,7 +12,7 @@ const routes: Routes = [
     component: InvoiceCreateComponent
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     component: InvoiceDetailComponent
   },
   {

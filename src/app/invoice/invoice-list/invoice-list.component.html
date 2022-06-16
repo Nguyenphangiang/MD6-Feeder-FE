@@ -46,7 +46,7 @@
               <h4 class="font-weight-bold mt-0 mb-4">Lịch sử mua hàng</h4>
               <div class="bg-white card mb-4 order-list shadow-sm" *ngFor="let invoice of invoices">
                 <div class="gold-members p-4">
-                  <a href="#">
+                  <p href="#">
                     <div class="media">
                       <img class="mr-4" src="assets/img/3.jpg" alt="Generic placeholder image">
                       <div class="media-body">
@@ -62,17 +62,17 @@
                         </p>
                         <hr>
                         <div class="float-right">
-                          <a class="btn btn-sm btn-outline-primary" href="#"><i
-                            class="icofont-headphone-alt"></i> HELP</a>
-                          <a class="btn btn-sm btn-primary" href="detail.html"><i
-                            class="icofont-refresh"></i> REORDER</a>
+                          <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-truck-loaded icofont-2x"></i>
+                             {{invoice.invoiceStatus.name}}</a>
+                          <a class="btn btn-sm btn-primary" routerLink="/invoice/detail/{{invoice.id}}"><i class="icofont-list icofont-2x">
+
+                          </i> Chi tiết</a>
                         </div>
                         <p class="mb-0 text-black text-primary pt-2"><span
-                          class="text-black font-weight-bold"> Tổng tiền:</span> {{sumOfMoney}}VND
+                          class="text-black font-weight-bold"> Tổng tiền:</span><i>{{sumOfMoney | number}}</i> VND
                         </p>
                       </div>
                     </div>
-                  </a>
                 </div>
               </div>
             </div>

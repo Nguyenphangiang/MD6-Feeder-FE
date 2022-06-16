@@ -20,7 +20,8 @@ export class InvoiceListComponent implements OnInit {
   invoices: Invoice[] = [];
   dish: Dish[] = [];
   orders: Order[] = [];
-  sumOfMoney: number;
+  sumOfMoney = 0;
+  expectedDay: any;
   constructor(private orderService: OrderService,
               private invoiceService: InvoiceService) { }
 
@@ -36,11 +37,21 @@ export class InvoiceListComponent implements OnInit {
  showAllInvoiceByCustomer(id) {
    this.invoiceService.showAllInvoiceByCustomer(id).subscribe((invoice) => {
       this.invoices = invoice;
+      this.getAllOrder(invoice);
+      this.getTotalPrice(this.orders);
     });
  }
- getAllOrder(or: any) {
+ getAllOrder(or: Invoice[]): Order[] {
    for (let i = 0; i < or.length; i++) {
-
+       this.orders.push(or[i].orders[i]);
    }
+   return this.orders;
+ }
+ getTotalPrice(orders: Order[]): number {
+   // tslint:disable-next-line:prefer-for-of
+   for (let i = 0; i < orders.length; i++) {
+     this.sumOfMoney += orders[i].dish.price;
+   }
+   return this.sumOfMoney;
  }
 }
