@@ -16,6 +16,9 @@ export class MerchantOrderComponent implements OnInit {
   temp = JSON.parse(this.user);
   idMerchant: number;
   invoices: Invoice[] = [];
+  invoicesByName: Invoice[] = [];
+  invoicesByPhone: Invoice[] = [];
+  searchInput;
 
   constructor(private invoiceService: InvoiceService,
               private merchantService: MerchantServiceService,
@@ -83,6 +86,27 @@ export class MerchantOrderComponent implements OnInit {
           }
         }
       }
+    });
+  }
+  searchByInput(input) {
+    this.invoiceService.showAllByCustomerInfo(input).subscribe((data) => {
+      this.invoices = data;
+    }, () => {
+      Swal.fire('Tìm kiếm không thành công!');
+    });
+  }
+  searchByCustomerName(name) {
+    this.invoiceService.showAllByCustomerName(name).subscribe((data) => {
+      this.invoicesByName = data;
+    }, () => {
+      Swal.fire('Tìm kiếm không thành công!');
+    });
+  }
+  searchByCustomerPhone(phone) {
+    this.invoiceService.showAllByCustomerPhone(phone).subscribe((data) => {
+      this.invoicesByPhone = data;
+    }, () => {
+      Swal.fire('Tìm kiếm không thành công!');
     });
   }
 }

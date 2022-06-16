@@ -1,5 +1,7 @@
 <div class="bg-white rounded shadow-sm p-4 mb-4">
-<table class="table table-bordered table-striped">
+  <span class="text-black-50">Tìm kiếm theo Khách</span> <input class="input-group-text" type="text" [(ngModel)]="searchInput" [defaultValue]="" (keyup)="searchByInput(searchInput)">
+
+  <table class="table table-bordered table-striped">
   <thead class="thead-dark">
   <tr>
     <th>#</th>
