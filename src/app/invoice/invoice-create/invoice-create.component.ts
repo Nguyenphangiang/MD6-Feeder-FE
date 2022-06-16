@@ -4,6 +4,7 @@ import {OrderAddress} from '../../model/order-address';
 import {OrderService} from '../../service/order/order.service';
 import {CustomerForm} from '../../model/customer-form';
 import {Order} from "../../model/order";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-invoice-create',
@@ -21,6 +22,16 @@ export class InvoiceCreateComponent implements OnInit {
   quantity: number;
   merchantAdress: any;
   merchantName: any;
+  merchantId: number;
+  invoiceForm: FormGroup = new FormGroup({
+    note: new FormControl(),
+    date: new FormControl(null),
+    customer: new FormControl(),
+    invoiceStatus: new FormControl(null),
+    orders: new FormControl(),
+    merchant: new FormControl(),
+    orderAdress: new FormControl(),
+  });
 
   constructor(private invoiceService: InvoiceService,
               private orderService: OrderService) {
@@ -54,6 +65,7 @@ export class InvoiceCreateComponent implements OnInit {
         this.quantity = order.quantity;
         this.merchantAdress = order.dish.merchant.address;
         this.merchantName = order.dish.merchant.name;
+        this.merchantId = order.dish.merchant.id;
       }
       console.log(orders);
     });
@@ -70,4 +82,27 @@ export class InvoiceCreateComponent implements OnInit {
       this.findAllOrderByOrderCheck(this.customer.id);
     });
   }
+
+  setStatusOrder(idOrder, order) {
+    this.orderService.setStatusOfOrderElement(idOrder, order).subscribe(() => {
+    });
+  }
+
+  createNewInvoice() {
+    for (const order of this.orders) {
+      this.setStatusOrder(order.id, order);
+    }
+    const invoice = this.invoiceForm.value;
+    const customerId = this.customer.id;
+    invoice.orders = this.orders;
+    invoice.customer = {
+      id: customerId
+    };
+    invoice.merchant = {
+      id: this.merchantId
+    };
+    this.invoiceService.createNewInvoice(this.customer.id, invoice).subscribe(() => {
+    });
+  }
+
 }

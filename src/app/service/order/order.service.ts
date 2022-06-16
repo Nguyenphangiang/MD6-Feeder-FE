@@ -55,10 +55,16 @@ export class OrderService {
   getAllOrderByCheckFalseAndCustomerId(id): Observable<Order[]> {
     return this.httpClient.get<Order[]>(`${API_URL}/order/ordercheck/${id}`);
   }
+  deleteAllOrderByCheckFalseAndCustomerId(id): Observable<Order> {
+    return this.httpClient.delete<Order>(`${API_URL}/order/ordercheck/${id}`);
+  }
   reduceQuantityOfOrderElement(orderId, data): Observable<Order> {
     return this.httpClient.put<Order>(`${API_URL}/order/reduce/${orderId}` , data);
   }
   increaseQuantityOfOrderElement(orderId, data): Observable<Order> {
     return this.httpClient.put<Order>(`${API_URL}/order/increase/${orderId}` , data);
+  }
+  setStatusOfOrderElement(orderId, data): Observable<Order> {
+    return this.httpClient.put<Order>(`${API_URL}/order/setstatus/${orderId}` , data);
   }
 }
