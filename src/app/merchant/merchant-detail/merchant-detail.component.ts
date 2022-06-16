@@ -10,6 +10,10 @@ import {AppUserServiceService} from '../../service/app-user-service.service';
 import {CustomerForm} from '../../model/customer-form';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {OrderService} from '../../service/order/order.service';
+import {Order} from '../../model/order';
+import {InvoiceService} from '../../service/invoice.service';
+import {Invoice} from '../../model/invoice';
 
 
 @Component({
@@ -32,6 +36,9 @@ export class MerchantDetailComponent implements OnInit {
   sumOfMoney: number;
   cartElement: CartElement;
   dish: Dish;
+  orderElement: Order = {};
+  invoice: Invoice = {};
+  orders: Order[] = [];
   cartForm: FormGroup = new FormGroup({
     customer1: new FormControl(),
     dish: new FormControl(),
@@ -44,7 +51,9 @@ export class MerchantDetailComponent implements OnInit {
               private router: Router,
               private dishService: DishService,
               private cartElementService: CartService,
-              private customerService: AppUserServiceService) {
+              private customerService: AppUserServiceService,
+              private orderService: OrderService,
+              private invoiceService: InvoiceService) {
     this.activatedRouter.paramMap.subscribe((paraMap) => {
       const id = +paraMap.get('id');
       this.showDetailMerchant(id);
@@ -93,7 +102,6 @@ export class MerchantDetailComponent implements OnInit {
         this.sumOfMoney += cart.quantity * cart.dish.price;
         this.quantity = cart.quantity;
       }
-      console.log(carts);
     });
   }
 
@@ -140,6 +148,8 @@ export class MerchantDetailComponent implements OnInit {
         } else {
           this.checkDish = 2;
         }
+      }
+      for (const cart of carts1) {
         if (idMerchant === cart.dish.merchant.id) {
           this.checkMerchant = 1;
         } else {
@@ -243,8 +253,8 @@ export class MerchantDetailComponent implements OnInit {
 
   removeAllCartElementToOrder() {
     this.cartElementService.removeAllCartElement(this.customer.id).subscribe(() => {
-      this.getAllCartElement();
-      this.router.navigateByUrl('/order');
+      this.router.navigateByUrl(`/invoice/create`);
+
     });
     const Toast = Swal.mixin({
       toast: true,
@@ -263,4 +273,46 @@ export class MerchantDetailComponent implements OnInit {
     });
   }
 
+  createNewOrder(or: any) {
+    this.orderService.createNewOrder(or).subscribe(() => {
+    });
+  }
+
+  addNewOrderElement(carts) {
+    for (const cart of carts) {
+      this.orderElement.quantity = cart.quantity;
+      this.orderElement.dish = cart.dish;
+      // this.orderElement.customer = cart.customer;
+      // this.orderElement.ordercheck = false;
+      this.createNewOrder(this.orderElement);
+      // this.orderService.createNewOrder(this.orderElement).subscribe(() => {
+      // this.orders.push(this.orderElement);
+      // });
+    }
+    // console.log(this.orders);
+    this.removeAllCartElementToOrder();
+
+  }
+
+  // addNewInvoiceElement(orders) {
+  //   this.invoice.invoiceStatus = null;
+  //   this.invoice.date = null;
+  //   this.invoice.orders = orders;
+  //   this.invoice.note = null;
+  //   this.invoice.merchant = this.merchant;
+  //   this.invoiceService.createNewInvoice(this.customer.id, this.invoice).subscribe(() => {
+  //     const id = this.invoice.id;
+  //     console.log('id nè ' + id);
+  //   });
+  //   // this.invoiceService.createNewInvoice(this.customer.id, this.invoice).subscribe(() => {
+  //   // this.removeAllCartElementToOrder(this.invoice);
+  //   // });
+  // }
+  //
+  // createNewInvoice(idCustomer: any, invoice: any) {
+  //   this.invoiceService.createNewInvoice(idCustomer, invoice).subscribe(() => {
+  //     const id = invoice.id;
+  //     console.log('id nè ' + id);
+  //   });
+  // }
 }

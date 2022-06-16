@@ -5,11 +5,13 @@ import { InvoiceRoutingModule } from './invoice-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {InvoiceCreateComponent} from '../../invoice/invoice-create/invoice-create.component';
 import {HttpClientModule} from '@angular/common/http';
+import {InvoiceDetailComponent} from '../../invoice/invoice-detail/invoice-detail.component';
 
 
 @NgModule({
   declarations: [
-    InvoiceCreateComponent
+    InvoiceCreateComponent,
+    InvoiceDetailComponent
   ],
   imports: [
     CommonModule,
