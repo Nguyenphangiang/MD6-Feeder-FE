@@ -6,12 +6,16 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {InvoiceCreateComponent} from '../../invoice/invoice-create/invoice-create.component';
 import {HttpClientModule} from '@angular/common/http';
 import {InvoiceDetailComponent} from '../../invoice/invoice-detail/invoice-detail.component';
+import {InvoiceThankComponent} from '../../invoice/invoice-thank/invoice-thank.component';
+import {InvoiceListComponent} from '../../invoice/invoice-list/invoice-list.component';
 
 
 @NgModule({
   declarations: [
     InvoiceCreateComponent,
-    InvoiceDetailComponent
+    InvoiceDetailComponent,
+    InvoiceThankComponent,
+    InvoiceListComponent
   ],
   imports: [
     CommonModule,

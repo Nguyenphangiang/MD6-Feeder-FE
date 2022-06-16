@@ -98,7 +98,7 @@
                             <button *ngIf="dish.dishStatus.id == 2" hidden
                                     class="btn btn-outline-secondary btn-sm" (click)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)">Mua
                               ngay</button>
-                            <button *ngIf="dish.dishStatus.id == 1" 
+                            <button *ngIf="dish.dishStatus.id == 1"
                                     class="btn btn-outline-secondary btn-sm" (click)="createNewCartElement(dish.id,dish.merchant.id,dish.merchant.name,dish.name)">Mua
                               ngay</button>
                           </span>
@@ -607,15 +607,15 @@
           <div class="mb-2 bg-white rounded p-2 clearfix">
             <img class="img-fluid float-left" src="assets/img/wallet-icon.png">
             <h6 class="font-weight-bold text-right mb-2">Tổng đơn: <span
-              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+              class="text-danger">{{sumOfMoney1}}</span> vnđ</h6>
             <h6 class="font-weight-bold text-right mb-2">Giảm giá: <span
               class="text-danger">30.000</span> vnđ</h6>
             <h6 class="font-weight-bold text-right mb-2">Thanh toán: <span
-              class="text-danger">{{sumOfMoney}}</span> vnđ</h6>
+              class="text-danger">{{sumOfMoney1}}</span> vnđ</h6>
             <!-- <p class="seven-color mb-1 text-right">Extra charges may apply</p> -->
             <p class="text-black mb-0 text-right">Tiết kiệm 30.000 vnđ</p>
           </div>
-          <button (click)="addNewOrderElement(carts)" class="btn btn-success btn-block btn-lg">Checkout <i
+          <button (click)="addNewOrderElement()" class="btn btn-success btn-block btn-lg">Checkout <i
             class="icofont-long-arrow-right"></i></button>
         </div>
       </div>

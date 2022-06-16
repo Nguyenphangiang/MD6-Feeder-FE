@@ -37,4 +37,7 @@ export class InvoiceService {
   updateInvoice(id: number, invoice: Invoice): Observable<Invoice> {
     return this.http.put<Invoice>(`${API_URL}/invoice/${id}`, invoice);
   }
+  showAllInvoiceByCustomer(id): Observable<Invoice[]> {
+    return this.http.get<Invoice[]>(`${API_URL}/invoice/customer/${id}`);
+  }
 }
