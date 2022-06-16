@@ -3,6 +3,7 @@ import {OrderService} from '../../service/order/order.service';
 import {Order} from '../../model/order';
 import Swal from 'sweetalert2';
 import {MerchantServiceService} from '../../service/merchant-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-merchant-order',
@@ -13,9 +14,10 @@ export class MerchantOrderComponent implements OnInit {
   user = localStorage.getItem('user');
   temp = JSON.parse(this.user);
   idMerchant: number;
-  orders: Order[];
+  orders: Order[] = [];
   constructor(private orderService: OrderService,
-              private merchantService: MerchantServiceService) {
+              private merchantService: MerchantServiceService,
+              private router: Router) {
     this.loadOrders();
   }
   ngOnInit() {
@@ -32,4 +34,9 @@ export class MerchantOrderComponent implements OnInit {
       Swal.fire('Không tìm được merchant!');
     });
   }
+  toEditOrderForm(id) {
+    // this.router.navigateByUrl('/');
+  }
+  changeStatusToReceived(idOrder) {}
+  rejectOrder(idOrder) {}
 }

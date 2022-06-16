@@ -45,7 +45,7 @@ export class OrderService {
   }
 
   getOrdersByMerchantId(idMerchant): Observable<Order[]> {
-    return this.httpClient.get<Order[]>(`${API_URL}/merchant/${idMerchant}`);
+    return this.httpClient.get<Order[]>(`${API_URL}/order/merchant/${idMerchant}`);
   }
 
   findCustomerByUserId(id): Observable<Customer> {
